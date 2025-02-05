@@ -1,0 +1,1946 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="main.css">
+    <script src="main.js"></script>
+    <title>Lomda-Tmurot</title>
+</head>
+<body class="body" id="body" dir="rtl">
+    <div id="loginPage-main" class="loginPage-main">
+        <img src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/loginPage_main_pic.jpg" class="LoginPage-main-pic" alt="">
+
+        <div class="loginPage-main-right">
+            <p class="loginPage-main-text">ברוך הבא למערכת תמורות.</p>
+            <div class="loginPage-login-area">
+                <input class="insert-user" type="text" name="" id="user-name-insert" placeholder="הכנס שם משתמש">
+                <input class="insert-user" type="text" name="" id="password-insert" placeholder="הכנס סיסמה">
+                <button id="enter-btn" class="enter-btn" type="button">כניסה</button>
+                <div class="text-bottom-login">
+                    <p>הכל הערכים</p>
+                    <p id="forgot-password">שכחתי סיסמה</p> 
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div id="home-page" class="home-page">
+        <nav class="home-navbar">
+            <ul class="home-navbar-list">
+                <li class="item-navbar">ניהול והצגת תוצאות
+                    <ul id="sub-list-result" class="sub-list-navbar">
+                        <!-- <li>דוחות</li> -->
+                        <li>מצגות</li>
+                        <!-- <li>הורדת מצגת / שאלונים ידנית</li> -->
+                    </ul>
+                </li>
+                <li class="item-navbar">ניהול הסקר
+                    <ul id="sub-list-manage" class="sub-list-navbar">
+                        <!-- <li>רשימת המשיבים</li> -->
+                        <!-- <li>התחברות כמשתמש הנ"ל</li> -->
+                        <!-- <li>תכנית הסקר</li> -->
+                        <li class="socio-enter-btn" id="socio-enter-btn">ניהול סוציומטרי</li>
+                        <!-- <li>ממשקים - רשימת המוערכים</li> -->
+                    </ul>
+                </li>
+                <li class="item-navbar">בניית שאלונים
+                    <ul id="sub-list-QB" class="sub-list-navbar">
+                        <li>מבנה אירגוני</li>
+                        <li>מאגר המשיבים</li>
+                        <!-- <li>שאלונים מוכנים</li> -->
+                        <!-- <li>השאלונים שלי</li> -->
+                    </ul>
+                </li>
+                <!-- <li class="item-navbar">מנהל מערכת
+                    <ul id="sub-list-system" class="sub-list-navbar">
+                        <li>הגדרת משתמש</li>
+                        <li>אופציות כלליות לפרויקט</li>
+                        <li>ייבוא/ייצוא</li>
+                        <li>מסמכים</li>
+                        <li>ממשקי טקסטים</li>
+                        <li>logs</li>
+                        <li>אופצ. לאדמיניסטרטור</li>
+                    </ul>
+                </li> -->
+                <!-- <li class="item-navbar">English</li> -->
+                <li class="item-navbar">יציאה</li>
+            </ul>
+        </nav>
+        <div class="breadcrumbs">
+            <img src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/lence_light.png" class="next-to-breadcrumbs" id="next-to-breadcrumbs" alt="">
+
+
+
+            <ul id="bread" class="bread">
+                <li id="crumbs" class="crumbs">דף הבית</li>
+            </ul>
+        </div>
+        
+        <div id="home-page-contant" class="home-page-contant">
+            <p class="homepage-title">עמוד ראשי</p>
+            <div class="home-page-catagory1">
+                <div class="sub-cat-1">
+                    <p class="subtitle-homepage" id="subtitle-homepage1">שאלונים</p>
+                </div>
+                <div class="sub-cat-2">
+                    <p class="subtitle-homepage" id="subtitle-homepage2">קישורי תוכן</p>
+                    <div>
+                        <table class="link-list-home">
+                            <tr>
+                                <td><img src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/arrow_right.png" alt=""> לצפיה בשאלון</td>
+
+                                <td><img src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/arrow_right.png" alt=""> הדפסת שאלון ריק</td>
+
+                                <td><img src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/arrow_right.png" alt=""> דו"ח התקדמות</td>
+
+                            </tr>
+                            <tr>
+                                <td><img src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/arrow_right.png" alt=""> רשימת המשיבים</td>
+
+                                <td><img src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/arrow_right.png" alt=""> להדפסת שאלונים מלאים</td>
+
+                            </tr>
+                            <!-- <tr>
+                                <td><img src="Assets/media/arrow_right.png" alt="">שינוי סיסמא</td> 
+                            </tr> -->
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="home-page-catagory2">
+                <p class="subtitle-homepage" id="subtitle-homepage3">היחידה:</p>
+                <div class="home-catagory2-crumbs">
+                    <p>צה"ל</p>
+                    <p class="home-catagory2-crumbs-p"><img src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/arrow_right.png" alt=""> שנה יחידה</p>
+                    <p class="home-catagory2-crumbs-p"><img src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/arrow_right.png" alt=""> ליחידת כניסה</p>
+
+                    <p class="home-catagory2-crumbs-p"><img src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/arrow_right.png" alt=""> הצגת מפה של המבנה הארגוני</p>
+
+                </div>
+            </div>
+            <div class="home-page-table">
+                <div>
+                    <div class="subtitle-homepage" id="subtitle-homepage4">תצוגת תוצאות</div>
+                    <table class="table-home">
+                        <tr class="head-table-row">
+                            <th class="col-one"></th>
+                            <th class="col-two">שם התצוגה</th>
+                            <th class="col-three">Report type</th>
+                            <th class="col-four">סוג תצוגה</th>
+                            <th class="col-five">סטאטוס</th>
+                            <th class="col-six">טסט</th>
+                            <th class="col-seven">סיווג דוח</th>
+                            <th class="col-eight">סוג</th>
+                            <th class="col-nine">ייצוא</th>
+                        </tr>
+                        <tr class="sorting-table-row data-table-row">
+                            <td><img src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/sort_both.png" alt=""></td>
+
+                            <td>
+                                <img class="search-icon-table" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/search.svg" alt="">
+
+                                <input class="sorting-input" type="text" placeholder="סנן דוחות">
+                            </td>
+                            <td></td>
+                            <td><select class="sorting-option" name="sorter1" id="">
+                                <option value="choose-sorting">בחר סינון</option>
+                            </select></td>
+                            <td><select class="sorting-option" name="sorter2" id="">
+                                <option value="choose-sorting">בחר סינון</option>
+                            </select></td>
+                            <td><select class="sorting-option" name="sorter3" id="">
+                                <option value="choose-sorting">בחר סינון</option>
+                                <option value="optionthing">דוחות המפרט</option>
+                            </select></td>
+                            <td><select class="sorting-option" name="sorter4" id="">
+                                <option value="choose-sorting">בחר סינון</option>
+                                <option value="private-choice">סודי/אישי</option>
+                            </select></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr class="data-table-row">
+                            <td>
+                                <p>1</p>
+                            </td>
+                            <td><p class="report-name-table-homepage">תיאור גרפי של הממוצעים</p></td>
+                            <td><p class="report-type-num-homepage">11</p></td>
+                            <td></td>
+                            <td></td>
+                            <td><p class="report-test-homepage">דוחות המפרט</p></td>
+                            <td><p class="report-type-homepage">סודי/אישי</p></td>
+                            <td><img class="report-type-img" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/reportType11.gif" alt=""></td>
+
+                            <td><img class="report-exel-homepage" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/excel.png" alt=""></td>
+
+                        </tr>
+                        <tr class="data-table-row">
+                            <td>
+                                <p>2</p>
+                            </td>
+                            <td><p class="report-name-table-homepage">תוצאות הערכה</p></td>
+                            <td><p class="report-type-num-homepage">16</p></td>
+                            <td></td>
+                            <td></td>
+                            <td><p class="report-test-homepage">דוחות המפרט</p></td>
+                            <td><p class="report-type-homepage"></p></td>
+                            <td><img class="report-type-img" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/reportType2.gif" alt=""></td>
+
+                            <td><img class="report-exel-homepage" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/excel.png" alt=""></td>
+
+                        </tr>
+                        <tr class="data-table-row">
+                            <td>
+                                <p>3</p>
+                            </td>
+                            <td><p class="report-name-table-homepage">דוח לפי ציון מסכם</p></td>
+                            <td><p class="report-type-num-homepage">153</p></td>
+                            <td></td>
+                            <td></td>
+                            <td><p class="report-test-homepage">דוחות המפרט</p></td>
+                            <td><p class="report-type-homepage">סודי/אישי</p></td>
+                            <td><img class="report-type-img" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/reportType2.gif" alt=""></td>
+                            <td><img class="report-exel-homepage" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/excel.png" alt=""></td>
+                            
+                        </tr>
+                        <tr class="data-table-row">
+                            <td>
+                                <p>4</p>
+                            </td>
+                            <td><p class="report-name-table-homepage">דוח פירסון למדד הצלחה במילוי התפקיד</p></td>
+                            <td><p class="report-type-num-homepage">12</p></td>
+                            <td></td>
+                            <td></td>
+                            <td><p class="report-test-homepage">דוחות המפרט</p></td>
+                            <td><p class="report-type-homepage">סודי אישי</p></td>
+                            <td><img class="report-type-img" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/reportType12.gif" alt=""></td>
+                            <td><img class="report-exel-homepage" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/excel.png" alt=""></td>
+                            
+                        </tr>
+                        <tr class="data-table-row">
+                            <td>
+                                <p>5</p>
+                            </td>
+                            <td><p class="report-name-table-homepage">דוח אישי על בסיס MRH</p></td>
+                            <td><p class="report-type-num-homepage">150</p></td>
+                            <td></td>
+                            <td></td>
+                            <td><p class="report-test-homepage">דוחות המפרט</p></td>
+                            <td><p class="report-type-homepage"></p></td>
+                            <td><img class="report-type-img" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/reportType150.gif" alt=""></td>
+                            <td><img class="report-exel-homepage" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/excel.png" alt=""></td>
+                            
+                        </tr>
+                        <tr class="data-table-row">
+                            <td>
+                                <p>6</p>
+                            </td>
+                            <td><p class="report-name-table-homepage">דוח התקדמות</p></td>
+                            <td><p class="report-type-num-homepage">1</p></td>
+                            <td></td>
+                            <td></td>
+                            <td><p class="report-test-homepage">דוחות המפרט</p></td>
+                            <td><p class="report-type-homepage"></p></td>
+                            <td><img class="report-type-img" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/reportType1.gif" alt=""></td>
+                            <td><img class="report-exel-homepage" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/excel.png" alt=""></td>
+                            
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <div class="subtitle-homepage" id="subtitle-homepage5">מצגות ודוחות</div>
+                    <table class="table-home2">
+                        <tr class="head-table-row">
+                            <th class="col2-one"></th>
+                            <th class="col2-two">שם המצגת</th>
+                            <th class="col2-three">PPT</th>
+                            <th class="col2-four">DOC</th>
+                            <th class="col2-five">PDF</th>
+                        </tr>
+                        <tr class="data-table-row">
+                            <td><p>1</p></td>
+                            <td><p>דוחות לפי ציון מסכם</p></td>
+                            <td></td>
+                            <td></td>
+                            <td><img class="report-exel-homepage" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/topdf.png" alt=""></td>
+
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="progress-bar"></div>
+
+        <div id="Sociometric-managment" class="Sociometric-managment">
+            <p class="socio-first-title">ניהול סוציומטרי</p>
+            <div class="section-1-socio-mng">
+                <p class="socio-list-title1">הגדרות מערכת</p>
+                <div class="socio-list-container">
+                    <ul class="list-socio list-socio1">
+                        <!-- <li><p>1</p> <p class="text-in-socio-list">עונות</p></li>
+                        <li><p>2</p> <p class="text-in-socio-list">שאלות חובה</p></li>
+                        <li><p>3</p> <p class="text-in-socio-list">שדות ניהול פוטנציאל</p></li>
+                        <li><p>4</p> <p class="text-in-socio-list">חוקים לבדיקת שאלונים חריגים</p></li>
+                        <li><p>5</p> <p class="text-in-socio-list">חוקים על שאלות</p></li>
+                        <li><p>6</p> <p class="text-in-socio-list">כללי השתתפות לפי סוג יחידה/ותק/היעדרות</p></li>
+                        <li><p>7</p> <p class="text-in-socio-list">הגדרת השדות שיופיעו בטבלאות</p></li>
+                        <li><p>8</p> <p class="text-in-socio-list">אופציות לסוציומטרי</p></li>
+                        <li><p>9</p> <p class="text-in-socio-list">הגדרה וניהול סטטוסים לאירועים</p></li>
+                        <li><p>10</p> <p class="text-in-socio-list">סיבות להוספת או הסרת משתתפים באירוע סוציומטרי</p></li> -->
+                        <li><p>11</p> <p class="text-in-socio-list">הגדרת כללי חריגות בגין מידת היכרות</p></li>
+                        <!-- <li><p>12</p> <p class="text-in-socio-list">רשימת אשכולות לאיגוד קבוצות של היגדים כגון חובה או רשות</p></li>
+                        <li><p>13</p> <p class="text-in-socio-list">העברת משיבים ממאגר הפוטנציאלי לפעיל ולהיפך</p></li>
+                        <li><p>14</p> <p class="text-in-socio-list">ניהול הרשאות משתמשים</p></li>
+                        <li><p>15</p> <p class="text-in-socio-list">Log של פוטנציאל המשתתפים בסוציומטרי</p></li>
+                        <li><p>16</p> <p class="text-in-socio-list">הגדרת חוקי העתקה של נתונים מחושבים לשאלון העזר</p></li>
+                        <li><p>17</p> <p class="text-in-socio-list">הגדרת כללים לחוקות חישוב ואוכלוסיות למודל חישוב</p></li>
+                        <li><p>18</p> <p class="text-in-socio-list">הוספה/ עריכה שדות במאגר המשיבים</p></li>
+                        <li><p>19</p> <p class="text-in-socio-list">הגדרת שאלונים בהם מותר למחוק נתונים</p></li> -->
+                        <li><p>20</p> <p class="text-in-socio-list">ייצוא דוחות אישיים , ויחידתיים באמצעות כלי אופיס לקבוצות ויחידים</p></li>
+                        <li><p>21</p> <p class="text-in-socio-list">שיוך יחידות לאשכול</p></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="section-2-socio-mng">
+                <p class="socio-list-title2">מסכים תפעוליים</p>
+                <div class="socio-list-container">
+                    <ul class="list-socio list-socio2">
+                        <li id="btn-next-events"><p>1</p> <p class="text-in-socio-list">ניהול ארועים</p></li>
+                        <li><p>2</p> <p class="text-in-socio-list">הקמת יחידה וירטואלית</p></li>
+                        <li><p>3</p> <p class="text-in-socio-list">פוטנציאל המשתתפים באירוע</p></li>
+                        <li><p>4</p> <p class="text-in-socio-list">בקרת שאלונים</p></li>
+                        <li><p>5</p> <p class="text-in-socio-list">מאפייני יחידות</p></li>
+                        <li><p>6</p> <p class="text-in-socio-list">הפצת שאלונים/תזכורות</p></li>
+                        <li><p>7</p> <p class="text-in-socio-list">הגדרת אירוע ראשי/משני ליחידות המשתתפות במספר אירועים</p></li>
+                        <li><p>8</p> <p class="text-in-socio-list">הזנת שאלונים ידניים</p></li>
+                        <li><p>9</p> <p class="text-in-socio-list">קישור של שאלון מוקלד לאירוע  שלו</p></li>
+                        <li><p>10</p> <p class="text-in-socio-list">מחק את כל השאלונים שמולאו באירוע</p></li>
+                        <li><p>11</p> <p class="text-in-socio-list">שינוי סטטוס המעריך באירוע - להושלם (שינוי הערכות שלו להושלם)</p></li>
+                        <li><p>12</p> <p class="text-in-socio-list">הגדרת מודלי חישוב</p></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="under-line-C">
+                <p>© כל הזכויות שמורות  לתמורות </p>
+                <img src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/email2.gif" alt="">
+
+            </div>
+        </div>
+    </div>
+    <div id="Socio-event-managment" class="Socio-event-managment">
+        <div class="socio-event-container">
+            <aside id="rightside-icons" class="rightside-icons">
+                <img class="side-icon" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/circleQuestionMark.svg" alt="">
+                <img class="side-icon" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/house.svg" alt="">
+                <img class="side-icon" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/copyLink.svg" alt="">
+                
+            </aside>
+            <p class="title-socio-event-container-left">מספר אירועים שהוקמו</p>
+            <div class="socio-event-container-left">
+                <table class="table-socio">
+                    <tr class="table-head-row-socio">
+                        <td class="header-table-title"><p class="edit-head-table">לעריכה</p></td>
+                        <td class="header-table-title"><p class="name-head-table">שם האירוע</p></td>
+                        <td class="header-table-title"><p class="status-head-table">סטטוס האירוע</p></td>
+                        <td class="header-table-title"><p class="unit-head-table">יחידה</p></td>
+                        <td class="header-table-title"><p class="active-head-table">שאלונים בפועל</p></td>
+                        <td class="header-table-title"><p class="founder-head-table">מקים</p></td>
+                        <td class="header-table-title"><p class="delete-head-table">מחיקה</p></td>  
+                    </tr>
+                    <tr class="row-table-socio-basic row-search-table">
+                        <td></td>
+                        <td><img class="search-icon-socio" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/search.svg" alt=""></td>
+                        <td><img class="search-icon-socio" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/search.svg" alt=""></td>
+                        <td><img class="search-icon-socio" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/search.svg" alt=""></td>
+                        <td><img class="search-icon-socio" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/search.svg" alt=""></td>
+                        <td><img class="search-icon-socio" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/search.svg" alt=""></td>
+                        
+                        <td></td>
+                    </tr>
+                    <tr class="row-table-socio-basic">
+                        <td><img class="penEditSocio" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/pencilEdit.svg" alt=""></td>
+
+                        <td><p class="socio-event-name">204. אירוע א'</p></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><img class="trashcanSocio" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/trashcan.svg" alt=""></td>
+
+                    </tr>
+                    <tr class="row-table-socio-basic">
+                        <td><img class="penEditSocio" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/pencilEdit.svg" alt=""></td>
+
+                        <td><p class="socio-event-name">205. אירוע ב'</p></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><img class="trashcanSocio" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/trashcan.svg" alt=""></td>
+
+                    <tr class="row-table-socio-basic">
+                        <td><img class="penEditSocio" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/pencilEdit.svg" alt=""></td>
+
+                        <td><p class="socio-event-name"></p></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><img class="trashcanSocio" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/trashcan.svg" alt=""></td>
+
+                    </tr>
+                    <tr class="row-table-socio-basic">
+                        <td><img class="penEditSocio" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/pencilEdit.svg" alt=""></td>
+
+                        <td><p class="socio-event-name"></p></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td><img class="trashcanSocio" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/trashcan.svg" alt=""></td>
+
+                    </tr>
+                </table>
+            </div>
+            <div class="container-btn-socio"><button id="new-event-btn" type="button">יצירת אירוע חדש</button></div>
+        </div>
+    </div>
+    <div id="socio-survey-creation" class="socio-survey-creation">
+        <aside id="rightside-icons2" class="rightside-icons">
+            <img class="side-icon" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/circleQuestionMark.svg" alt="">
+            <img class="side-icon" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/house.svg" alt="">
+            <img class="side-icon" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/copyLink.svg" alt="">
+            
+        </aside>
+        <div class="socio-survery-titleNnavigation">
+            <div>ניהול אירוע סוציומטרי</div>
+            <div>
+                <input type="radio" class="radio-socio-event-stage" name="radio-socio-event" id="event-stage1">
+ <!-- אלמנט הלחיצה -->
+ <div id="event-stage-container" style="display: none;">
+    <label class="radio-socio-event-stage-label" id="event-stage-label1" for="event-stage1">עריכת אירוע</label>
+    <input type="radio" class="radio-socio-event-stage" name="radio-socio-event" id="event-stage2">
+
+    <label class="radio-socio-event-stage-label" id="event-stage-label2" for="event-stage2">ניהול פוטנציאל</label>
+    <input type="radio" class="radio-socio-event-stage" name="radio-socio-event" id="event-stage3">
+
+    <label class="radio-socio-event-stage-label" id="event-stage-label3" for="event-stage3" onclick="window.location.href='harha.html';">מודל הערכה</label>
+</div>
+
+            </div>
+        </div>
+        <div class="socio-survey-creation-area" id="socio-survey-creation-area">
+            <div class="col-4">
+                <div id="container-info-start-socio-management1" class="container-info-start-socio-management">
+                    <img class="numberThing-img" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/numberStuff.svg" alt="">
+                    <p>שאלון 1. שאלון סוציומטרי</p>
+                  </div>
+                  
+                  <div id="container-info-start-socio-management2" class="container-info-start-socio-management">
+                    <img class="numberThing-img" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/numberStuff.svg" alt="">
+                    <p>מספר אירוע 227</p>
+                  </div>
+                  
+                  <div id="container-info-start-socio-management3" class="container-info-start-socio-management">
+                    <img class="numberThing-img" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/numberStuff.svg" alt="">
+                    <p>כמות משיבים במטריצת מעריכים 0</p>
+                  </div>
+                  
+                <div class="textbox-name-event"><input placeholder="שם האירוע" name="event-name" id="event-name" type="text"></div>
+            </div>
+            <div class="col-8"></div>
+            <div class="col-4">
+                <select class="season-select" label="בחר עונת הערכה" name="" id="">
+                    <option value="choose-season">בחר עונת</option>
+                    <option value="season1">עונת 1</option>
+                </select>
+                <label class="season-select-label" for="">בחר עונת הערכה</label>
+            </div>
+            <div class="col-8"></div>
+            <div class="col-4">
+                <div class="dates-container">
+                    <div class="date-chosing-container">
+                        <input  id="date-start-socio" type="date" value="" name="" id=""> 
+                        <label for="">תאריך התחלה</label>
+                    </div>
+                    <div class="date-chosing-container">
+                        <input id="date-end-socio" type="date"  name="" id="">
+                        <label for="">תאריך סיום</label>
+                    </div>
+                </div>
+            </div>
+            <div class="col-8"></div>
+            <div class="col-12">
+                <div class="radio-socio-status-container">
+                    <label for="status-making">
+                        <input type="radio" name="radio-status" id="status-making">
+                        בהכנה
+                    </label>
+                    <label for="status-active">
+                        <input type="radio" name="radio-status" id="status-active">
+                        בביצוע
+                    </label>
+                    <label for="status-paused">
+                        <input type="radio" name="radio-status" id="status-paused">
+                        השהייה
+                    </label>
+                    <label for="status-inputed">
+                        <input type="radio" name="radio-status" id="status-inputed">
+                        סיום הזנה
+                    </label>
+                    <label for="status-calculated">
+                        <input type="radio" name="radio-status" id="status-calculated">
+                        הסתיים/חישובים
+                    </label>
+                    <label for="status-finished">
+                        <input type="radio" name="radio-status" id="status-finished">
+                        סופי
+                    </label>
+                    <label for="status-sorted">
+                        <input type="radio" name="radio-status" id="status-sorted">
+                        במאגר
+                    </label>
+                </div>
+            </div>
+            <div>
+                <div style="display: flex; align-items: center; justify-content: flex-start; margin-bottom: 10px; margin-top: 20px;">
+                    <!-- כפתור קטן אליפסה עם טסט 1 -->
+                    <button class="test-button-socio" type="button" id="selected-unit-button">
+                      צה'ל-צה'ל
+                      </button>
+                                
+                    <div style="display: flex; flex-direction: column; align-items: flex-start; margin-left: 30px; margin-bottom: 20px; margin-top: 20px; position: relative; width: 250px;">
+                        <!-- כותרת על גבי המסגרת -->
+                        <div style="position: absolute; top: -5px; background-color: white; left: 10px;width: 50%; right: 10px; text-align: center; font-size: 12px; color: #000; padding: 0 5px;">
+                            הגדרת סוג היחידה לאירוע:
+                        </div>
+                        
+                        <!-- כפתור בחירה -->
+                        <select id="unit-type" style="border-radius: 0px; padding: 12px 15px; font-size: 14px; height: 40px; width: 100%; background-color: white; border: 1px solid #aaa; color: #333; outline: none; transition: all 0.3s ease;">
+                            <option value="field" selected>שדה</option>
+                            <option value="ground">מטה</option>
+                        </select>
+                    </div>
+                    
+                
+            </div>
+            </div>
+            <div class="col-12 title-socio-select"><p>בחירת יחידה ראשית</p></div>
+            <div class="col-4">
+               
+                <div>
+                    <input type="text" class="text-search-socio-event" placeholder="חפש">
+                    <img class="search-icon-socio-unit"  src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/search.svg" alt="">
+                  </div>
+                  
+                <div class="col-limitor-1">  
+                  <ul class="list-tree-socio-military-start">
+                    <li class="list-tree-socio-military">
+                      <div>
+                        <!-- כפתור checkbox לבחירה יחידה ראשית -->
+                        <input class="militaryCheckbox-checkbox" type="checkbox" name="unitCheckbox" id="unit1" onchange="updateUnitName(this)">
+                        <label class="militaryCheckbox-label" for="unit1"></label>
+                        <div class="be-in-a-line">
+                          <input class="checkbox-military-list" type="checkbox" name="" id="unit1" onchange="updateUnitName(this)">
+                          <p>פיקוד 5</p>  
+                        </div>
+                        
+                        <ul class="list2-tree-socio-military">
+                          <li>
+                            <div>
+                              <!-- כפתור checkbox לבחירה יחידה משנית -->
+                              <input class="militaryCheckbox-checkbox militaryCheckbox-checkbox2" type="checkbox" name="unitCheckbox" id="unit2" onchange="updateUnitName(this)">
+                              <label class="militaryCheckbox-label" for="unit2"></label>
+                              <div class="be-in-a-line">
+                                <input class="checkbox-military-list" type="checkbox" name="" id="unit2" onchange="updateUnitName(this)">
+                                <p>אוגדה 1</p> 
+                              </div>
+                              <ul class="list3-tree-socio-military under-li-tree">
+                                <li>
+                                  <div class="be-in-a-line">
+                                      <input class="checkbox-military-list" type="checkbox" name="" id="unit3" onchange="updateUnitName(this)">
+                                      <p>מבצעים באוגדה 1</p> 
+                                    </div>
+                                  </li>
+                                  <li>
+                                    <div class="be-in-a-line">
+                                      <input class="checkbox-military-list" type="checkbox" name="" id="unit4" onchange="updateUnitName(this)">
+                                      <p>מודיעין באוגדה 1</p> 
+                                    </div>
+                                  </li>
+                                  <li>
+                                    <div class="be-in-a-line">
+                                      <input class="checkbox-military-list" type="checkbox" name="" id="unit5" onchange="updateUnitName(this)">
+                                      <p>רפואה באוגדה 1</p> 
+                                    </div>
+                                  </li>
+                                  <li>
+                                    <div class="be-in-a-line">
+                                      <input class="checkbox-military-list" type="checkbox" name="" id="unit6" onchange="updateUnitName(this)">
+                                      <p>תחזוקה/אספקה באוגדה 1</p> 
+                                    </div>
+                                  </li>
+                                  <li>
+                                    <div class="be-in-a-line">
+                                      <input class="checkbox-military-list" type="checkbox" name="" id="unit7" onchange="updateUnitName(this)">
+                                      <p>תקשוב באוגדה 1</p> 
+                                    </div>
+                                  </li>
+                                  <li>
+                                    <div class="be-in-a-line">
+                                      <input class="checkbox-military-list" type="checkbox" name="" id="unit8" onchange="updateUnitName(this)">
+                                      <p>חטיבה 1 אוגדה 1</p> 
+                                    </div>
+                                  </li>
+                                  <li>
+                                    <div class="be-in-a-line">
+                                      <input class="checkbox-military-list" type="checkbox" name="" id="unit9" onchange="updateUnitName(this)">
+                                      <p>חטיבה 2 אוגדה 1</p> 
+                                    </div>
+                                  </li>
+                                  <li>
+                                    <div class="be-in-a-line">
+                                      <input class="checkbox-military-list" type="checkbox" name="" id="unit10" onchange="updateUnitName(this)">
+                                      <p>חטיבה 3 אוגדה 1</p> 
+                                    </div>
+                                  </li>
+                                  <li>
+                                    <div class="be-in-a-line">
+                                      <input class="checkbox-military-list" type="checkbox" name="" id="unit11" onchange="updateUnitName(this)">
+                                      <p>מפקדת אוגדה 1</p> 
+                                    </div>
+                                  </li>
+                                </ul>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </li>
+                  </ul>
+                </div>
+              </div>
+   
+            <div class="col-4"></div>
+            <div class="col-12 title-socio-select"><p>בחירת יחידות שאינן משתתפות באירוע</p></div>
+            <div class="col-4 col-limitor-1">
+                <div>
+                    <input type="text" class="text-search-socio-event" placeholder="חפש">
+                    <img class="search-icon-socio-unit" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/search.svg" alt="">
+                  </div>
+                  
+                <ul class="list3-tree-socio-military">
+                    <li>
+                        <div>
+                            <input class="militaryCheckbox-checkbox militaryCheckbox-checkbox3" type="checkbox" name="militaryCheckbox" id="militaryCheckbox3">
+                            <label class="militaryCheckbox-label" for="militaryCheckbox3"></label>
+                            <div class="be-in-a-line">
+                               <input class="checkbox-military-list" type="checkbox" name="" id="">
+                                <p>אוגדה 1</p> 
+                            </div>
+                            <ul class="list4-tree-socio-military under-li-tree">
+                                <li>
+                                    <div class="be-in-a-line">
+                                        <input class="checkbox-military-list" type="checkbox" name="" id="">
+                                         <p>מבצעים באוגדה 1</p> 
+                                     </div>
+                                </li>
+                                <li>
+                                    <div class="be-in-a-line">
+                                        <input class="checkbox-military-list" type="checkbox" name="" id="">
+                                         <p>מודיעין באוגדה 1</p> 
+                                     </div>
+                                </li>
+                                <li>
+                                    <div class="be-in-a-line">
+                                        <input class="checkbox-military-list" type="checkbox" name="" id="">
+                                         <p>רפואה באוגדה 1</p> 
+                                     </div>
+                                </li>
+                                <li>
+                                    <div class="be-in-a-line">
+                                        <input class="checkbox-military-list" type="checkbox" name="" id="">
+                                         <p>תחזוקה/אספקה באוגדה 1</p> 
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="be-in-a-line">
+                                        <input class="checkbox-military-list" type="checkbox" name="" id="">
+                                         <p>תקשוב באוגדה 1</p> 
+                                     </div>
+                                </li>
+                                <li>
+                                    <div class="be-in-a-line">
+                                        <input class="checkbox-military-list" type="checkbox" name="" id="">
+                                         <p>חטיבה 1 אוגדה 1</p> 
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="be-in-a-line">
+                                        <input class="checkbox-military-list" type="checkbox" name="" id="">
+                                         <p>חטיבה 2 אוגדה 1</p> 
+                                     </div>
+                                </li>
+                                <li>
+                                    <div class="be-in-a-line">
+                                        <input class="checkbox-military-list" type="checkbox" name="" id="">
+                                         <p>חטיבה 3 אוגדה 1</p> 
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="be-in-a-line">
+                                        <input class="checkbox-military-list" type="checkbox" name="" id="">
+                                         <p>מפקדת אוגדה 1</p> 
+                                     </div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                    </li>
+                </ul>
+            </div>
+            <div class="col-4"></div>
+            <div class="col-4"></div>
+            <div class="col-12"><p class="title-socio-select">בחירת יחידות מאגדות להצגת דוח מילוי</p></div>
+            <div class="col-4 col-limitor-1">
+                <div>
+                    <input type="text" class="text-search-socio-event" placeholder="חפש">
+                    <img class="search-icon-socio-unit" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/search.svg" alt="">
+                  </div>
+                  
+                <ul class="list5-tree-socio-military">
+                    <li>
+                        <div>
+                            <input class="militaryCheckbox-checkbox militaryCheckbox-checkbox5" type="checkbox" name="militaryCheckbox" id="militaryCheckbox5">
+                            <label class="militaryCheckbox-label" for="militaryCheckbox5"></label>
+                            <div class="be-in-a-line">
+                               <input class="checkbox-military-list" type="checkbox" name="" id="">
+                                <p>אוגדה 1</p> 
+                            </div>
+                            <ul class="list6-tree-socio-military under-li-tree">
+                                <li>
+                                    <div class="be-in-a-line">
+                                        <input class="checkbox-military-list" type="checkbox" name="" id="">
+                                         <p>מבצעים באוגדה 1</p> 
+                                     </div>
+                                </li>
+                                <li>
+                                    <div class="be-in-a-line">
+                                        <input class="checkbox-military-list" type="checkbox" name="" id="">
+                                         <p>מודיעין באוגדה 1</p> 
+                                     </div>
+                                </li>
+                                <li>
+                                    <div class="be-in-a-line">
+                                        <input class="checkbox-military-list" type="checkbox" name="" id="">
+                                         <p>רפואה באוגדה 1</p> 
+                                     </div>
+                                </li>
+                                <li>
+                                    <div class="be-in-a-line">
+                                        <input class="checkbox-military-list" type="checkbox" name="" id="">
+                                         <p>תחזוקה/אספקה באוגדה 1</p> 
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="be-in-a-line">
+                                        <input class="checkbox-military-list" type="checkbox" name="" id="">
+                                         <p>תקשוב באוגדה 1</p> 
+                                     </div>
+                                </li>
+                                <li>
+                                    <div class="be-in-a-line">
+                                        <input class="checkbox-military-list" type="checkbox" name="" id="">
+                                         <p>חטיבה 1 אוגדה 1</p> 
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="be-in-a-line">
+                                        <input class="checkbox-military-list" type="checkbox" name="" id="">
+                                         <p>חטיבה 2 אוגדה 1</p> 
+                                     </div>
+                                </li>
+                                <li>
+                                    <div class="be-in-a-line">
+                                        <input class="checkbox-military-list" type="checkbox" name="" id="">
+                                         <p>חטיבה 3 אוגדה 1</p> 
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="be-in-a-line">
+                                        <input class="checkbox-military-list" type="checkbox" name="" id="">
+                                         <p>מפקדת אוגדה 1</p> 
+                                     </div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                    </li>
+                </ul>
+            </div>
+            <div class="col-4"></div>
+            <div class="col-4"></div>
+            <div class="col-12"><p class="title-socio-select">בחירת יחידות להסקת יחסי הערכה בתוך ומחוץ ליחידה</p></div>
+            <div class="col-4 col-limitor-1">
+                <div>
+                    <input type="text" class="text-search-socio-event" placeholder="חפש">
+                    <img class="search-icon-socio-unit" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/search.svg" alt="">
+                  </div>
+                  
+                <ul class="list7-tree-socio-military">
+                    <li>
+                        <div>
+                            <input class="militaryCheckbox-checkbox militaryCheckbox-checkbox7" type="checkbox" name="militaryCheckbox" id="militaryCheckbox7">
+                            <label class="militaryCheckbox-label" for="militaryCheckbox7"></label>
+                            <div class="be-in-a-line">
+                               <input class="checkbox-military-list" type="checkbox" name="" id="">
+                                <p>אוגדה 1</p> 
+                            </div>
+                            <ul class="list8-tree-socio-military under-li-tree">
+                                <li>
+                                    <div class="be-in-a-line">
+                                        <input class="checkbox-military-list" type="checkbox" name="" id="">
+                                         <p>מבצעים באוגדה 1</p> 
+                                     </div>
+                                </li>
+                                <li>
+                                    <div class="be-in-a-line">
+                                        <input class="checkbox-military-list" type="checkbox" name="" id="">
+                                         <p>מודיעין באוגדה 1</p> 
+                                     </div>
+                                </li>
+                                <li>
+                                    <div class="be-in-a-line">
+                                        <input class="checkbox-military-list" type="checkbox" name="" id="">
+                                         <p>רפואה באוגדה 1</p> 
+                                     </div>
+                                </li>
+                                <li>
+                                    <div class="be-in-a-line">
+                                        <input class="checkbox-military-list" type="checkbox" name="" id="">
+                                         <p>תחזוקה/אספקה באוגדה 1</p> 
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="be-in-a-line">
+                                        <input class="checkbox-military-list" type="checkbox" name="" id="">
+                                         <p>תקשוב באוגדה 1</p> 
+                                     </div>
+                                </li>
+                                <li>
+                                    <div class="be-in-a-line">
+                                        <input class="checkbox-military-list" type="checkbox" name="" id="">
+                                         <p>חטיבה 1 אוגדה 1</p> 
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="be-in-a-line">
+                                        <input class="checkbox-military-list" type="checkbox" name="" id="">
+                                         <p>חטיבה 2 אוגדה 1</p> 
+                                     </div>
+                                </li>
+                                <li>
+                                    <div class="be-in-a-line">
+                                        <input class="checkbox-military-list" type="checkbox" name="" id="">
+                                         <p>חטיבה 3 אוגדה 1</p> 
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="be-in-a-line">
+                                        <input class="checkbox-military-list" type="checkbox" name="" id="">
+                                         <p>מפקדת אוגדה 1</p> 
+                                     </div>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                    </li>
+                </ul>
+            </div>
+            <div class="col-4"></div>
+            <div class="col-4"></div>
+            <!-- help me. also question checks area -->
+
+            <div class="col-12"><p class="title-socio-select">שאלות</p></div>
+            <div class="col-12"><div class="title-socio-select">שאלות חובה</div></div>
+            <div class="col-8">
+                <p class="questions-minititle">שאלות אלו לא ניתנות לשינוי</p>
+                <div class="checkboxes-questions-event">
+                    <label for="checkbox-notouch1"><input disabled checked type="checkbox" name="" class="checkbox-notouch" id="checkbox-notouch1">מידת היכרות</label>
+                    <label for="checkbox-notouch2"><input disabled checked type="checkbox" name="" class="checkbox-notouch" id="checkbox-notouch2">מקצועי בתחומו</label>
+                    <label for="checkbox-notouch3"><input disabled checked type="checkbox" name="" class="checkbox-notouch" id="checkbox-notouch3">יחסי אנוש</label>
+                    <label for="checkbox-notouch4"><input disabled checked type="checkbox" name="" class="checkbox-notouch" id="checkbox-notouch4">דוגמא אישית</label>
+                    <label for="checkbox-notouch5"><input disabled checked type="checkbox" name="" class="checkbox-notouch" id="checkbox-notouch5">ארגון וניהול</label>
+                    <label for="checkbox-notouch6"><input disabled checked type="checkbox" name="" class="checkbox-notouch" id="checkbox-notouch6">פיקוד ומנהיגות</label>
+                    <label for="checkbox-notouch7"><input disabled checked type="checkbox" name="" class="checkbox-notouch" id="checkbox-notouch7">מחוייבות והשקעה</label>
+                    <label for="checkbox-notouch8"><input disabled checked type="checkbox" name="" class="checkbox-notouch" id="checkbox-notouch8">הצלחה במילוי תפקיד</label>
+                    <label for="checkbox-notouch9"><input disabled checked type="checkbox" name="" class="checkbox-notouch" id="checkbox-notouch9">פוטנציאל לקידום</label>
+                    <label for="checkbox-notouch9"><input disabled checked type="checkbox" name="" class="checkbox-notouch" id="checkbox-notouch9">נכונות לצאת איתו לקרב </label>
+                </div>
+            </div>
+            <div class="col-4"></div>
+            <div class="col-12"><div class="title-socio-select">שאלות בחירה</div></div>
+            <div class="col-8">
+                <p class="questions-minititle">בחר שתי שאלות בחירה</p>
+                <div class="limit-notice-text" id="selection-count">בחירת שאלות בחירה 0/2</div>
+                <div class="checkboxes-questions-event">
+                    <label for="checkbox-touch1"><input type="checkbox" name="" class="checkbox-touch" id="checkbox-touch1">דוח סוציומטרי</label>
+                    <label for="checkbox-touch2"><input type="checkbox" name="" class="checkbox-touch" id="checkbox-touch2">הבחנה בין עיקר לטפל</label>
+                    <label for="checkbox-touch3"><input type="checkbox" name="" class="checkbox-touch" id="checkbox-touch3">ראייה והבנה מערכתית</label>
+                    <label for="checkbox-touch4"><input type="checkbox" name="" class="checkbox-touch" id="checkbox-touch4">מקוריות וחדשנות</label>
+                    <label for="checkbox-touch5"><input type="checkbox" name="" class="checkbox-touch" id="checkbox-touch5">גמישות מחשבתית</label>
+                    <label for="checkbox-touch6"><input type="checkbox" name="" class="checkbox-touch" id="checkbox-touch6">יכולת תכנון</label>
+                    <label for="checkbox-touch7"><input type="checkbox" name="" class="checkbox-touch" id="checkbox-touch7">יכולת הפקת לקחים ויישומם</label>
+                    
+                </div>
+            </div>
+            <div class="col-4"></div>
+            <div class="col-12"><div class="title-socio-select">הערות מילוליות</div></div>
+            <div class="col-12"><p class="questions-minititle">סמן V אם ברצונך להוסיף הערות מילוליות</p>
+                <input type="checkbox" id="add-comments-checkbox" class="add-comments-checkbox">
+                הערות מילוליות </div>
+            <!-- question checks area -->
+        </div>
+        <div class="socio-survey-potential-assessment" id="socio-survey-potential-assessment">
+            <div class="col-4">
+                <main class="q-page">
+                    <div class="tag-potential-title">
+                        <i class="fa-regular fa-stopwatch"></i>
+                        <span>עדכון פוטנציאל אחרון התבצע ב-</span>
+                        <span id="last-update-time"></span>
+                    </div>
+                    <div class="btn-container-potentialMNG">
+                        <button class="btn-potential" id="btn-potential">הצג פוטנציאל</button>
+                        <button id="update-button" class="btn-potential">חשב פוטנציאל מחדש</button>
+                        <!DOCTYPE html>
+                        <html lang="he">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                            <title>דף עם טבלה</title>
+                        </head>
+                        <body>
+                        
+                            <!-- כפתור לפתיחת הטבלה -->
+                            <button class="btn-potential" id="removed-participants-btn">משתתפים שהוסרו בעדכון מאגר</button>
+                        
+                    </div>
+                </main>
+                
+                
+            </div>
+            <div class="col-4"></div>
+            <div class="col-4"></div>
+        </div>
+        <div class="float-potential-table" id="float-potential-table">
+            <div class="top-line">
+                <p class="title-top-line">רשימת משתתפים</p>
+                <button id="close-table-button" class="btn-close">X</button>
+            </div>
+            <div class="totaling-data-table">
+                <p>סה'כ שורות 4</p>
+                <p>סה'כ עומדים בקריטריונים להשתתפות 3</p>
+                <p>סה'כ נבחר 4</p>
+                <p>סה`כ שורות לאחר פילטור בעמודות 4</p>
+            </div>
+            <select name="select-showcasing" id="select-showcasing" class="select-showcasing">
+                <option value="הצג את כולם">הצג את כולם</option>
+                <option value="הצג את המשתתפים">הצג את המשתתפים</option>
+                <option value="הצג את אלו שלא משתתפים" disabled>הצג את אלו שלא משתתפים</option>
+            </select>
+            <img class="icon-potential-float" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/selectColumn.svg" alt="">
+
+            <div>
+                <table class="table-socio-potential">
+                    <tr>
+                        <td class="size-slot-table-socio" aria-colindex="1" title="ערוך פרטים"><div>ערוך פרטים</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="2" title="שם פרטי"><div>שם פרטי</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="3" title="שם משפחה"><div>שם משפחה</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="4" title="מספר אישי"><div>מספר אישי</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="5" title="יחידת אירוע"><div>יחידת אירוע</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="7" title="תפקיד באירוע"><div>תפקיד באירוע</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="8" title="יחידת אמת"><div>יחידת אמת</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="9" title="תאריך קליטה ביחידה"><div>תאריך קליטה ביחידה</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="10" title="נוכחות ביחידה פחות מ-30 יום"><div>נוכחות ביחידה פחות מ-30 יום</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="11" title="דרגת כתף באירוע"><div>דרגת כתף באירוע</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="12" title="ימי שהייה ביחידה מיום ההצבה ליום המתוכנן של האירוע"><div>ימי שהייה ביחידה מיום ההצבה ליום המתוכנן של האירוע</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="13" title="ימי העידרות בפועל"><div>ימי העידרות בפועל</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="14" title="הדרישה לתקופת מינימום ביחידה כתלות בימי העדרות"><div>הדרישה לתקופת מינימום ביחידה כתלות בימי העדרות</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="15" title="הדרישה לרצף שהייה ביחידה לפני יום הארוע כפיצוי על ימי העדרות"><div>הדרישה לרצף שהייה ביחידה לפני יום הארוע כפיצוי על ימי העדרות</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="16" title="עמידה בקריטריונים להשתתפות"><div>עמידה בקריטריונים להשתתפות</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="18" title="סיבת הסרה"><div>סיבת הסרה</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="19" title="משתתף"><div>משתתף</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="20" title="הטיפול הושלם"><div>הטיפול הושלם</div></td>
+                    </tr>
+                    
+                    <tr>
+                        <td class="size-slot-table-socio" aria-colindex="1"></td>
+                        <td class="size-slot-table-socio" aria-colindex="2"><img class="search-icon-potential-table" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/searchGray.svg" alt="searchIcon"></td>
+                        <td class="size-slot-table-socio" aria-colindex="3"><img class="search-icon-potential-table" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/searchGray.svg" alt="searchIcon"></td>
+                        <td class="size-slot-table-socio" aria-colindex="4"><img class="search-icon-potential-table" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/searchGray.svg" alt="searchIcon"></td>
+                        <td class="size-slot-table-socio" aria-colindex="5"><img class="search-icon-potential-table" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/searchGray.svg" alt="searchIcon"></td>
+                        
+                        <td class="size-slot-table-socio" aria-colindex="7"><img class="search-icon-potential-table" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/searchGray.svg" alt="searchIcon"></td>
+                        <td class="size-slot-table-socio" aria-colindex="8"><img class="search-icon-potential-table" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/searchGray.svg" alt="searchIcon"></td>
+                        <td class="size-slot-table-socio" aria-colindex="9"><img class="search-icon-potential-table" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/searchGray.svg" alt="searchIcon"></td>
+                        <td class="size-slot-table-socio" aria-colindex="10"><img class="search-icon-potential-table" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/searchGray.svg" alt="searchIcon"></td>
+                        <td class="size-slot-table-socio" aria-colindex="11"><img class="search-icon-potential-table" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/searchGray.svg" alt="searchIcon"></td>
+                        <td class="size-slot-table-socio" aria-colindex="12"><img class="search-icon-potential-table" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/searchGray.svg" alt="searchIcon"></td>
+                        <td class="size-slot-table-socio" aria-colindex="13"><img class="search-icon-potential-table" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/searchGray.svg" alt="searchIcon"></td>
+                        <td class="size-slot-table-socio" aria-colindex="14"><img class="search-icon-potential-table" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/searchGray.svg" alt="searchIcon"></td>
+                        <td class="size-slot-table-socio" aria-colindex="15"><img class="search-icon-potential-table" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/searchGray.svg" alt="searchIcon"></td>
+                        <td class="size-slot-table-socio" aria-colindex="16"><img class="search-icon-potential-table" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/searchGray.svg" alt="searchIcon"></td>
+                        
+                        
+                           
+                       </td>
+                     
+                       <td class="size-slot-table-socio" aria-colindex="18"><img class="search-icon-potential-table" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/searchGray.svg" alt="searchIcon"></td>
+
+                        <td class="size-slot-table-socio" aria-colindex="19"></td>
+                        <td class="size-slot-table-socio" aria-colindex="20"></td>
+                        
+                       </td>
+                    </tr>
+                </table>
+                <table class="table-socio-potential1">
+                    <tr>
+                        <td class="size-slot-table-socio" aria-colindex="1">
+                            <div>
+                                <img class="edit-pen-potential" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/pencilEdit.svg" alt="" onclick="openEditor()">
+
+                            </div>
+                          </td>
+                          
+                        <td class="size-slot-table-socio" aria-colindex="2"><div>ישראל</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="3"><div>ישראלי</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="4"><div>1113211</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="5"><div>מבצעים באוגדה 1</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="7"><div>מנהל מבצעים</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="8"><div>מבצעים באוגדה 1</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="9"><div>25/10/2022</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="10"><div>x</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="11"><div>65- רנג </div></td>
+                        <td class="size-slot-table-socio" aria-colindex="12"><div>104</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="13"><div>79</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="14"><div>90</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="15"><div>0</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="16">
+                            <button class="plus-button2">
+                                +
+                                <span class="tooltip-t">עומד בקריטריונים</span> <!-- טקסט שיופיע בעת ריחוף -->
+                              </button>
+                            </td>
+                          
+                          <!-- Popup content for plus button -->
+                          <div id="popup" style="display: none;">
+                            <div class="popup-content">
+                              <p class="first-line">ניהול משתתפים בהתייחס למשך שהייה ביחידה וימי היעדרות</p>
+                              <p>ימי שהייה ביחידה מיום ההצבה לתאריך הארוע 104</p>
+                              <p>ותק מינימלי להשתתפות בהעברה 79</p>
+                              <p>ימי העדר בפועל 119</p>
+                              <p>סף ימי העדרות לחישוב ימים נדרשים לשהייה ביחידה 91</p>
+                              <p>הדרישה המינימלית לנוכחות ביחידה לאחר העדרות 0</p>
+                          
+                              <!-- כפתור סגירה בתוך הפופאפ -->
+                              <button class="close-popup">סגור</button>
+                            </div>
+                          </div>
+                          
+                          
+                            
+                      
+                        <td class="size-slot-table-socio" aria-colindex="18"><div></div></td>
+                        <td class="size-slot-table-socio" aria-colindex="19"><div><input checked disabled class="checkbox-socio-centering" type="checkbox" name="checkboxParticipating" id="checkboxParticipating1"></div></td>
+                        <td class="size-slot-table-socio" aria-colindex="20">
+                            <div>
+                                <input type="checkbox" checked disabled class="checkbox-socio-centering open-popup" name="completed" id="completedcheckbox1">
+                            </div>
+                        </td>
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td class="size-slot-table-socio" aria-colindex="1">
+                            <div>
+                                <img class="edit-pen-potential" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/pencilEdit.svg" alt="" onclick="openEditor()">
+
+                            </div>
+                          </td>
+                        <td class="size-slot-table-socio" aria-colindex="2"><div>שמשון</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="3"><div>חממי</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="4"><div>1112233</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="5"><div>מבצעים באוגדה 2</div></td>
+                      
+                        <td class="size-slot-table-socio" aria-colindex="7"><div>מנהל שמירה</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="8"><div>מבצעים באוגדה 2</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="9"><div>27/12/2022</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="10"><div>x</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="11"><div>18 - רסן</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="12"><div>104</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="13"><div>79</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="14"><div>90</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="15"><div>0</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="16">
+                            <button class="plus-button1">
+                                +
+                                <span class="tooltip-t">עומד בקריטריונים</span> <!-- טקסט שיופיע בעת ריחוף -->
+                              </button>
+                            </td>
+                          
+                        
+                              <!-- כפתור סגירה בתוך הפופאפ -->
+                           
+                          
+                          
+                        
+                        <td class="size-slot-table-socio" aria-colindex="18"><div></div></td>
+                        <td class="size-slot-table-socio" aria-colindex="19"><div><input checked disabled class="checkbox-socio-centering" type="checkbox" name="checkboxParticipating" id="checkboxParticipating1"></div></td>
+                        <td class="size-slot-table-socio" aria-colindex="20"><div><input type="checkbox" checked disabled class="checkbox-socio-centering" name="completed" id="completedcheckbox1"></div></td>
+                    </tr>
+                    <tr>
+                        <td class="size-slot-table-socio" aria-colindex="1">
+                            <div>
+                                <img class="edit-pen-potential" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/pencilEdit.svg" alt="" onclick="openEditor()">
+
+                            </div>
+                          </td>
+                        <td class="size-slot-table-socio" aria-colindex="2"><div>יונתן</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="3"><div>איצקוביץ</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="4"><div>1111598</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="5"><div>מבצעים באוגדה 2</div></td>
+                 
+                        <td class="size-slot-table-socio" aria-colindex="7"><div> סמב"צ</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="8"><div>מבצעים באוגדה 1</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="9"><div>12/4/2020</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="10"><div>x</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="11"><div>71- רסמ</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="12"><div>360</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="13"><div>0</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="14"><div>60</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="15"><div>0</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="16">
+                            <button class="plus-button4">
+                                -
+                                <span class="tooltip-text">לא עומד בקריטריונים</span> <!-- טקסט שיופיע בעת ריחוף -->
+                              </button>
+                          </td>
+                          
+                          <!-- Popup content -->
+                          <div id="popup2" style="display: none;">
+                            <div class="popup-content">
+                                 <p class="first-line">ניהול משתתפים בהתייחס למשך שהייה ביחידה וימי היעדרות</p>
+                              <p>ימי שהייה ביחידה מיום ההצבה לתאריך הארוע 188</p>
+                              <p>ותק מינימלי להשתתפות בהעברה 90</p>
+                              <p>ימי העדר בפועל 360</p>
+                              <p>סף ימי העדרות לחישוב ימים נדרשים לשהייה ביחידה 91</p>
+                              <p>הדרישה המינימלית לנוכחות ביחידה לאחר העדרות 60</p>
+                              <!-- כפתור סגירה בתוך הפופאפ -->
+                              <button class="close-popup">סגור</button>
+                            </div>
+                          </div>
+                        <td class="size-slot-table-socio" aria-colindex="18"><div></div></td>
+                        <td class="size-slot-table-socio" aria-colindex="19"><div><input checked disabled class="checkbox-socio-centering" type="checkbox" name="checkboxParticipating" id="checkboxParticipating1"></div></td>
+                        <td class="size-slot-table-socio" aria-colindex="20">
+                            <div>
+                                <button class="checkbox-socio-btn"></button>
+                            </div>
+                        </td>
+                        
+                        
+
+                    </tr>
+                    
+                    <tr>
+                        <td class="size-slot-table-socio" aria-colindex="1">
+                            <div>
+                                <img class="edit-pen-potential" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/pencilEdit.svg" alt="" onclick="openEditor()">
+
+                            </div>
+                          </td>
+                        <td class="size-slot-table-socio" aria-colindex="2"><div>מאי</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="3"><div>אגיב</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="4"><div>1111111</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="5"><div>מבצעים באוגדה 1</div></td>
+
+                        <td class="size-slot-table-socio" aria-colindex="7"><div>אחראי קורסים</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="8"><div>מבצעים באוגדה 5</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="9"><div>25/8/2019</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="10"><div>x</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="11"><div>18 - רסן</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="12"><div>104</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="13"><div>79</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="14"><div>90</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="15"><div>0</div></td>
+                        <td class="size-slot-table-socio" aria-colindex="16">
+                            <button class="plus-button">
+                              +
+                              <span class="tooltip-t">עומד בקריטריונים</span> <!-- טקסט שיופיע בעת ריחוף -->
+                            </button>
+                          </td>
+                          
+                          <!-- Popup content for plus button -->
+                         <!-- Popup content for plus button -->
+                      
+                           
+                       
+                        <td class="size-slot-table-socio" aria-colindex="18"><div></div></td>
+                        <td class="size-slot-table-socio" aria-colindex="19">
+    <div>
+        <!-- צ'קבוקס מסומן בהתחלה -->
+        <input type="checkbox" class="checkbox-socio-centering14" id="checkboxParticipating1" checked>
+    </div>
+</td>
+
+
+    
+                        <td class="size-slot-table-socio" aria-colindex="20"><div><input type="checkbox" checked disabled class="checkbox-socio-centering" name="completed" id="completedcheckbox1"></div></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // משתנה שיבדוק אם הפופ-אפ כבר נפתח
+            let popupOpened = false;
+        
+            // האזנה ללחיצה על הכפתור "צ'קבוקס פתוח"
+            document.querySelector('.checkbox-socio-btn').addEventListener('click', function() {
+                // אם הפופ-אפ כבר נפתח, אין לפתוח אותו שוב
+                if (popupOpened) {
+                    return; // יוצא מהפונקציה אם הפופ-אפ כבר נפתח
+                }
+        
+                // הוספת קלאס "clicked" כדי להראות את הצבע הכחול של הצ'קבוקס הפתוח
+                this.classList.toggle('clicked');
+        
+                // יצירת הפופאפ
+                const popup = document.createElement('div');
+                popup.style.position = 'fixed';
+                popup.style.top = '50%';
+                popup.style.left = '50%';
+                popup.style.transform = 'translate(-50%, -50%)'; // למרכז את הפופאפ במסך
+                popup.style.width = '100%'; // רוחב הפופאפ
+                popup.style.height = '85%'; // גובה הפופאפ
+                popup.style.backgroundColor = 'white';
+                popup.style.padding = '20px';
+                popup.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+                popup.style.zIndex = '1000';
+        
+                // יצירת כיתוב "סיבת הוספה"
+                const label = document.createElement('div');
+                label.textContent = 'סיבת הוספה';
+                label.style.textAlign = 'right';
+                label.style.fontSize = '1em';
+                label.style.marginBottom = '12px';
+                label.style.marginRight='38px'
+        
+                // יצירת כפתור
+                const button = document.createElement('button');
+                button.style.width = '94%'; // רוחב הכפתור ב-92%
+                button.style.height = '10%';
+                button.style.backgroundColor = 'transparent';
+                button.style.border = '1px solid black';
+                button.style.cursor = 'pointer';
+                button.style.fontSize = '1em';
+                button.style.margin = '0 auto';
+                button.style.display = 'block';
+                button.style.position = 'relative';
+        
+                // יצירת חץ למטה בכפתור
+                const arrow = document.createElement('span');
+                arrow.textContent = '↓'; // חץ למטה
+                arrow.style.position = 'absolute';
+                arrow.style.left = '10px';
+                arrow.style.top = '50%';
+                arrow.style.transform = 'translateY(-50%)';
+                button.appendChild(arrow);
+        
+                // יצירת רשימה שתהיה מוסתרת בהתחלה
+                const dropdown = document.createElement('div');
+                dropdown.style.display = 'none'; // מוסתר בהתחלה
+                dropdown.style.width = '100%'; // רוחב הרשימה ב-92% (כמו הכפתור)
+                dropdown.style.maxHeight = '60%';
+                dropdown.style.overflowY = 'auto';
+                dropdown.style.marginTop = '10px';
+                dropdown.style.padding = '10px';
+                dropdown.style.backgroundColor = '#f9f9f9'; // רקע בהיר לרשימה
+        
+                const eventNames = [
+                    "המוערך נוסף לבקשת מפקד היחידה",
+                    "המוערך נוסף על פי בקשתו",
+                    "המוערך עזב את היחידה לפני פחות משבועיים מיום מילוי השאלון ",
+                    "המוערך נכח חודשיים ביחידה וזאת לאחר תקופת היעדרות של עד 6 חודשים",
+                    "המוערך נכח חודש ביחידה וזאת לאחר תקופת היעדרות של עד 3 חודשים ",
+                    "המוערך אינו נעדר מיחידתו לתקופה שעולה על 30 יום מיום מילוי השאלון",
+                    "המוערך נכח חודשיים ביחידת שדה וזאת לאחר תקופת היעדרות של מעל 6 חודשים ",
+                    "המוערך נכח 3 חודשים ביחידת מטה וזאת לאחר תקופת היעדרות של מעל 6 חודשים"
+                ];
+        
+                // יצירת רשימת האירועים
+                const ul = document.createElement('ul');
+                ul.style.listStyleType = 'none'; // ללא נקודות
+                ul.style.padding = '0';
+                ul.style.margin = '0';
+        
+                // יצירת אירועים לפי השמות החדשים
+                eventNames.forEach(function(eventName) {
+                    const li = document.createElement('li');
+                    li.textContent = eventName;
+                    li.style.padding = '12px';
+                    li.style.marginBottom = '6px'; // רווח בין כל אירוע
+                    li.style.backgroundColor = '#fff'; // צבע רקע לאירועים
+                    li.style.cursor = 'pointer'; // סמן שינוי עכבר
+                    li.style.transition = 'background-color 0.3s ease'; // שינוי צבע בעת ריחוף
+        
+                    // הוספת אפקט בעת ריחוף
+                    li.addEventListener('mouseenter', function() {
+                        li.style.backgroundColor = '#f0f0f0'; // שינוי צבע רקע בעת ריחוף
+                    });
+                    li.addEventListener('mouseleave', function() {
+                        li.style.backgroundColor = '#fff'; // צבע רקע רגיל לאחר הריחוף
+                    });
+        
+                    // הוספת פעולה ללחיצה על כל אירוע
+                    li.addEventListener('click', function() {
+                        // דיליי של 0.3 שניות לפני סגירת הפופאפ
+                        setTimeout(function() {
+                            popup.style.display = 'none'; // סגירת הפופאפ
+                        }, 200);
+                    });
+        
+                    ul.appendChild(li);
+                });
+        
+                dropdown.appendChild(ul);
+        
+                // הוספת הכיתוב והכפתור לפופאפ
+                popup.appendChild(label);
+                popup.appendChild(button);
+                popup.appendChild(dropdown);
+        
+                // הוספת הפופאפ למסך
+                document.body.appendChild(popup);
+        
+                // הוספת פעולה ללחיצה על הכפתור
+                button.addEventListener('click', function() {
+                    // הצגת או הסתרת ה-Dropdown
+                    if (dropdown.style.display === 'none') {
+                        dropdown.style.display = 'block'; // הצגת הרשימה
+                    } else {
+                        dropdown.style.display = 'none'; // הסתרת הרשימה
+                    }
+                });
+        
+                // עדכון משתנה שבודק אם הפופ-אפ נפתח
+                popupOpened = true;
+            });
+        });
+        
+        function openEditor() {
+          // יצירת חלון חדש בגודל 800x550
+          var editorWindow = window.open('', '', 'width=800,height=550,scrollbars=yes,taskbar=no,status=no');
+          
+          // הוספת התוכן של הדף החדש (הקוד שלך) לתוך החלון
+          editorWindow.document.open();
+          editorWindow.document.write(`
+            <!DOCTYPE html>
+            <html lang="he">
+            <head>
+              <meta charset="UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <title>Editor</title>
+              <style>
+                body {
+                  font-family: Arial, sans-serif;
+                  direction: rtl;
+                  display: flex;
+                  justify-content: center;
+                  align-items: flex-start;
+                  height: 100vh;
+                  margin: 0;
+                  background-color: #f4f4f4;
+                }
+                .container {
+                  width: 70%;
+                  background-color: white;
+                  padding: 20px;
+                  border-radius: 8px;
+                  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+                  margin-bottom: 40px; /* רווח של 40 פיקסלים לאחר הטבלה */
+                }
+                h2 {
+                  text-align: center;
+                  font-size: 30px; /* גובה כותרת 30 פיקסלים */
+                  margin-bottom: 20px; /* רווח מתחת לכותרת */
+                }
+                table {
+                  width: 100%;
+                  border-collapse: collapse;
+                  margin-top: 20px;
+                }
+                th, td {
+                  padding: 10px;
+                  border: 1px solid #ddd;
+                  text-align: right;
+                }
+                th {
+                  background-color: #f2f2f2;
+                }
+                input {
+                  width: 100%;
+                  padding: 5px;
+                  border: 1px solid #ccc;
+                  background-color: #f9f9f9;
+                }
+              </style>
+            </head>
+            <body>
+              <div class="container">
+                <!-- כותרת 30 פיקסלים מעל הטבלה -->
+                <h2>טופס להזנת נתונים</h2>
+                <table>
+                  <tr>
+                    <th>מספר אישי</th>
+                    <td><input type="text" value="1234567" disabled></td>
+                  </tr>
+                  <tr>
+                    <th>תעודת זהות</th>
+                    <td><input type="text" value="234567899" disabled></td>
+                  </tr>
+                  <tr>
+                    <th>שם פרטי</th>
+                    <td><input type="text" value="ישראל" disabled></td>
+                  </tr>
+                  <tr>
+                    <th>שם משפחה</th>
+                    <td><input type="text" value=" ישראלי" disabled></td>
+                  </tr>
+                  <tr>
+                    <th>שם מלא</th>
+                    <td><input type="text" value="ישראל ישראלי " disabled></td>
+                  </tr>
+                  <tr>
+                    <th>כינוי</th>
+                    <td><input type="text" value="ישראלה" disabled></td>
+                  </tr>
+                  <tr>
+                    <th>כינוי נוסף</th>
+                    <td><input type="text" value="לא קיים" disabled></td>
+                  </tr>
+                  <tr>
+                    <th>חייל</th>
+                    <td><input type="text" value="משאבי אנוש" disabled></td>
+                  </tr>
+                  <tr>
+                    <th>יחידת אמת</th>
+                    <td><input type="text" value="יחידה אמיתית" disabled></td>
+                  </tr>
+                  <tr>
+                    <th>יחידת אירוע</th>
+                    <td><input type="text" value="אירוע א" disabled></td>
+                  </tr>
+                  <tr>
+                    <th>דרגה ייצוגית</th>
+                    <td><input type="text" value=" " disabled></td>
+                  </tr>
+                  <tr>
+                    <th>דרגת כתף</th>
+                    <td><input type="text" value=" סגן" disabled></td>
+                  </tr>
+                  <tr>
+                    <th>דרגת כתף באירוע</th>
+                    <td><input type="text" value=" סגן" disabled></td>
+                  </tr>
+                  <tr>
+                    <th>תפקיד (סאפ)</th>
+                    <td><input type="text" value=" מנהל מבצעים" disabled></td>
+                  </tr>
+                  <tr>
+                    <th>תפקיד באירוע (מנוהל)</th>
+                    <td><input type="text" value=" מנהל מבצעים באירוע" disabled></td>
+                  </tr>
+                  <tr>
+                    <th>תאריך קליטה ביחידה (סאפ)</th>
+                    <td><input type="text" value=" 24.2.2001" disabled></td>
+                  </tr>
+                  <tr>
+                    <th>סוג שירות (סאפ)</th>
+                    <td><input type="text" value=" רגיל" disabled></td>
+                  </tr>
+                  <tr>
+                    <th>מייל (מוסק)</th>
+                    <td><input type="text" value="israel@idf.il " disabled></td>
+                  </tr>
+                  <tr>
+                    <th>אוכלוסיות (מוסק)</th>
+                    <td><input type="text" value=" " disabled></td>
+                  </tr>
+                  <tr>
+                    <th>תאריך טעינה למערכת (מוסק)</th>
+                    <td><input type="text" value="1.1.2002 " disabled></td>
+                  </tr>
+                  <tr>
+                    <th>משתתף בפיילוט</th>
+                    <td><input type="text" value=" כן" disabled></td>
+                  </tr>
+                  <tr>
+                    <th>respid</th>
+                    <td><input type="text" value=" 11111" disabled></td>
+                  </tr>
+                </table>
+              </div>
+            </body>
+            </html>
+          `);
+          editorWindow.document.close();
+        }// הפונקציה שתפתח את הטבלה
+        
+                    // יצירת אלמנט div חדש
+                  // הפונקציה שתפתח את הטבלה
+                  const openRemovedParticipantsTable = () => {
+                    // יצירת אלמנט div חדש
+                    const removedParticipantsTable = document.createElement("div");
+        
+                    // הוספת עיצוב ישירות אל ה-div הזה
+                    removedParticipantsTable.style.position = 'fixed';
+                    removedParticipantsTable.style.top = '50%';
+                    removedParticipantsTable.style.left = '50%';
+                    removedParticipantsTable.style.transform = 'translate(-50%, -50%)';
+                    removedParticipantsTable.style.backgroundColor = '#fff';
+                    removedParticipantsTable.style.border = '1px solid #ccc';
+                    removedParticipantsTable.style.padding = '20px';
+                    removedParticipantsTable.style.boxShadow = '0px 0px 10px rgba(0, 0, 0, 0.1)';
+                    removedParticipantsTable.style.zIndex = '9999';
+                    removedParticipantsTable.style.width = '70vw';  // 70% מהמסך
+                    removedParticipantsTable.style.height = '80vh';  // 80% מהגובה
+                    removedParticipantsTable.style.overflowY = 'auto';
+        
+                    // תוכן הטבלה ב-HTML
+                    removedParticipantsTable.innerHTML = `
+                        <div style="display: flex; justify-content: space-between; align-items: center; background-color: white; padding: 10px;">
+                            <p style="font-size: 18px; font-weight: bold;">רשימת משתתפים שהוסרו</p>
+                            <button id="close-removed-table-button" style="background: none; border: none; font-size: 20px; cursor: pointer;">X</button>
+                        </div>
+                        <!-- הצגת סה"כ שורות וסה"כ נבחר ממוקמים גבוה יותר -->
+                        <div style="text-align: center; margin-top: 10px; font-size: 16px; font-weight: bold;">
+                            <p>סה'כ שורות 2</p>
+                            <p>סה'כ נבחר 2</p>
+                        </div>
+            <table style="width: 100%; border-collapse: collapse;">
+            <!-- שורה ראשונה - שאלות -->
+            <tr style="background-color: white; color: black; font-weight: bold;">
+                <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">שם פרטי</td>
+                <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">שם משפחה</td>
+                <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">מספר אישי</td>
+                <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">יחידת אירוע</td>
+                <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">תפקיד</td>
+                <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">תפקיד באירוע</td>
+                <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">יחידת אמת</td>
+                <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">תאריך קליטה</td>
+                <td style="padding: 10px; border: 1px solid #ddd; text-align: center;">דרגת כתף</td>
+            </tr>
+        
+            <!-- שורה שנייה - סימני חיפוש -->
+         <tr style="background-color: white; text-align: center;">
+    <td style="padding: 10px; border: 1px solid #ddd;">
+        <img class="search-icon" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/searchGray.svg" alt="searchIcon" style="width: 20px; height: 20px; padding: 5px;">
+    </td>
+    <td style="padding: 10px; border: 1px solid #ddd;">
+        <img class="search-icon" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/searchGray.svg" alt="searchIcon" style="width: 20px; height: 20px; padding: 5px;">
+    </td>
+    <td style="padding: 10px; border: 1px solid #ddd;">
+        <img class="search-icon" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/searchGray.svg" alt="searchIcon" style="width: 20px; height: 20px; padding: 5px;">
+    </td>
+    <td style="padding: 10px; border: 1px solid #ddd;">
+        <img class="search-icon" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/searchGray.svg" alt="searchIcon" style="width: 20px; height: 20px; padding: 5px;">
+    </td>
+    <td style="padding: 10px; border: 1px solid #ddd;">
+        <img class="search-icon" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/searchGray.svg" alt="searchIcon" style="width: 20px; height: 20px; padding: 5px;">
+    </td>
+    <td style="padding: 10px; border: 1px solid #ddd;">
+        <img class="search-icon" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/searchGray.svg" alt="searchIcon" style="width: 20px; height: 20px; padding: 5px;">
+    </td>
+    <td style="padding: 10px; border: 1px solid #ddd;">
+        <img class="search-icon" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/searchGray.svg" alt="searchIcon" style="width: 20px; height: 20px; padding: 5px;">
+    </td>
+    <td style="padding: 10px; border: 1px solid #ddd;">
+        <img class="search-icon" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/searchGray.svg" alt="searchIcon" style="width: 20px; height: 20px; padding: 5px;">
+    </td>
+    <td style="padding: 10px; border: 1px solid #ddd;">
+        <img class="search-icon" src="https://raw.githubusercontent.com/orgilat/project-lomda/main/Assets/media/searchGray.svg" alt="searchIcon" style="width: 20px; height: 20px; padding: 5px;">
+    </td>
+</tr>
+
+        
+            <!-- שורה שלישית - אדם א -->
+            <tr style="background-color: #e3f2fd; text-align: center;">
+                <td style="padding: 10px; border: 1px solid #ddd;">ישראל</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">ישראלי</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">1234567</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">ממדה</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">אנליסט</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">אנליסט</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">ממדה</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">1.1.2004</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">סגן</td>
+            </tr>
+        
+            <!-- שורה רביעית - אדם ב -->
+            <tr style="background-color: #e3f2fd; text-align: center;">
+                <td style="padding: 10px; border: 1px solid #ddd;">ישראלה</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">הישראלית</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">124343</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">מיטב</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">משק גל</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">משק גל</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">מיטב</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">11.1.2020</td>
+                <td style="padding: 10px; border: 1px solid #ddd;">רסן</td>
+            </tr>
+        </table>
+                    `;
+                    // הוספת ה-DIV לדף
+                    document.body.appendChild(removedParticipantsTable);
+        
+                    // סגירת ה-DIV כאשר לוחצים על כפתור ה-X
+                    document.getElementById("close-removed-table-button").addEventListener("click", () => {
+                        removedParticipantsTable.remove();
+                    });
+                };
+        
+                // מאזין ללחיצה על הכפתור
+               
+                document.getElementById("removed-participants-btn").addEventListener("click", openRemovedParticipantsTable);
+           // פונקציה להפעלת האלרט
+        const manageEvent = () => {
+            document.getElementById("event-stage-label1").addEventListener("click", () => {
+                alert("שימו לב בלומדה לא ניתן לחזור אחורה- במערכת עצמה אפשר "); // האלרט שמופיע בלחיצה
+            });
+        };
+        
+        // קריאה לפונקציה
+        manageEvent();
+        // משתנים לעקוב אחרי הבחירות
+        // משתנים לעקוב אחרי הבחירות
+        let selectedCount = 0;
+        const maxSelection = 2; // כמות הבחירות המקסימלית
+        
+        // פונקציה לעדכון מספר הבחירות
+        const updateSelectionCount = () => {
+            document.getElementById('selection-count').innerText = `בחירת שאלות בחירה ${selectedCount}/${maxSelection}`;
+        };
+        
+        // פונקציה לעדכון מצב הבחירות
+        const updateCheckboxes = () => {
+            const checkboxes = document.querySelectorAll('.checkbox-touch');
+            checkboxes.forEach(checkbox => {
+                if (selectedCount >= maxSelection && !checkbox.checked) {
+                    checkbox.disabled = true; // מניעת בחירה נוספת
+                } else {
+                    checkbox.disabled = false; // מאפשר בחירה אם הבחירות לא הגעו למקסימום
+                }
+            });
+        };
+        
+        // פונקציה להציג את ה-UI החדש אם מספר הבחירות הוא 2/2
+        const showEventStage = () => {
+            if (selectedCount === 2) {
+                document.getElementById('event-stage-container').style.display = 'block'; // הצגת החלק
+            }
+        };
+        
+        // מאזין לשינויים בתיבות הסימון
+        document.querySelectorAll('.checkbox-touch').forEach(checkbox => {
+            checkbox.addEventListener('change', (event) => {
+                if (event.target.checked) { 
+                    selectedCount++;
+                } else {
+                    selectedCount--;
+                }
+        
+                // עדכון מצב התצוגה וההגבלות
+                updateSelectionCount();
+                updateCheckboxes();
+                showEventStage(); // עדכון אם להציג את ה-UI החדש
+            });
+        });
+        
+        // אתחול המצב בהתחלה
+        updateSelectionCount();
+        updateCheckboxes();
+        showEventStage();
+        
+        function updateUnitName(element) {
+            const button = document.getElementById('selected-unit-button');
+            
+            // ביטול סימון כל הצ'קבוקסים האחרים
+            const checkboxes = document.querySelectorAll('.checkbox-military-list');
+            checkboxes.forEach(function(checkbox) {
+                if (checkbox !== element) {
+                    checkbox.checked = false; // מבטל את הסימון של כל הצ'קבוקסים האחרים
+                }
+            });
+        
+            // אם נבחר V בצ'קבוקס, עדכון השם
+            const checkedCheckboxes = document.querySelectorAll('.checkbox-military-list:checked'); // כל הצ'קבוקסים המסומנים
+            
+            if (checkedCheckboxes.length > 0) {
+                // אם יש צ'קבוקס אחד לפחות מסומן
+                const selectedUnitNames = Array.from(checkedCheckboxes).map(function(checkbox) {
+                    return checkbox.parentElement.querySelector('p').textContent;  // לולאת כל הצ'קבוקסים המסומנים
+                });
+                
+                // עדכון שם הכפתור עם כל השמות המסומנים
+                button.textContent = selectedUnitNames.join(", ");  // מחבר את כל השמות עם פסיק
+            }
+        }
+        // נוודא שברגע שהדף נטען, רק האפשרות 'בהכנה' תהיה מסומנת
+        window.onload = function() {
+            const defaultRadioButton = document.getElementById('status-making');
+            defaultRadioButton.checked = true; // מסמן את האפשרות 'בהכנה' כברירת מחדל
+        };
+        
+        // מאזין לאירועים כאשר נבחר רדיו-בוטון
+        document.querySelectorAll('input[name="radio-status"]').forEach(radio => {
+            radio.addEventListener('change', function(event) {
+                // אם המשתמש מנסה לבחור משהו חוץ מ'בהכנה', נציג את ההודעה
+                if (event.target.id !== 'status-making') {
+                    alert("פוטנציאל לא הושלם");
+                    // לא מאפשר לעבור לבחירה אחרת, מחזיר את 'בהכנה' להיות מסומן
+                    document.getElementById('status-making').checked = true;
+                }
+            });
+        });
+        document.addEventListener("DOMContentLoaded", function() {
+    // קבלת האלמנטים
+    const plusButton = document.querySelector(".plus-button");  // הכפתור שמצג את הפופאפ
+    const popup = document.getElementById("popup");  // הפופאפ עצמו
+    const closeButton = document.querySelector(".close-popup");  // כפתור הסגירה בפופאפ
+
+    // מאזין ללחיצה על כפתור ה"פלוס"
+    plusButton.addEventListener("click", function() {
+        popup.style.display = "block";  // מציג את הפופאפ
+    });
+
+    // מאזין ללחיצה על כפתור "סגור"
+    closeButton.addEventListener("click", function() {
+        popup.style.display = "none";  // מסווה את הפופאפ
+    });
+});
+document.addEventListener("DOMContentLoaded", function() {
+    // קבלת האלמנטים
+    const plusButton1 = document.querySelector(".plus-button1");  // הכפתור שמצג את הפופאפ
+    const popup = document.getElementById("popup");  // הפופאפ עצמו
+    const closeButton1 = document.querySelector(".close-popup");  // כפתור הסגירה בפופאפ
+
+    // מאזין ללחיצה על כפתור ה"פלוס"
+    plusButton1.addEventListener("click", function() {
+        popup.style.display = "block";  // מציג את הפופאפ
+    });
+
+    // מאזין ללחיצה על כפתור "סגור"
+    closeButton1.addEventListener("click", function() {
+        popup.style.display = "none";  // מסווה את הפופאפ
+    });
+});
+document.addEventListener("DOMContentLoaded", function() {
+    // קבלת האלמנטים
+    const plusButton2 = document.querySelector(".plus-button2");  // הכפתור שמצג את הפופאפ
+    const popup = document.getElementById("popup");  // הפופאפ עצמו
+    const closeButton2 = document.querySelector(".close-popup");  // כפתור הסגירה בפופאפ
+
+    // מאזין ללחיצה על כפתור ה"פלוס"
+    plusButton2.addEventListener("click", function() {
+        popup.style.display = "block";  // מציג את הפופאפ
+    });
+
+    // מאזין ללחיצה על כפתור "סגור"
+    closeButton2.addEventListener("click", function() {
+        popup.style.display = "none";  // מסווה את הפופאפ
+    });
+});
+document.addEventListener("DOMContentLoaded", function() {
+    // קבלת הכפתור והרכיבים עבור פופאפ 2
+    const plusButton4 = document.querySelector(".plus-button4");  // הכפתור שמציג את הפופאפ
+    const popup2 = document.getElementById("popup2");  // הפופאפ המתאים
+    const closeButton4 = popup2.querySelector(".close-popup");  // כפתור הסגירה בתוך הפופאפ
+
+    // מאזין ללחיצה על כפתור ה"פלוס"
+    plusButton4.addEventListener("click", function() {
+        popup2.style.display = "block";  // מציג את הפופאפ המתאים
+    });
+
+    // מאזין ללחיצה על כפתור "סגור" בפופאפ
+    closeButton4.addEventListener("click", function() {
+        popup2.style.display = "none";  // מסווה את הפופאפ
+    });
+});
+document.addEventListener('DOMContentLoaded', function() {
+    // משתנה שיבדוק אם הפופ-אפ כבר נפתח
+    let openedPopup = false;
+    let clickCount = 0; // סופר את מספר הלחיצות
+
+    // האזנה ללחיצה על הצ'קבוקס
+    document.querySelector('.checkbox-socio-centering14').addEventListener('click', function() {
+        clickCount++; // בכל לחיצה מוסיפים 1 למונה הלחיצות
+
+        // אם מספר הלחיצה אי זוגי, נפתח את הפופאפ
+        if (clickCount % 2 !== 0) {
+            // אם הפופ-אפ לא נפתח, נפתח אותו
+            if (!openedPopup) {
+                // הוספת קלאס "clicked" כדי להראות את הצבע הכחול של הצ'קבוקס הפתוח
+                this.classList.toggle('clicked');
+
+                // יצירת הפופאפ
+                const popupContainer = document.createElement('div');
+                popupContainer.style.position = 'fixed';
+                popupContainer.style.top = '50%';
+                popupContainer.style.left = '50%';
+                popupContainer.style.transform = 'translate(-50%, -50%)'; // למרכז את הפופאפ במסך
+                popupContainer.style.width = '100%'; // רוחב הפופאפ
+                popupContainer.style.height = '85%'; // גובה הפופאפ
+                popupContainer.style.backgroundColor = 'white';
+                popupContainer.style.padding = '20px';
+                popupContainer.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.2)';
+                popupContainer.style.zIndex = '1000';
+
+                // יצירת כיתוב "סיבת הסרה"
+                const popupLabel = document.createElement('div');
+                popupLabel.textContent = 'סיבת הסרה';
+                popupLabel.style.textAlign = 'right';
+                popupLabel.style.fontSize = '1em';
+                popupLabel.style.marginBottom = '12px';
+                popupLabel.style.marginRight = '38px';
+
+                // יצירת כפתור
+                const dropdownButton = document.createElement('button');
+                dropdownButton.style.width = '94%'; // רוחב הכפתור ב-92%
+                dropdownButton.style.height = '10%';
+                dropdownButton.style.backgroundColor = 'transparent';
+                dropdownButton.style.border = '1px solid black';
+                dropdownButton.style.cursor = 'pointer';
+                dropdownButton.style.fontSize = '1em';
+                dropdownButton.style.margin = '0 auto';
+                dropdownButton.style.display = 'block';
+                dropdownButton.style.position = 'relative';
+
+                // יצירת חץ למטה בכפתור
+                const dropdownArrow = document.createElement('span');
+                dropdownArrow.textContent = '↓'; // חץ למטה
+                dropdownArrow.style.position = 'absolute';
+                dropdownArrow.style.left = '10px';
+                dropdownArrow.style.top = '50%';
+                dropdownArrow.style.transform = 'translateY(-50%)';
+                dropdownButton.appendChild(dropdownArrow);
+
+                // יצירת רשימה שתהיה מוסתרת בהתחלה
+                const dropdownList = document.createElement('div');
+                dropdownList.style.display = 'none'; // מוסתר בהתחלה
+                dropdownList.style.width = '100%'; // רוחב הרשימה ב-92% (כמו הכפתור)
+                dropdownList.style.maxHeight = '60%';
+                dropdownList.style.overflowY = 'auto';
+                dropdownList.style.marginTop = '10px';
+                dropdownList.style.padding = '10px';
+                dropdownList.style.backgroundColor = '#f9f9f9'; // רקע בהיר לרשימה
+
+                const eventNames = [
+                    "מוערך אשר אינו משרת ביחידת מטה 3 חודשים",
+                    "מוערך אשר אינו משרת ביחידת שדה חודשיים",
+                    "מוערך שנעדר מיחידתו בעת מילוי השאלון לתקופה העולה על 30 ימים",
+                    "מוערך אשר עזב את היחידה מעל שבועיים מיום מילוי השאלון",
+                    "המוערך בחל\"ד",
+                    "המוערך בסיפוח",
+                    "המוערך לא נכח חודש ביחידה וזאת לאחר תקופת היעדרות של עד 3 חודשים",
+                    "המוערך לא נכח חודש ביחידה וזאת לאחר תקופת היעדרות של עד 6 חודשים",
+                    "המוערך לא נכח 3 חודשים ביחידת מטה וזאת לאחר תקופת היעדרות של עד 6 חודשים",
+                    "המוערך לא נכח חודשיים ביחידת שדה וזאת לאחר תקופת היעדרות של מעל 6 חודשים"
+                ];
+
+                // יצירת רשימת האירועים
+                const eventList = document.createElement('ul');
+                eventList.style.listStyleType = 'none'; // ללא נקודות
+                eventList.style.padding = '0';
+                eventList.style.margin = '0';
+
+                // יצירת אירועים לפי השמות החדשים
+                eventNames.forEach(function(eventName) {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = eventName;
+                    listItem.style.padding = '12px';
+                    listItem.style.marginBottom = '6px'; // רווח בין כל אירוע
+                    listItem.style.backgroundColor = '#fff'; // צבע רקע לאירועים
+                    listItem.style.cursor = 'pointer'; // סמן שינוי עכבר
+                    listItem.style.transition = 'background-color 0.3s ease'; // שינוי צבע בעת ריחוף
+
+                    // הוספת אפקט בעת ריחוף
+                    listItem.addEventListener('mouseenter', function() {
+                        listItem.style.backgroundColor = '#f0f0f0'; // שינוי צבע רקע בעת ריחוף
+                    });
+                    listItem.addEventListener('mouseleave', function() {
+                        listItem.style.backgroundColor = '#fff'; // צבע רקע רגיל לאחר הריחוף
+                    });
+
+                    // הוספת פעולה ללחיצה על כל אירוע
+                    listItem.addEventListener('click', function() {
+                        // דיליי של 0.3 שניות לפני סגירת הפופאפ
+                        setTimeout(function() {
+                            popupContainer.style.display = 'none'; // סגירת הפופאפ
+                        }, 200);
+                    });
+
+                    eventList.appendChild(listItem);
+                });
+
+                dropdownList.appendChild(eventList);
+
+                // הוספת הכיתוב והכפתור לפופאפ
+                popupContainer.appendChild(popupLabel);
+                popupContainer.appendChild(dropdownButton);
+                popupContainer.appendChild(dropdownList);
+
+                // הוספת הפופאפ למסך
+                document.body.appendChild(popupContainer);
+
+                // הוספת פעולה ללחיצה על הכפתור
+                dropdownButton.addEventListener('click', function() {
+                    // הצגת או הסתרת ה-Dropdown
+                    if (dropdownList.style.display === 'none') {
+                        dropdownList.style.display = 'block'; // הצגת הרשימה
+                    } else {
+                        dropdownList.style.display = 'none'; // הסתרת הרשימה
+                    }
+                });
+
+                // עדכון משתנה שבודק אם הפופ-אפ נפתח
+                openedPopup = true;
+            }
+        } else {
+            // אם מספר הלחיצה זוגי, נסגור את הפופאפ
+            const popup = document.querySelector('.popup-container');
+            if (popup) {
+                popup.style.display = 'none';
+                openedPopup = false; // עדכון המצב שגירסת הפופ-אפ סגורה
+            }
+        }
+    });
+});
+
+
+            </script>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        

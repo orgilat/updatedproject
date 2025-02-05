@@ -1,0 +1,3146 @@
+
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ניהול אירוע סוציומטרי</title>
+    <link rel="icon" href="/smclient/favicon.ico">
+    <link rel="stylesheet" href="a.css">
+
+    <style>
+        /* עדכון המרווח בציר ה-Y */
+        .btn-container {
+            background-color: #f7f7f7;
+            padding: 20px;
+           
+            
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+      
+        .btn {
+            border-color: transparent;
+            background-color: #d1e0ff;
+            color:  rgb(77, 77, 248);
+            border: none;
+            padding: 15px 25px;
+            cursor: pointer;
+          
+        }
+
+        .sm_model_group_card, .info-content {
+            background-color:  #f7f7f7;
+            padding: 15px;
+            
+          
+        }
+
+        .q-page {
+            background-color: #f7f7f7;
+            padding-top: 40px;
+        }
+
+    /* עיצוב הכל */
+.info-content {
+    width: 50%;
+    margin: 10px 0;
+    background-color: #f8f9fa; /* צבע רקע תכלת */
+    padding: 20px;
+
+}
+
+/* כפתור פתיחה וסגירה */
+.toggle-btn {
+    background-color: #01579b;;
+    color: white;
+    font-size: 10px;
+    padding: 5px ;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* כפתור בעת מעבר עם העכבר */
+.toggle-btn:hover {
+    background-color: #2c6896;
+}
+
+/* תוכן המידע */
+.info-text {
+    display: none; /* התוכן מוסתר ברירת מחדל */
+    padding-top: 15px;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+}
+
+
+
+        /* עיצוב עבור הכפתורים שביקשת */
+        .custom-btn {
+            background-color: white; /* צבע רקע לבן */
+            color: black; /* צבע טקסט שחור */
+            border: 2px solid black; /* קו מסביב לכפתור */
+            padding: 15px 30px; /* ריווח פנימי גדול יותר */
+            text-align: center; /* טקסט ממורכז */
+            font-weight: bold; /* כיתוב מודגש */
+            border-radius: 0px; /* פינות ישרות */
+            width: 100%; /* רוחב מלא */
+        }
+
+        /* כפתור עם רוחב 30% */
+        .custom-btn-30 {
+            width: 30%; /* כל כפתור יתפוס 30% מהרוחב */
+        }
+
+        /* כפתור הוספת משתתפים עם צבעים חדשים */
+        .add {
+            background-color: blue; /* צבע רקע כחול */
+            color: white; /* כיתוב לבן */
+            border: none; /* הסרת הגבול */
+            width: 45%; /* רוחב 45% */
+            margin-top: 20px;
+        }
+        .add1 {
+            background-color: blue; /* צבע רקע כחול */
+            color: white; /* כיתוב לבן */
+            border: none; /* הסרת הגבול */
+            width: 45%; /* רוחב 45% */
+            margin-top: 20px;
+        }
+
+
+        /* כפתור 19334 עם רקע לבן וכיתוב כחול */
+        .custom-btn-19334 {
+            background-color: white; /* רקע לבן */
+            color: blue; /* כיתוב כחול */
+            border: 2px ;
+            border-radius: 0px; /* פינות ישרות */
+            margin-right: 40px;
+            width: 30%; /* רוחב 30% */
+            margin-top: 20px;
+        }
+
+        .resps {
+            display: flex;
+            justify-content: flex-start; /* הכפתורים יהיו צמודים ולא יהיו מרווחים */
+            gap: 0; /* אין מרווח בין הכפתורים */
+            width: 100%; /* רוחב מלא */
+            color: #000;
+        }
+
+        /* סגנון הפופאפ */
+        .popup {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .popup-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            max-width: 400px;
+            width: 80%;
+        }
+
+        .popup button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .popup button.cancel {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .popup button.confirm {
+            background-color: #4CAF50;
+            color: white;
+        }/* עיצוב כל כפתור מלבן */
+        /* container עבור כל הכפתורים */
+/* עיצוב הדיאלוג */
+.q-dialog {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(143, 135, 135, 0.5); /* רקע כהה לדיאלוג */
+    border-radius: 0;
+    z-index: 9999;
+}
+
+
+
+/* סגנון כפתור סגירה */
+.close-dialog {
+    font-size: 30px;
+    cursor: pointer;
+    color: #7e7c7c;
+}
+
+/* עיצוב כפתורים */
+.rect-btn {
+    background-color: white;
+    border: 1px solid #eee5e5;
+    color: #000;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-flex;
+    border-radius: 0;
+    align-items: center;
+    justify-content: flex-start; /* הכפתור יהיה מותאם שמאלה */
+    gap: 30px; /* רווח של 30px בין האימוג'י לטקסט */
+    width: 100%;
+    box-sizing: border-box;
+    text-align: left;
+    margin-right: 0px;
+}
+
+/* עיצוב כפתור עם צבע רקע */
+.bg-primary {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    height: 20px;
+    margin-top: 20px;
+    border-radius: 0;
+    width: 30%;
+    text-align: center;
+}
+
+/* כפתור ממלא */
+.filled {
+    background-color: #007bff;
+    color: white;
+}
+
+/* עיצוב עבור המני סגנון המרחוק */
+.q-mb-md {
+    margin-bottom: 20px;
+}
+.rect-btn .emoji {
+    margin-right: auto; /* האימוג'י יהיה צמוד לצד שמאל */
+}
+.model-label {
+    font-size: 20px;   /* גודל טקסט הלייבל */
+   
+    line-height: 20px; /* גובה שורה של הלייבל */
+}
+
+#modelInput {
+    width: 200%;       /* הגדלת רוחב תיבת הטקסט פי 2 */
+    height: 40px;  
+    font-size: 14px   /* הגדלת הגובה של תיבת הטקסט */
+   ; /* שינוי צבע רקע לכחול */
+ 
+   /* גבול כחול מסביב לתיבת הטקסט */
+    padding-left: 10px; /* ריווח פנימי שמאלי */
+}
+#chooseModelBtn {
+    width: 170px;  /* קביעת רוחב הכפתור ל-70 פיקסלים */
+    height: 40px;
+}
+#deleteButton{
+    width: 170px;
+    border-radius: 0;
+    margin-top: 10px;
+    height: 40px;
+}
+#modelNameDisplay{
+    font-size: 16px;
+}
+
+.star-btn.filled {
+    color: yellow; /* התמלא בצהוב */
+    transform: scale(1.2); /* יגדל מעט */
+    transition: transform 0.2s, color 0.2s; /* אנימציה רכה */
+}
+.loading-indicator {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.9); /* צבע לבן מעודן */
+    color: #141313; /* צבע כיתוב שחור */
+    padding: 20px 40px; /* גודל ריפוד פי שתיים יותר גדול */
+    border-radius: 10px; /* פינות מעוגלות יותר */
+    font-size: 24px; /* גודל פונט יותר גדול */
+    z-index: 9999;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* צללים מעודנים */
+}
+#יחידוי {
+    margin-top: 30px;
+    margin-bottom: 30px;
+            background-color: green;
+            color: white;
+            font-size: 28px;
+            padding: 25px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        
+            margin-right: 500px;        }
+
+        #יחידוי:hover {
+            background-color: darkgreen;
+        }
+
+        /* סגנון לתפריט האופציות */
+        .options-container {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .options-container button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .stay-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .start-btn {
+            background-color: #f44336;
+            color: white;
+        }
+        .q-tab1{
+            margin-right: 20px;
+        }
+        .modal {
+    display: none; /* מוסתר בהתחלה */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50%; /* חצי מהמסך */
+    height: 50%; /* חצי מהמסך */
+    background-color: white;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.table-socio-potential {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-socio-potential td {
+    padding: 8px;
+    border: 1px solid #ddd;
+}
+
+.table-socio-potential img {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+    </style>
+</head>
+<body>
+    <div id="app" class="dx-device-desktop dx-device-generic desktop touch body--light">
+        <header class="q-header fixed-top app_header">
+            <div class="q-tabs">
+                <a class="q-tab" href="">עריכת האירוע</a>
+                <a class="q-tab" href="">ניהול פוטנציאל</a>
+                <a class="q-tab1" href="#/sm/4C3F51751B4D473C8FBA/SmEventModels">מודל הערכה</a>
+            </div>
+        </header>
+
+        <main class="q-page q-layout-padding" style="min-height: 600px ;">
+            <!-- כפתור עבור מודל הערכה חדש -->
+            <div class="btn-container">
+                <button id="chooseModelBtn" class="btn bg-primary text-white filled chooseModelBtn">בחר מודל הערכה חדש</button>
+                <div class="info-icon">
+                    <div class="icon-box">
+                        <i class="fa-duotone fa-file-circle-info"></i>
+                    </div>
+                </div>
+                <div class="info-content">
+                    <header class="info-header">
+                        <button id="toggleButton" class="toggle-btn">הצג מידע והנחיות</button>
+                        <div id="infoText" class="info-text">
+                            <p>מידע והנחיות מודל כלל יחידתי - כולם מעריכים את כולם מודל תת יחידתי - כל קבוצה מעריכה את עצמה מודל כוכב - יחידת ליבה מעריכה את עצמה ואת היחידות המשתתפות, שם הן מעריכות את עצמן ואת יחידת הליבה.</p>
+                        </div>
+                    </header>
+                </div>
+              
+            <div id="contentToRemove">
+                <section class="info-section">
+                    <div class="row gap-sm">
+                        <div class="col-4">
+                            <div class="field floating-label" label=" ">
+                                <label class="model-label">שם המודל</label>
+                                <input type="text" class="text-box valid populated" autofocus data-label-val="שם המודל" id="modelInput">
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="section_title">בחירת מודל</div>
+                        </div>
+                        <div class="col-12">
+                            <div class="row q-col-gutter-md">
+                                <div class="col-auto">
+                                    <button class="btn filled primary">כלל יחידתי</button>
+                                </div>
+                                <div class="col-auto">
+                                    <button class="btn" id="subUnitModelBtn">תת יחידתי</button>
+                                </div>
+                                <div class="col-auto">
+                                    <button class="btn" id="btn">מודל כוכב</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <div class="sm_model_group_card">
+                                <div class="header">
+                                    <button class="btn primary filled sm" onclick="window.location.href='test.html';">שאלון לדוגמא</button>
+                                    <button class="btn primary filled sm" onclick="window.open('file:///C:/Users/User/Documents/lomda/or.pdf', '_blank');">הדפסה</button>
+
+
+
+
+
+
+                                     
+                                    <div class="actions">
+                                        <div class="dropdown dro5pdown-menu">
+                                            <button class="btn icon-btn dropdown-btn filled">⋮
+                                            </button>
+                                            <div class="dropdown-list">
+                                                <ul>
+                                                    <li><div class="list-item"><i class="fa-light fa-plus"></i><span>הוספת משתתפים</span></div></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                     
+                                <div class="bottom">
+                                    <div class="tag model_type"><span>כלל יחידתי</span></div>
+                                    <div class="model_name" id="modelName">שם המודל: New Model</div>
+                                </div>
+                                <div class="bottom">
+                                    <div class="resps">
+                                        <!-- כפתור 19334 עם רקע לבן וכיתוב כחול -->
+                                        <button class="btn custom-btn custom-btn-30 custom-btn-19334">
+                                            <div class="count">4</div>
+                                        </button>
+                                        
+                                        <!-- כפתור הוספת משתמשים עם צבעים חדשים -->
+                                        <button class="btn custom-btn custom-btn-30 add">הוספת משתתפים    +</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            
+
+                <!-- כפתורים שהוספת עבור השכפול -->
+                <div class="btn-container">
+                    <button class="btn bg-negative text-white filled" id="deleteButton">מחק מודל הערכה</button>
+                </div>
+                <div class="btn-container">
+                    <button class="btn bg-primary text-white filled q-mb-md" id="chooseModelBtn">בחר מודל הערכה חדש</button>
+                </div>
+            </div>
+            <button id="יחידוי" onclick="showOptions()">סיום סימולציה</button>
+
+            <!-- תפריט אופציות -->
+            <div id="options" class="options-container">
+                <p>האם אתה בטוח שברצונך לסיים?</p>
+                <button class="stay-btn" onclick="stayOnPage()">הישאר במסך</button>
+                <button class="start-btn" onclick="startAgain()">התחל מהתחלה</button>
+            </div>  
+        </main>
+    </div>
+
+    <!-- הפופאפ -->
+    <div class="popup" id="confirmationPopup">
+        <div class="popup-content">
+            <p>האם אתה בטוח שברצונך למחוק את מודל הערכה?</p>
+            <button class="cancel" id="cancelDelete">ביטול</button>
+            <button class="confirm" id="confirmDelete">מחק</button>
+        </div>
+    </div>
+    <script>
+        // מאזין לכפתור פתיחה/סגירה
+document.getElementById('toggleButton').addEventListener('click', function() {
+    var infoText = document.getElementById('infoText');
+
+    // אם התוכן פתוח, נסגור אותו
+    if (infoText.style.display === 'block') {
+        infoText.style.display = 'none';
+        this.textContent = 'הצג מידע והנחיות'; // עדכון טקסט הכפתור
+    } else {
+        infoText.style.display = 'block';
+        this.textContent = 'סגור מידע והנחיות'; // עדכון טקסט הכפתור
+    }
+});
+
+        // הצגת הפופאפ - מאזין לכפתור מחיקה
+        document.getElementById('deleteButton')?.addEventListener('click', function() {
+            document.getElementById('confirmationPopup').style.display = 'flex';
+        });
+           
+        // ביטול מחיקה
+        document.getElementById('cancelDelete')?.addEventListener('click', function() {
+            document.getElementById('confirmationPopup').style.display = 'none';
+        });
+       
+        // אישור מחיקה
+        document.getElementById('confirmDelete')?.addEventListener('click', function() {
+            // כאן תוכל להוסיף את הלוגיקה למחיקת המודל, למשל להסתיר את התוכן
+            var contentToRemove = document.getElementById('contentToRemove');
+            contentToRemove.remove(); // מחיקת המודל בצורה מוחלטת (ולא "הסתרה")
+            document.getElementById('confirmationPopup').style.display = 'none';
+        });
+       
+        // שכפול מודל הערכה חדש
+        function cloneModel() {
+            var contentToClone = document.getElementById('contentToRemove');
+            var clonedContent = contentToClone.cloneNode(true);  // שכפול התוכן
+            contentToClone.parentNode.appendChild(clonedContent); // הוסף את התוכן החדש לתוך אותו מקום בעמוד
+       
+            // הוספת מאזין גם לכפתור "מחק מודל הערכה" החדש
+            var deleteButton = clonedContent.querySelector('.btn.bg-negative');
+            if (deleteButton) {
+                deleteButton.addEventListener('click', function() {
+                    document.getElementById('confirmationPopup').style.display = 'flex';
+                });
+            }
+       
+         // הוספת מאזין גם לכפתור "הוספת מודל הערכה חדש"
+var newBtn = clonedContent.querySelector('.btn.bg-primary.text-white.filled');
+if (newBtn) {
+    newBtn.addEventListener('click', function() {
+        // הוספת אינדיקטור טעינה לפני השכפול
+        var loadingIndicator = document.createElement('div');
+        loadingIndicator.classList.add('loading-indicator');
+        loadingIndicator.innerText = 'טוען...'; // או תוכל להשתמש בגרפיקה אם תרצה
+        document.body.appendChild(loadingIndicator);
+
+        // דיליי של שתי שניות לפני ביצוע השכפול
+        setTimeout(function() {
+            // חבוי את סימן הטעינה
+            loadingIndicator.style.display = 'none';
+
+            // שכפול המודל
+            cloneModel();
+        }, 800);  // 2000 מילי-שניות (שתי שניות)
+    });
+};
+
+       
+            // הוספת מאזין לכל כפתור "הוספת משתתפים" חדש
+            var addParticipantsButton = clonedContent.querySelector('.add');
+            if (addParticipantsButton) {
+                addParticipantsButton.addEventListener('click', function() {
+                    // תוכל להוסיף כאן את הלוגיקה להוספת משתתפים או כל פעולה שתרצה
+                    console.log("הוספת משתתפים");
+                });
+            }
+        }
+       
+        // מאזין לכל כפתור "הוספת מודל הערכה חדש"
+        document.querySelectorAll('.btn.bg-primary.text-white.filled').forEach(function(button) {
+    button.addEventListener('click', function() {
+        // הצגת סימן טעינה
+        var loadingIndicator = document.createElement('div');
+        loadingIndicator.classList.add('loading-indicator');
+        loadingIndicator.innerText = 'טוען...'; // או תוכל להשתמש בגרפיקה אם תרצה
+        document.body.appendChild(loadingIndicator);
+
+        // דיליי של שתי שניות לפני ביצוע השכפול
+        setTimeout(function() {
+            // חבוי את סימן הטעינה
+            loadingIndicator.style.display = 'none';
+
+            // שכפול המודל
+            cloneModel();
+        }, 800);  // 2000 מילי-שניות (שתי שניות)
+    });
+});
+
+        // מאזין לכל כפתור "מחק מודל הערכה"
+        document.querySelectorAll('.btn.bg-negative').forEach(function(button) {
+            button.addEventListener('click', function() {
+                document.getElementById('confirmationPopup').style.display = 'flex';
+            });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           
+        });let clicked = false; // משתנה שיבדוק אם הכפתור נלחץ כבר
+
+document.getElementById('subUnitModelBtn').addEventListener('click', function() {
+    if (modelGroupCard) {
+        modelGroupCard.remove();
+    }
+    // אם הכפתור כבר נלחץ, יוצאים מהפונקציה
+    if (clicked) return;
+
+    // הגדרת המשתנה כ-true כדי להבטיח שהכפתור לא ילחץ שוב
+    clicked = true;
+
+    // מציאת הריבוע שמכיל את השדות "מבחן לדוגמה" ו"הדפסה"
+    var modelGroupCard = document.querySelector('.sm_model_group_card');
+   
+    // אם הריבוע נמצא, נמחק אותו
+    if (modelGroupCard) {
+        modelGroupCard.remove();
+    }
+
+    // יצירת ריבוע לבן חדש
+ // יצירת המלבן הלבן
+var whiteBox = document.createElement('div');
+whiteBox.style.backgroundColor = 'white';
+whiteBox.style.padding = '20px';
+whiteBox.style.marginTop = '10px';
+whiteBox.style.width = '1000px';
+whiteBox.style.borderRadius = '8px';
+whiteBox.style.boxShadow = '0 6px 4px rgba(0, 0, 0, 0.1)';
+whiteBox.style.height = "250px"; // הגדלת הגובה כדי שיהיה מקום לכפתורים
+
+// יצירת כפתור צור קבוצה למילוי
+var createGroupButton = document.createElement('button');
+createGroupButton.textContent = "    צור קבוצה למילוי         +";
+createGroupButton.style.marginBottom = '10px';
+createGroupButton.style.padding = '20px';
+createGroupButton.style.backgroundColor = 'blue';
+createGroupButton.style.color = 'white';
+createGroupButton.style.fontSize = '14px';
+createGroupButton.style.height = '16px';
+createGroupButton.style.border = 'none';
+createGroupButton.style.cursor = 'pointer';
+createGroupButton.style.display = 'flex';
+createGroupButton.style.justifyContent = 'center';
+createGroupButton.style.alignItems = 'center';
+createGroupButton.style.textAlign = 'center';
+
+// הוספת כפתור צור קבוצה למילוי ל-whiteBox
+whiteBox.appendChild(createGroupButton);
+
+// יצירת אלמנטים נוספים אם דרוש
+// אתה יכול להוסיף כאן כפתורים אחרים או תוכן נוסף בתוך ה-whiteBox
+
+// הוספת המלבן לעמוד
+document.body.appendChild(whiteBox);
+
+// למצוא את הכפתורים לפי ה-class שלהם
+var generalUnitButton = document.querySelector('.btn.filled.primary');
+var subUnitButton = document.querySelector('#subUnitModelBtn');  // כפתור תת יחידתי
+var starModelButton = document.querySelector('#btn');  // כפתור מודל כוכב
+
+// לוודא שהכפתורים נמצאים בדף
+if (generalUnitButton) {
+    // הוספת מאורע למחיקת התוכן של whiteBox כשנלחץ על כפתור "כלל יחידתי"
+    generalUnitButton.addEventListener('click', function() {
+        whiteBox.remove();  // מוחק את הריבוע הלבן עם כל התוכן
+    });
+}
+
+var currentState = '';  // משתנה לשמור את המצב הנוכחי
+
+if (subUnitButton) {
+    // הוספת מאורע למחיקת התוכן של whiteBox כשנלחץ על כפתור "תת יחידתי"
+    subUnitButton.addEventListener('click', function() {
+        if (currentState === 'starModel') {
+            return;  // אם אנחנו במצב מודל כוכב, לא נעשה כלום
+        }
+
+        // אפקט מעבר - טשטוש קצר או שינוי בהירות המסך
+        document.body.style.transition = 'opacity 0.3s ease';
+        document.body.style.opacity = 0.5; // טשטוש של המסך למשך 0.3 שניות
+
+        setTimeout(function() {
+            // מחיקת המלבן הקודם והצגת החדש
+            whiteBox.remove();  // מוחק את הריבוע הלבן עם כל התוכן
+            var subUnitBox = document.createElement('div');  // יצירת מלבן חדש לתוכן של תת יחידתי
+         
+            subUnitBox.style.boxShadow = '0 6px 4px rgba(0, 0, 0, 0.1)';
+            subUnitBox.style.transition = 'transform 0.3s ease, opacity 0.3s ease'; // אפקטי מעבר
+
+            // בליטה עדינה על המלבן
+            subUnitBox.style.transform = 'scale(0.95)';
+            subUnitBox.style.opacity = '0';
+
+            // הוספת המלבן החדש לתוך הדף
+            document.body.appendChild(subUnitBox);
+
+            setTimeout(function() {
+                // החזרת בליטה למצב רגיל והבהירות אחרי 0.3 שניות
+                subUnitBox.style.transform = 'scale(1)';
+                subUnitBox.style.opacity = '1';
+                document.body.style.opacity = 1;  // החזרת בהירות המסך
+
+                // עדכון המצב הנוכחי
+                currentState = 'subUnit';  // עדכון המצב הנוכחי למצב "תת יחידתי"
+            }, 300);  // הזמן שבו התבצע האפקט
+        }, 300); // זמן המתנה לאפקט הטשטוש
+    });
+}
+
+if (starModelButton) {
+    // הוספת מאורע למחיקת התוכן של whiteBox כשנלחץ על כפתור "מודל כוכב"
+    starModelButton.addEventListener('click', function() {
+        if (currentState === 'starModel') {
+            return;  // אם אנחנו במצב מודל כוכב, לא נעשה כלום
+        }
+
+        // אפקט מעבר - טשטוש קצר או שינוי בהירות המסך
+        document.body.style.transition = 'opacity 0.3s ease';
+        document.body.style.opacity = 0.5; // טשטוש של המסך למשך 0.3 שניות
+
+        setTimeout(function() {
+            // מחיקת המלבן הקודם והצגת החדש
+            whiteBox.remove();  // מוחק את הריבוע הלבן עם כל התוכן
+            var starModelBox = document.createElement('div');  // יצירת מלבן חדש למודל כוכב
+            starModelBox.style.backgroundColor = 'lightblue';
+            starModelBox.style.padding = '20px';
+            starModelBox.style.marginTop = '10px';
+            starModelBox.style.borderRadius = '8px';
+            starModelBox.style.boxShadow = '0 6px 4px rgba(0, 0, 0, 0.1)';
+            starModelBox.style.transition = 'transform 0.3s ease, opacity 0.3s ease'; // אפקטי מעבר
+
+            // בליטה עדינה על המלבן
+            starModelBox.style.transform = 'scale(0.95)';
+            starModelBox.style.opacity = '0';
+
+            // הוספת המלבן החדש לתוך הדף
+            document.body.appendChild(starModelBox);
+
+            setTimeout(function() {
+                // החזרת בליטה למצב רגיל והבהירות אחרי 0.3 שניות
+                starModelBox.style.transform = 'scale(1)';
+                starModelBox.style.opacity = '1';
+                document.body.style.opacity = 1;  // החזרת בהירות המסך
+
+                // עדכון המצב הנוכחי
+                currentState = 'starModel';  // עדכון המצב הנוכחי למצב "מודל כוכב"
+            }, 300);  // הזמן שבו התבצע האפקט
+        }, 300); // זמן המתנה לאפקט הטשטוש
+    });
+}
+// הוספת מאזין לאירוע של כפתור "צור קבוצה למילוי"
+let offsetX = 455;  // המרחק ההתחלתי מהשול הימני
+let offsetY = 652; // המרחק ההתחלתי מהשול העליון (112 פיקסלים)
+
+createGroupButton.addEventListener('click', function() {
+    var functionBox = document.createElement('div');
+    functionBox.innerHTML = `
+    <div class="sm_model_group_card">
+        <div class="header">
+            <button class="btn primary filled sm" onclick="window.location.href='test.html';">שאלון לדוגמא</button>
+            <button class="btn primary filled sm" onclick="window.open('file:///C:/Users/User/Documents/lomda/or.pdf', '_blank');">הדפסה</button>
+
+            <div class="actions">
+                <div class="dropdown dropdown-menu">
+                    <button class="btn icon-btn dropdown-btn filled">⋮</button>
+                    <div class="dropdown-list">
+                        <ul>
+                            <li><div class="list-item"><i class="fa-light fa-plus"></i><span>הוספת משתתפים</span></div></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="model_name" id="modelNameDisplay">שם הקבוצה</div>
+        </div>
+
+        <div class="bottom">
+            <div class="tag model_type"><span>תת יחידתי</span></div>
+            <div class="model_name" id="modelNameDisplay">שם המודל: New Model</div>
+        </div>
+        <div class="bottom">
+            <div class="resps">
+                <button class="btn custom-btn custom-btn-30 custom-btn-19334">
+                    <div class="count">4</div>
+                </button>
+                <button class="btn custom-btn custom-btn-30 add1">הוספת משתתפים    +</button>
+                <button class="btn icon-btn custom-btn-30 trash-btn" style="background: none; border: none; font-size: 20px; margin-top: 20px">🗑️</button>
+            </div>
+        </div>
+    </div>
+   
+    <!-- פופ-אפ -->
+    <div id="confirmationPopup" class="popup" style="display:none;">
+        <div class="popup-content">
+            <p>האם אתה בטוח?</p>
+            <button id="confirmYes">כן</button>
+            <button id="confirmNo">לא</button>
+        </div>
+    </div>
+    `;
+
+    // הוספת הפונקציה מתחת לכפתור הגדול
+    whiteBox.appendChild(functionBox);
+
+    // צמצום הפונקציה כולה פי 2
+    functionBox.style.transform = 'scale(0.9)';
+    var addModelBtn = document.getElementById('restoreButton');
+if (addModelBtn) {
+  addModelBtn.style.transition = "margin-top 0.5s";
+  addModelBtn.style.marginTop = '0px';  // הזזת כפתור הוספת מודל הערכה ב-30 פיקסלים
+}
+
+// הזזת כפתור מחיקת מודל
+var deleteModelBtn = document.getElementById('deleteButton');
+if (deleteModelBtn) {
+  deleteModelBtn.style.transition = "margin-top 0.5s";
+  deleteModelBtn.style.marginTop = '380px';  // הזזת כפתור מחיקת מודל הערכה ב-240 פיקסלים
+}
+    // הגדרת המיקום ההתחלתי (112px למטה)
+    functionBox.style.position = 'absolute'; // מאפשר למקם את האלמנט באורח חופשי
+    functionBox.style.right = `${offsetX}px`; // המרחק מהשול הימני של המסך
+    functionBox.style.top = `${offsetY}px`; // המרחק מהשול העליון של המסך
+
+    // עדכון המיקום של הפונקציות הבאות
+    offsetX += functionBox.offsetWidth + 42; // הוספת מרחק בין הפונקציות (42 פיקסלים)
+   
+    // מאזין לאירוע של לחיצה על כפתור הפח
+    var trashBtn = functionBox.querySelector('.trash-btn');
+    trashBtn.addEventListener('click', function() {
+        // הצגת הפופ-אפ רק בלחיצה על הפח
+        document.getElementById('confirmationPopup').style.display = 'flex';
+    });
+
+    // פעולה למחיקת הפונקציה (הכרטיס כולו) אם המשתמש בחר "כן"
+    document.getElementById('confirmYes').addEventListener('click', function() {
+        // מחיקת הכרטיס כולו (functionBox)
+        whiteBox.removeChild(functionBox);
+
+        // סגירת הפופ-אפ
+        document.getElementById('confirmationPopup').style.display = 'none';
+
+        // עדכון המיקום של הפונקציות שיבואו אחרי המחיקה
+        offsetX -= functionBox.offsetWidth + 42; // עדכון המיקום בציר ה-X (הורדת המרחק)
+    });
+
+    // פעולה אם המשתמש בחר "לא"
+    document.getElementById('confirmNo').addEventListener('click', function() {
+        // סגירת הפופ-אפ מבלי לבצע פעולה
+        document.getElementById('confirmationPopup').style.display = 'none';
+    });
+});
+
+
+
+
+    whiteBox.appendChild(createGroupButton);
+
+    // יצירת קונטיינר לכפתורים
+    var buttonsContainer = document.createElement('div');
+
+    // יצירת כפתורים קטנים
+    var names = ['פלוגה', 'מטה בגדוד', 'מטה באוגדה', 'מטה בחטיבה', 'גדוד', 'חטיבה', 'אוגדה'];
+
+    names.forEach(function(name) {
+        var button = document.createElement('button');
+        button.textContent = name;
+        button.style.margin = '5px';
+        button.style.color = 'black';
+        button.style.padding = '10px';
+        button.style.borderRadius = '5px';
+        button.style.border = '1px solid #ccc';
+        button.style.cursor = 'pointer';
+        button.addEventListener('mouseover', function() {
+            button.style.backgroundColor = '#d3d3d3';  // אפור בהיר בריחוף
+        });
+
+        button.addEventListener('mouseout', function() {
+            button.style.backgroundColor = '';
+        });
+        buttonsContainer.appendChild(button);
+
+        button.addEventListener('click', function() {
+            buttonRow.style.display = 'flex';  // מציג את שורת הכפתורים הגדולים
+        });
+    });
+
+    whiteBox.appendChild(buttonsContainer);
+
+    // יצירת שני כפתורים גדולים
+    var buttonRow = document.createElement('div');
+    buttonRow.style.display = 'none';  // הכפתורים הגדולים מוסתרים בהתחלה
+    buttonRow.style.marginTop = '20px';
+
+    var button1 = document.createElement('button');
+    button1.textContent = "צור קבוצות לפי המאפיין כשכל יחידה בפני עצמה +";
+    button1.style.margin = '5px';
+    button1.style.padding = '10px';
+    button1.style.background='blue';
+    button1.style.color='white';
+    button1.style.fontSize = '14px';
+    button1.style.border = '1px solid #ccc';
+    button1.style.cursor = 'pointer';
+    button1.style.flex = '0.5';
+
+    var button2 = document.createElement('button');
+    button2.textContent = "אגד את כל היחידות עם אותו מאפיין לאשכול אחד";
+    button2.style.margin = '5px';
+    button2.style.padding = '10px';
+    button2.style.background='blue';
+    button2.style.color='white';
+    button2.style.fontSize = '14px';
+    button2.style.border = '1px solid #ccc';
+    button2.style.cursor = 'pointer';
+
+    buttonRow.appendChild(button1);
+    buttonRow.appendChild(button2);
+
+    whiteBox.appendChild(buttonRow);
+
+    // הוספת הריבוע הלבן לתוך הממשק
+    var section = document.querySelector('.info-section');
+    section.appendChild(whiteBox);
+
+  // הוספת הפונקציה מתחת לכפתור הגדול (פונקציה זו תופיע רק לאחר לחיצה על כפתור1 או כפתור2)
+  button1.addEventListener('click', function() {
+    var functionBox = document.createElement('div');
+    functionBox.innerHTML = `
+    <div class="sm_model_group_card">
+        <div class="header">
+                 <button class="btn primary filled sm" onclick="window.location.href='test.html';">שאלון לדוגמא</button>
+                                    <button class="btn primary filled sm" onclick="window.open('file:///C:/Users/User/Documents/lomda/or.pdf', '_blank');">הדפסה</button>
+
+            <div class="actions">
+                <div class="dropdown dropdown-menu">
+                    <button class="btn icon-btn dropdown-btn filled">⋮</button>
+                    <div class="dropdown-list">
+                        <ul>
+                            <li><div class="list-item"><i class="fa-light fa-plus"></i><span>הוספת משתתפים</span></div></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="model_name" id="modelNameDisplay">שם הקבוצה</div>
+        </div>
+
+        <div class="bottom">
+            <div class="tag model_type"><span>תת יחידתי</span></div>
+            <div class="model_name" id="modelName">שם המודל: New Model</div>
+        </div>
+        <div class="bottom">
+            <div class="resps">
+                <button class="btn custom-btn custom-btn-30 custom-btn-19334">
+                    <div class="count">4</div>
+                </button>
+                <button class="btn custom-btn custom-btn-30 add1">הוספת משתתפים    +</button>
+                <button class="btn icon-btn custom-btn-30 trash-btn" style="background: none; border: none; font-size: 20px; margin-top: 20px">🗑️</button>
+            </div>
+        </div>
+    </div>
+   
+    <!-- פופ-אפ -->
+    <div id="confirmationPopup" class="popup" style="display:none;">
+        <div class="popup-content">
+            <p>האם אתה בטוח?</p>
+            <button id="confirmYes">כן</button>
+            <button id="confirmNo">לא</button>
+        </div>
+    </div>`;
+
+    whiteBox.appendChild(functionBox);
+
+// צמצום הפונקציה כולה פי 2
+functionBox.style.transform = 'scale(0.9)';
+functionBox.style.marginTop = '50px'; // הזזת הפונקציה 60 פיקסלים למטה
+// הזזת כפתור הוספת מודל כ-3 פיקסלים למטה
+var addModelBtn = document.getElementById('restoreButton');
+if (addModelBtn) {
+  addModelBtn.style.transition = "margin-top 0.5s";
+  addModelBtn.style.marginTop = '0px';  // הזזת כפתור הוספת מודל הערכה ב-30 פיקסלים
+}
+
+// הזזת כפתור מחיקת מודל
+var deleteModelBtn = document.getElementById('deleteButton');
+if (deleteModelBtn) {
+  deleteModelBtn.style.transition = "margin-top 0.5s";
+  deleteModelBtn.style.marginTop = '380px';  // הזזת כפתור מחיקת מודל הערכה ב-240 פיקסלים
+}
+// הגדרת הפונקציה להיות צמודה לימין
+functionBox.style.position = 'absolute'; // מאפשר למקם את האלמנט באורח חופשי
+functionBox.style.right = '15px'; // המרחק מהשול הימני של המסך
+functionBox.style.left = ''; // לא להגדיר marginLeft שיכול לשבש את המיקום
+
+// מאזין לאירוע של לחיצה על כפתור הפח
+var trashBtn = functionBox.querySelector('.trash-btn');
+trashBtn.addEventListener('click', function() {
+  // הצגת הפופ-אפ רק בלחיצה על הפח
+  document.getElementById('confirmationPopup').style.display = 'flex';
+});
+
+// פעולה למחיקת הפונקציה (הכרטיס כולו) אם המשתמש בחר "כן"
+document.getElementById('confirmYes').addEventListener('click', function() {
+  // מחיקת הכרטיס כולו (functionBox)
+  whiteBox.removeChild(functionBox);
+
+  // סגירת הפופ-אפ
+  document.getElementById('confirmationPopup').style.display = 'none';
+});
+
+// פעולה אם המשתמש בחר "לא"
+document.getElementById('confirmNo').addEventListener('click', function() {
+  // סגירת הפופ-אפ מבלי לבצע פעולה
+  document.getElementById('confirmationPopup').style.display = 'none';
+});
+});
+;
+
+
+
+// חזרה על אותה הלוגיקה גם לכפתור השני
+button2.addEventListener('click', function() {
+    var functionBox = document.createElement('div');
+    functionBox.innerHTML = `
+    <div class="sm_model_group_card">
+        <div class="header">
+                 <button class="btn primary filled sm" onclick="window.location.href='test.html';">שאלון לדוגמא</button>
+                                    <button class="btn primary filled sm" onclick="window.open('file:///C:/Users/User/Documents/lomda/or.pdf', '_blank');">הדפסה</button>
+
+            <div class="actions">
+                <div class="dropdown dropdown-menu">
+                    <button class="btn icon-btn dropdown-btn filled">⋮</button>
+                    <div class="dropdown-list">
+                        <ul>
+                            <li><div class="list-item"><i class="fa-light fa-plus"></i><span>הוספת משתתפים</span></div></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="model_name" id="modelNameDisplay">שם הקבוצה</div>
+        </div>
+
+        <div class="bottom">
+            <div class="tag model_type"><span>תת יחידתי</span></div>
+            <div class="model_name" id="modelName">שם המודל: New Model</div>
+        </div>
+        <div class="bottom">
+            <div class="resps">
+                <button class="btn custom-btn custom-btn-30 custom-btn-19334">
+                    <div class="count">4</div>
+                </button>
+                <button class="btn custom-btn custom-btn-30 add1">הוספת משתתפים    +</button>
+                <!-- כפתור פח אשפה -->
+                <button class="btn icon-btn custom-btn-30 trash-btn" id="trashBtn" style="background: none; border: none; font-size: 20px; margin-top: 20px">🗑️</button>
+            </div>
+        </div>
+    </div>
+   
+    <!-- פופ-אפ -->
+    <div id="confirmationPopup" class="popup" style="display:none;">
+        <div class="popup-content">
+            <p>האם אתה בטוח?</p>
+            <button id="confirmYes">כן</button>
+            <button id="confirmNo">לא</button>
+        </div>
+    </div>
+
+   
+`;
+
+    // הוספת הפונקציה מתחת לכפתור הגדול
+    whiteBox.appendChild(functionBox);
+
+// צמצום הפונקציה כולה פי 2
+functionBox.style.transform = 'scale(0.9)';
+functionBox.style.marginTop = '50px'; // הזזת הפונקציה 60 פיקסלים למטה
+// הזזת כפתור הוספת מודל כ-3 פיקסלים למטה
+var addModelBtn = document.getElementById('restoreButton');
+if (addModelBtn) {
+  addModelBtn.style.transition = "margin-top 0.5s";
+  addModelBtn.style.marginTop = '0px';  // הזזת כפתור הוספת מודל הערכה ב-30 פיקסלים
+}
+
+// הזזת כפתור מחיקת מודל
+var deleteModelBtn = document.getElementById('deleteButton');
+if (deleteModelBtn) {
+  deleteModelBtn.style.transition = "margin-top 0.5s";
+  deleteModelBtn.style.marginTop = '330px';  // הזזת כפתור מחיקת מודל הערכה ב-240 פיקסלים
+}
+// הגדרת הפונקציה להיות צמודה לימין
+functionBox.style.position = 'absolute'; // מאפשר למקם את האלמנט באורח חופשי
+functionBox.style.right = '15px'; // המרחק מהשול הימני של המסך
+functionBox.style.left = ''; // לא להגדיר marginLeft שיכול לשבש את המיקום
+
+// מאזין לאירוע של לחיצה על כפתור הפח
+var trashBtn = functionBox.querySelector('.trash-btn');
+trashBtn.addEventListener('click', function() {
+  // הצגת הפופ-אפ רק בלחיצה על הפח
+  document.getElementById('confirmationPopup').style.display = 'flex';
+});
+
+// פעולה למחיקת הפונקציה (הכרטיס כולו) אם המשתמש בחר "כן"
+document.getElementById('confirmYes').addEventListener('click', function() {
+  // מחיקת הכרטיס כולו (functionBox)
+  whiteBox.removeChild(functionBox);
+
+  // סגירת הפופ-אפ
+  document.getElementById('confirmationPopup').style.display = 'none';
+});
+
+// פעולה אם המשתמש בחר "לא"
+document.getElementById('confirmNo').addEventListener('click', function() {
+  // סגירת הפופ-אפ מבלי לבצע פעולה
+  document.getElementById('confirmationPopup').style.display = 'none';
+});
+
+
+});
+});
+
+ 
+ 
+
+
+
+;  
+ document.getElementById("modelInput").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            // שליפת הטקסט שהוזן בתיבת הקלט
+            var modelName = document.getElementById("modelInput").value;
+           
+            // עדכון התוכן במיקום השני
+            document.getElementById("modelName").innerText = "שם המודל: " + modelName;
+        }
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+;let clicke = false; // משתנה שיבדוק אם הכפתור נלחץ כבר
+
+document.getElementById('btn').addEventListener('click', function() {
+    // אם הכפתור כבר נלחץ, יוצאים מהפונקציה
+    if (clicke) return;
+
+    // הגדרת המשתנה כ-true כדי להבטיח שהכפתור לא ילחץ שוב
+    clicke = true;
+
+    // מציאת הריבוע שמכיל את השדות "מבחן לדוגמה" ו"הדפסה"
+    var modelGroupCard = document.querySelector('.sm_model_group_card');
+   
+    // אם הריבוע נמצא, נמחק אותו
+    if (modelGroupCard) {
+        modelGroupCard.remove();
+    }
+
+    // יצירת ריבוע לבן חדש
+  // יצירת המלבן הלבן
+// יצירת המלבן הלבן
+var whiteBox = document.createElement('div');
+whiteBox.style.backgroundColor = 'white';
+whiteBox.style.width = '1000px';
+whiteBox.style.padding = '20px';
+whiteBox.style.marginTop = '10px';
+whiteBox.style.borderRadius = '8px';
+whiteBox.style.boxShadow = '0 6px 4px rgba(0, 0, 0, 0.1)';
+whiteBox.style.height = "250px"; // הגדלת הגובה כדי שיהיה מקום לכפתורים
+
+// יצירת כפתור צור קבוצה למילוי
+var createGroupButton = document.createElement('button');
+createGroupButton.textContent = "    צור קבוצה למילוי         +";
+createGroupButton.style.marginBottom = '10px';
+createGroupButton.style.padding = '20px';
+createGroupButton.style.backgroundColor = 'blue';
+createGroupButton.style.color = 'white';
+createGroupButton.style.fontSize = '14px';
+createGroupButton.style.height = '16px';
+createGroupButton.style.border = 'none';
+createGroupButton.style.cursor = 'pointer';
+createGroupButton.style.display = 'flex';
+createGroupButton.style.justifyContent = 'center';
+createGroupButton.style.alignItems = 'center';
+createGroupButton.style.textAlign = 'center';
+
+// הוספת כפתור צור קבוצה למילוי ל-whiteBox
+whiteBox.appendChild(createGroupButton);
+
+// יצירת אלמנטים נוספים אם דרוש
+// אתה יכול להוסיף כאן כפתורים אחרים או תוכן נוסף בתוך ה-whiteBox
+
+// הוספת המלבן לעמוד
+document.body.appendChild(whiteBox);
+
+// למצוא את הכפתורים לפי ה-class שלהם
+var generalUnitButton = document.querySelector('.btn.filled.primary');
+var subUnitButton = document.querySelector('#subUnitModelBtn');  // כפתור תת יחידתי
+var starModelButton = document.querySelector('#btn');  // כפתור מודל כוכב
+
+// לוודא שהכפתורים נמצאים בדף
+if (generalUnitButton) {
+    // הוספת מאורע למחיקת התוכן של whiteBox כשנלחץ על כפתור "כלל יחידתי"
+    generalUnitButton.addEventListener('click', function() {
+        whiteBox.remove();  // מוחק את הריבוע הלבן עם כל התוכן
+    });
+}
+
+if (subUnitButton) {
+    // הוספת מאורע למחיקת התוכן של whiteBox כשנלחץ על כפתור "תת יחידתי"
+    subUnitButton.addEventListener('click', function() {
+        // טשטוש קטן מאוד לפני המעבר ל"תת יחידתי"
+        document.body.style.transition = 'opacity 0.2s ease, transform 0.2s ease';
+        document.body.style.opacity = 0.5; // טשטוש קל של המסך למשך 0.2 שניות
+        document.body.style.transform = 'scale(0.98)'; // צמצום קל של המסך
+
+        setTimeout(function() {
+            // מחיקת המלבן הקודם
+            whiteBox.remove();  // מוחק את הריבוע הלבן עם כל התוכן
+
+            // יצירת המלבן החדש לתוכן של "תת יחידתי"
+            var subUnitBox = document.createElement('div');
+ 
+            subUnitBox.style.borderRadius = '8px';
+            subUnitBox.style.boxShadow = '0 6px 4px rgba(0, 0, 0, 0.1)';
+            subUnitBox.style.transition = 'transform 0.3s ease, opacity 0.3s ease'; // אפקטי מעבר
+
+            // הוספת המלבן החדש לתוך הדף
+            document.body.appendChild(subUnitBox);
+
+            setTimeout(function() {
+                // החזרת בליטה למצב רגיל והבהירות אחרי 0.3 שניות
+                subUnitBox.style.transform = 'scale(1)';
+                subUnitBox.style.opacity = '1';
+                document.body.style.opacity = 1;  // החזרת בהירות המסך
+                document.body.style.transform = 'scale(1)'; // החזרת גודל רגיל למסך
+            }, 300); // הזמן שבו יתבצע האפקט של החזרת הבליטה
+
+        }, 200); // זמן המתנה לאפקט הטשטוש והצמצום
+    });
+}
+let offsetX = 455;  // המרחק ההתחלתי מהשול הימני
+let offsetY = 652; // המרחק ההתחלתי מהשול העליון (112 פיקסלים)
+
+createGroupButton.addEventListener('click', function() {
+    var functionBox = document.createElement('div');
+    functionBox.innerHTML = `
+    <div class="sm_model_group_card">
+        <div class="header">
+            <button class="btn primary filled sm" onclick="window.location.href='test.html';">שאלון לדוגמא</button>
+        <button class="btn primary filled sm" onclick="window.open('file:///C:/Users/User/Documents/lomda/or.pdf', '_blank');">הדפסה</button>
+
+            <div class="actions">
+                <div class="dropdown dropdown-menu">
+                    <button class="btn icon-btn dropdown-btn filled">⋮</button>
+                    <div class="dropdown-list">
+                        <ul>
+                            <li><div class="list-item"><i class="fa-light fa-plus"></i><span>הוספת משתתפים</span></div></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="model_name" id="modelNameDisplay">שם הקבוצה</div>
+        </div>
+
+        <div class="bottom">
+            <div class="tag model_type"><span>תת יחידתי</span></div>
+            <div class="model_name" id="modelNameDisplay">שם המודל: New Model</div>
+        </div>
+        <div class="bottom">
+            <div class="resps">
+                <button class="btn custom-btn custom-btn-30 custom-btn-19334">
+                    <div class="count">4</div>
+                </button>
+                <button class="btn custom-btn custom-btn-30 add1">הוספת משתתפים    +</button>
+                <button class="btn icon-btn custom-btn-30 trash-btn" style="background: none; border: none; font-size: 20px; margin-top: 20px">🗑️</button>
+            </div>
+        </div>
+    </div>
+   
+    <!-- פופ-אפ -->
+    <div id="confirmationPopup" class="popup" style="display:none;">
+        <div class="popup-content">
+            <p>האם אתה בטוח?</p>
+            <button id="confirmYes">כן</button>
+            <button id="confirmNo">לא</button>
+        </div>
+    </div>
+    `;
+
+    // הוספת הפונקציה מתחת לכפתור הגדול
+    whiteBox.appendChild(functionBox);
+
+    // צמצום הפונקציה כולה פי 2
+    functionBox.style.transform = 'scale(0.9)';
+    var addModelBtn = document.getElementById('restoreButton');
+if (addModelBtn) {
+  addModelBtn.style.transition = "margin-top 0.5s";
+  addModelBtn.style.marginTop = '0px';  // הזזת כפתור הוספת מודל הערכה ב-30 פיקסלים
+}
+
+// הזזת כפתור מחיקת מודל
+var deleteModelBtn = document.getElementById('deleteButton');
+if (deleteModelBtn) {
+  deleteModelBtn.style.transition = "margin-top 0.5s";
+  deleteModelBtn.style.marginTop = '330px';  // הזזת כפתור מחיקת מודל הערכה ב-240 פיקסלים
+}
+    // הגדרת המיקום ההתחלתי (112px למטה)
+    functionBox.style.position = 'absolute'; // מאפשר למקם את האלמנט באורח חופשי
+    functionBox.style.right = `${offsetX}px`; // המרחק מהשול הימני של המסך
+    functionBox.style.top = `${offsetY}px`; // המרחק מהשול העליון של המסך
+
+    // עדכון המיקום של הפונקציות הבאות
+    offsetX += functionBox.offsetWidth + 42; // הוספת מרחק בין הפונקציות (42 פיקסלים)
+   
+    // מאזין לאירוע של לחיצה על כפתור הפח
+    var trashBtn = functionBox.querySelector('.trash-btn');
+    trashBtn.addEventListener('click', function() {
+        // הצגת הפופ-אפ רק בלחיצה על הפח
+        document.getElementById('confirmationPopup').style.display = 'flex';
+    });
+
+    // פעולה למחיקת הפונקציה (הכרטיס כולו) אם המשתמש בחר "כן"
+    document.getElementById('confirmYes').addEventListener('click', function() {
+        // מחיקת הכרטיס כולו (functionBox)
+        whiteBox.removeChild(functionBox);
+
+        // סגירת הפופ-אפ
+        document.getElementById('confirmationPopup').style.display = 'none';
+
+        // עדכון המיקום של הפונקציות שיבואו אחרי המחיקה
+        offsetX -= functionBox.offsetWidth + 42; // עדכון המיקום בציר ה-X (הורדת המרחק)
+    });
+
+    // פעולה אם המשתמש בחר "לא"
+    document.getElementById('confirmNo').addEventListener('click', function() {
+        // סגירת הפופ-אפ מבלי לבצע פעולה
+        document.getElementById('confirmationPopup').style.display = 'none';
+    });
+});
+
+
+
+
+ 
+// יצירת קונטיינר לכפתורים
+// יצירת קונטיינר לכפתורים
+var buttonsContainer = document.createElement('div');
+
+// שמות הכפתורים
+var names = ['פלוגה', 'מטה בגדוד', 'מטה באוגדה', 'מטה בחטיבה', 'גדוד', 'חטיבה', 'אוגדה'];
+
+// פונקציה ליצירת כפתורים קטנים
+function createSmallButtons() {
+    names.forEach(function(name) {
+        var button = document.createElement('button');
+        button.textContent = name;
+        button.style.margin = '5px';
+        button.style.color = 'black';
+        button.style.padding = '10px';
+        button.style.borderRadius = '5px';
+        button.style.border = '1px solid #ccc';
+        button.style.cursor = 'pointer';
+       
+        // הוספת קלאס משותף לכפתורים
+        button.classList.add('small-button'); // קלאס משותף לכל הכפתורים
+
+        // הוספת אירועי Hover
+        button.addEventListener('mouseover', function() {
+            button.style.backgroundColor = '#d3d3d3';  // אפור בהיר בריחוף
+        });
+
+        button.addEventListener('mouseout', function() {
+            button.style.backgroundColor = '';
+        });
+
+        // הוספת אירוע לחיצה
+        button.addEventListener('click', function() {
+            buttonRow.style.display = 'flex';  // מציג את שורת הכפתורים הגדולים
+        });
+
+        buttonsContainer.appendChild(button);
+    });
+}
+
+// יצירת כפתורים קטנים
+createSmallButtons();
+
+// הוספת כפתורים לקונטיינר whiteBox
+whiteBox.appendChild(buttonsContainer);
+
+// פונקציה לשכפול הכפתורים
+function duplicateButtons() {
+    var buttonsContainerClone = document.createElement('div');
+
+    // יצירת כפתורים משוכפלים
+    names.forEach(function(name) {
+        var button = document.createElement('button');
+        button.textContent = name;
+        button.style.margin = '5px';
+        button.style.color = 'black';
+        button.style.padding = '10px';
+        button.style.borderRadius = '5px';
+        button.style.border = '1px solid #ccc';
+        button.style.cursor = 'pointer';
+
+        // הוספת קלאס משותף לכפתורים
+        button.classList.add('small-button'); // קלאס משותף לכל הכפתורים המשוכפלים
+
+        // הוספת אירועים לשכפול
+        button.addEventListener('mouseover', function() {
+            button.style.backgroundColor = '#d3d3d3';  // אפור בהיר בריחוף
+        });
+
+        button.addEventListener('mouseout', function() {
+            button.style.backgroundColor = '';
+        });
+
+        button.addEventListener('click', function() {
+            buttonRow.style.display = 'flex';  // מציג את שורת הכפתורים הגדולים
+        });
+
+        buttonsContainerClone.appendChild(button);
+    });
+
+    whiteBox.appendChild(buttonsContainerClone);
+}
+
+// בקריאת duplicateButtons() כל הכפתורים המשוכפלים יפעלו באותו אופן כמו המקוריים
+
+
+// יצירת שני כפתורים גדולים
+var buttonRow = document.createElement('div');
+buttonRow.style.display = 'none';  // הכפתורים מוסתרים בהתחלה
+buttonRow.style.marginTop = '20px';
+
+var button1 = document.createElement('button');
+button1.textContent = "צור קבוצות לפי המאפיין כשכל יחידה בפני עצמה +";
+button1.style.margin = '5px';
+button1.style.padding = '10px';
+button1.style.background = 'blue';
+button1.style.color = 'white';
+button1.style.fontSize = '14px';
+button1.style.border = '1px solid #ccc';
+button1.style.cursor = 'pointer';
+button1.style.flex = '0.5';
+
+var button2 = document.createElement('button');
+button2.textContent = "אגד את כל היחידות עם אותו מאפיין לאשכול אחד";
+button2.style.margin = '5px';
+button2.style.padding = '10px';
+button2.style.background = 'blue';
+button2.style.color = 'white';
+button2.style.fontSize = '14px';
+button2.style.border = '1px solid #ccc';
+button2.style.cursor = 'pointer';
+
+buttonRow.appendChild(button1);
+buttonRow.appendChild(button2);
+
+// הוספת הכפתורים ל-whiteBox
+whiteBox.appendChild(buttonRow);
+
+// הוספת הריבוע הלבן לתוך הממשק
+var section = document.querySelector('.info-section');
+section.appendChild(whiteBox);
+
+
+// הוספת הפונקציה מתחת לכפתור הגדול (פונקציה זו תופיע רק לאחר לחיצה על כפתור1 או כפתור2)
+button1.addEventListener('click', function() {
+  var functionBox = document.createElement('div');
+  functionBox.innerHTML = `
+    <div class="sm_model_group_card">
+        <div class="header">
+                 <button class="btn primary filled sm" onclick="window.location.href='test.html';">שאלון לדוגמא</button>
+                       <button class="btn primary filled sm" onclick="window.open('file:///C:/Users/User/Documents/lomda/or.pdf', '_blank');">הדפסה</button>
+
+            <div class="actions">
+                <div class="dropdown dropdown-menu">
+                    <button class="btn icon-btn dropdown-btn filled">⋮</button>
+                    <div class="dropdown-list">
+                        <ul>
+                            <li><div class="list-item"><i class="fa-light fa-plus"></i><span>הוספת משתתפים</span></div></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="model_name" id="modelNameDisplay">שם הקבוצה</div>
+        </div>
+        <div class="bottom">
+            <div class="tag model_type"><span>מודל הכוכב</span></div>
+          <div class="model_name" id="modelName">שם המודל: New Model</div>
+        </div>
+        <div class="bottom">
+              <div class="bottom">
+            <div class="resps">
+                <button class="btn custom-btn custom-btn-30 custom-btn-19334">
+                    <div class="count">4</div>
+                </button>
+                <button class="btn custom-btn custom-btn-30 add1">הוספת משתתפים +</button>
+                <button class="btn icon-btn custom-btn-30 star-btn" style="background: none; border: none; font-size: 40px; margin-top: 20px;" onclick="this.classList.toggle('filled')">★</button> <!-- כוכב גדול לפני הפח -->
+                <button class="btn icon-btn custom-btn-30 trash-btn" style="background: none; border: none; font-size: 20px; margin-top: 20px">🗑️</button>
+            </div>
+        </div>
+    </div>
+    <div id="confirmationPopup" class="popup" style="display:none;">
+        <div class="popup-content">
+            <p>האם אתה בטוח?</p>
+            <button id="confirmYes">כן</button>
+            <button id="confirmNo">לא</button>
+        </div>
+    </div>`;
+
+  // הוספת הפונקציה מתחת לכפתור הגדול
+  whiteBox.appendChild(functionBox);
+
+// צמצום הפונקציה כולה פי 2
+functionBox.style.transform = 'scale(0.9)';
+functionBox.style.marginTop = '50px'; // הזזת הפונקציה 60 פיקסלים למטה
+// הזזת כפתור הוספת מודל כ-3 פיקסלים למטה
+var addModelBtn = document.getElementById('restoreButton');
+if (addModelBtn) {
+  addModelBtn.style.transition = "margin-top 0.5s";
+  addModelBtn.style.marginTop = '0px';  // הזזת כפתור הוספת מודל הערכה ב-30 פיקסלים
+}
+
+// הזזת כפתור מחיקת מודל
+var deleteModelBtn = document.getElementById('deleteButton');
+if (deleteModelBtn) {
+  deleteModelBtn.style.transition = "margin-top 0.5s";
+  deleteModelBtn.style.marginTop = '330px';  // הזזת כפתור מחיקת מודל הערכה ב-240 פיקסלים
+}
+// הגדרת הפונקציה להיות צמודה לימין
+functionBox.style.position = 'absolute'; // מאפשר למקם את האלמנט באורח חופשי
+functionBox.style.right = '15px'; // המרחק מהשול הימני של המסך
+functionBox.style.left = ''; // לא להגדיר marginLeft שיכול לשבש את המיקום
+
+// מאזין לאירוע של לחיצה על כפתור הפח
+var trashBtn = functionBox.querySelector('.trash-btn');
+trashBtn.addEventListener('click', function() {
+  // הצגת הפופ-אפ רק בלחיצה על הפח
+  document.getElementById('confirmationPopup').style.display = 'flex';
+});
+
+// פעולה למחיקת הפונקציה (הכרטיס כולו) אם המשתמש בחר "כן"
+document.getElementById('confirmYes').addEventListener('click', function() {
+  // מחיקת הכרטיס כולו (functionBox)
+  whiteBox.removeChild(functionBox);
+
+  // סגירת הפופ-אפ
+  document.getElementById('confirmationPopup').style.display = 'none';
+});
+
+// פעולה אם המשתמש בחר "לא"
+document.getElementById('confirmNo').addEventListener('click', function() {
+  // סגירת הפופ-אפ מבלי לבצע פעולה
+  document.getElementById('confirmationPopup').style.display = 'none';
+});
+});
+
+
+
+// חזרה על אותה הלוגיקה גם לכפתור השני
+button2.addEventListener('click', function() {
+  var functionBox = document.createElement('div');
+  functionBox.innerHTML = `
+    <div class="sm_model_group_card">
+        <div class="header">
+                 <button class="btn primary filled sm" onclick="window.location.href='test.html';">שאלון לדוגמא</button>
+                                <button class="btn primary filled sm" onclick="window.open('file:///C:/Users/User/Documents/lomda/or.pdf', '_blank');">הדפסה</button>
+
+            <div class="actions">
+                <div class="dropdown dropdown-menu">
+                    <button class="btn icon-btn dropdown-btn filled">⋮</button>
+                    <div class="dropdown-list">
+                        <ul>
+                            <li><div class="list-item"><i class="fa-light fa-plus"></i><span>הוספת משתתפים</span></div></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="model_name" id="modelNameDisplay">שם הקבוצה</div>
+        </div>
+        <div class="bottom">
+            <div class="tag model_type"><span>מודל הכוכב</span></div>
+           <div class="model_name" id="modelName">שם המודל: New Model</div>
+        </div>
+          <div class="bottom">
+            <div class="resps">
+                <button class="btn custom-btn custom-btn-30 custom-btn-19334">
+                    <div class="count">4</div>
+                </button>
+                <button class="btn custom-btn custom-btn-30 add1">הוספת משתתפים +</button>
+                <button class="btn icon-btn custom-btn-30 star-btn" style="background: none; border: none; font-size: 40px; margin-top: 20px;" onclick="this.classList.toggle('filled')">★</button> <!-- כוכב גדול לפני הפח -->
+                <button class="btn icon-btn custom-btn-30 trash-btn" style="background: none; border: none; font-size: 20px; margin-top: 20px">🗑️</button>
+            </div>
+        </div>
+    </div>
+    <div id="confirmationPopup" class="popup" style="display:none;">
+        <div class="popup-content">
+            <p>האם אתה בטוח?</p>
+            <button id="confirmYes">כן</button>
+            <button id="confirmNo">לא</button>
+        </div>
+    </div>`;
+
+  // הוספת הפונקציה מתחת לכפתור הגדול
+  whiteBox.appendChild(functionBox);
+
+  // צמצום הפונקציה כולה פי 2
+  functionBox.style.transform = 'scale(0.9)';
+  functionBox.style.marginTop = '50px'; // הזזת הפונקציה 60 פיקסלים למטה
+// הזזת כפתור הוספת מודל כ-3 פיקסלים למטה
+var addModelBtn = document.getElementById('restoreButton');
+if (addModelBtn) {
+    addModelBtn.style.transition = "margin-top 0.5s";
+    addModelBtn.style.marginTop = '0px';  // הזזת כפתור הוספת מודל הערכה ב-30 פיקסלים
+}
+
+// הזזת כפתור מחיקת מודל
+var deleteModelBtn = document.getElementById('deleteButton');
+if (deleteModelBtn) {
+    deleteModelBtn.style.transition = "margin-top 0.5s";
+    deleteModelBtn.style.marginTop = '330px';  // הזזת כפתור מחיקת מודל הערכה ב-240 פיקסלים
+}
+  // הגדרת הפונקציה להיות צמודה לימין
+  functionBox.style.position = 'absolute'; // מאפשר למקם את האלמנט באורח חופשי
+  functionBox.style.right = '15px'; // המרחק מהשול הימני של המסך
+  functionBox.style.left = ''; // לא להגדיר marginLeft שיכול לשבש את המיקום
+
+  // מאזין לאירוע של לחיצה על כפתור הפח
+  var trashBtn = functionBox.querySelector('.trash-btn');
+  trashBtn.addEventListener('click', function() {
+    // הצגת הפופ-אפ רק בלחיצה על הפח
+    document.getElementById('confirmationPopup').style.display = 'flex';
+  });
+
+  // פעולה למחיקת הפונקציה (הכרטיס כולו) אם המשתמש בחר "כן"
+  document.getElementById('confirmYes').addEventListener('click', function() {
+    // מחיקת הכרטיס כולו (functionBox)
+    whiteBox.removeChild(functionBox);
+
+    // סגירת הפופ-אפ
+    document.getElementById('confirmationPopup').style.display = 'none';
+  });
+
+  // פעולה אם המשתמש בחר "לא"
+  document.getElementById('confirmNo').addEventListener('click', function() {
+    // סגירת הפופ-אפ מבלי לבצע פעולה
+    document.getElementById('confirmationPopup').style.display = 'none';
+  });
+});
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ // מאזין לאירוע לחיצה על כפתור "כלל יחידתי"
+// מאזין לאירוע לחיצה על כפתור "כלל יחידתי"
+// משתנה שיבדוק אם הכפתור נלחץ כבר
+// משתנה שיבדוק אם הכפתור נלחץ כבר// פונקציה ליצור את כרטיס "כלל יחידתי"
+// פונקציה ליצירת כרטיס חדש
+// פונקציה ליצירת כרטיס "כלל יחידתי"
+// יצירת כרטיס חדש
+// מאזין לכל הלחיצות על כפתור "כלל יחידתי" בכל מקום בתוך ה-info-section
+// מאזין לכל הלחיצות על כפתור "כלל יחידתי" בכל מקום בתוך ה-info-section
+// מאזין לכל הלחיצות על כפתור "כלל יחידתי" בכל מקום בתוך ה-info-section
+// מאזין לכל הלחיצות על כפתור "כלל יחידתי"
+document.body.addEventListener('click', function(event) {
+    // נבדוק אם נלחץ על כפתור שהולך לגרום למחיקה
+    if (event.target && event.target.matches('.btn.filled.primary')) {
+        // זיהוי כל המלבנים עם שבעה כפתורים לבנים
+        var rectangles = document.querySelectorAll('.info-section .sm_model_group_card');
+
+        rectangles.forEach(function(rectangle) {
+            // נבדוק אם המלבן מכיל שבעה כפתורים לבנים
+            var buttons = rectangle.querySelectorAll('.btn[style="background-color: white;"]');
+            if (buttons.length === 7) {
+                // אם יש בדיוק 7 כפתורים לבנים, נמחק את המלבן
+                rectangle.remove();
+            }
+        });
+
+        // הפונקציות שיבצעו פעולה אחרת, אם צריך
+        createUnitCard(event.target);
+    }
+});
+
+
+// מאזין לכל הלחיצות על כפתור "כלל יחידתי" בכל מקום בתוך ה-info-section
+// מאזין לכל הלחיצות על כפתור "כלל יחידתי" בכל מקום בתוך ה-info-section
+// מאזין לכל הלחיצות על כפתור "כלל יחידתי" בכל מקום בתוך ה-info-section
+// מאזין לכל הלחיצות על כפתור "כלל יחידתי"
+
+
+// מאזין לכל הלחיצות על כפתור "כלל יחידתי"
+document.body.addEventListener('click', function(event) {
+    // אם הכפתור שנלחץ הוא כפתור "כלל יחידתי"
+    if (event.target && event.target.matches('.btn.filled.primary')) {
+        // קודם כל נמחק את כל התוכן הקודם (אם יש)
+        removePreviousContent();
+
+        // כעת, ניצור כרטיס "כלל יחידתי" חדש
+        createUnitCard(event.target); // נדאג להוסיף את הכרטיס במקום הנכון
+    }
+});
+
+// מאזין לכל הלחיצות על כפתור "כלל יחידתי"
+document.body.addEventListener('click', function(event) {
+    // אם הכפתור שנלחץ הוא כפתור "כלל יחידתי"
+    if (event.target && event.target.matches('.btn.filled.primary')) {
+        // קודם כל נמחק את כל התוכן הקודם (אם יש)
+        removePreviousContent();
+
+        // כעת, ניצור כרטיס "כלל יחידתי" חדש
+        createUnitCard(event.target); // נדאג להוסיף את הכרטיס במקום הנכון
+    }
+});
+
+// יצירת כרטיס "כלל יחידתי"
+function createUnitCard(button) {
+    var newCard = document.createElement('div');
+    newCard.classList.add('sm_model_group_card'); // נוודא שזה כרטיס חדש
+
+    // זהו המודל המהודר והמאורגן
+    newCard.innerHTML = `
+      <div class="header">
+          <button class="btn primary filled sm" onclick="window.location.href='test.html';">שאלון לדוגמא</button>
+   <button class="btn primary filled sm" onclick="window.open('file:///C:/Users/User/Documents/lomda/or.pdf', '_blank');">הדפסה</button>
+          <div class="actions">
+              <div class="dropdown dropdown-menu">
+                  <button class="btn icon-btn dropdown-btn filled">⋮</button>
+                  <div class="dropdown-list">
+                      <ul>
+                          <li><div class="list-item"><i class="fa-light fa-plus"></i> <span>הוספת משתתפים</span></div></li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="bottom">
+          <div class="tag model_type"><span>כלל יחידתי</span></div>
+          <div class="model_name" id="modelName">שם המודל: New Model</div>
+      </div>
+      <div class="bottom">
+          <div class="resps">
+              <button class="btn custom-btn custom-btn-30 custom-btn-19334">
+                  <div class="count">4</div>
+              </button>
+              <button class="btn custom-btn custom-btn-30 add">הוספת משתתפים +</button>
+          </div>
+      </div>
+    `;
+
+    // מזהה את המקום של כפתור הוספת המודל (כדי להדביק במקום הנכון)
+    var section = button.closest('.info-section');
+
+    // חיפוש אחר כרטיס קודם אם יש, על מנת להחליפו
+    var existingCard = section.querySelector('.sm_model_group_card');
+
+    // קובעים את המרחק של כפתור "כלל יחידתי" מהחלק העליון של הדף
+   
+ 
+        // מוחק את הריבוע הלבן עם כל התוכן
+
+
+    // אם יש כרטיס קודם, נבצע את הצעד של החלפתו
+    if (existingCard) {
+        section.insertBefore(newCard, existingCard);
+    } else {
+        section.appendChild(newCard);
+    }
+
+    // סימון של הכרטיס החדש ככרטיס שכפול, כדי שנוכל להבדיל אותו מהכרטיס המקורי
+    newCard.setAttribute('data-new-card', 'true');
+}
+
+// פונקציה למחיקת התוכן הקודם (אם קיים) לפני יצירת כרטיס חדש
+function removePreviousContent() {
+    // מחיקת כל כרטיסים חדשים שנוצרו (לא המקורי)
+    var existingNewCards = document.querySelectorAll('.sm_model_group_card[data-new-card="true"]');
+
+    existingNewCards.forEach(function(card) {
+        // מוחק רק את הכרטיסים החדשים
+       card.remove();
+    });
+
+    // מחיקת כל אלמנט עם רקע לבן בתוך טווח של 500 פיקסלים
+    var whiteBackgroundElements = document.querySelectorAll('[style*="background-color: white"], .white-background');
+    whiteBackgroundElements.forEach(function(element) {
+        // חישוב המיקום של האלמנט ביחס לדף
+        var elementPosition = element.getBoundingClientRect();
+
+        // אם המרחק מהחלק העליון של הדף קטן מ-500 פיקסלים למעלה או למטה
+        if (Math.abs(elementPosition.top) <= 500) {
+            // בודק אם האלמנט הוא ריבוע
+            var width = element.offsetWidth;
+            var height = element.offsetHeight;
+
+            // אם זה לא ריבוע, נמחק את האלמנט
+            if (width !== height) {
+                element.remove();
+            }
+        }
+    });
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+;// מאזין לכל כפתור עם הקלאס 'add'
+document.body.addEventListener('click', function(event) {
+    if (event.target && event.target.classList.contains('add')) {
+        // יצירת ה-HTML החדש לדיאלוג
+        var dialogHTML = `
+        <div class="q-dialog fullscreen no-pointer-events q-dialog--modal">
+            <div class="q-dialog__backdrop fixed-full" aria-hidden="true" style="--q-transition-duration: 300ms;"></div>
+            <div class="q-dialog__inner flex no-pointer-events q-dialog__inner--minimized q-dialog__inner--standard fixed-full flex-center" tabindex="-1" style="--q-transition-duration: 300ms;">
+                <div class="q-card sm_event_group_participents">
+                    <div class="q-card__section q-card__section--vert">
+                        <div class="row justify-end items-center">
+                            <i class="fa-regular fa-close text-xxxl cursor-pointer close-dialog"></i>
+                        </div>
+                    </div>
+                    <div class="q-card__section q-card__section--vert q-pt-none">
+                        <div>
+                            <div class="q-mb-md">
+                                <button class="btn group group rect-btn choose-group-btn">
+                                    <span class="btn-content">
+                                        <span class="button-text">בחירת משתתפים מקבוצה וירטואלית</span>
+                                        <span class="emoji">🌥️</span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="q-mb-md">
+                                <button class="btn group group rect-btn add-units-btn">
+                                    <span class="btn-content">
+                                        <span class="button-text">הוסף יחידות מאירוע אחר</span>
+                                        <span class="emoji">🌥️</span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                        <div id="add-event-button-container">
+                            <!-- כפתור זה יתווסף רק לאחר לחיצה על הוספת יחידות מאירוע אחר -->
+                        </div>
+                        <div>
+                            <button class="btn q-mt-sm bg-primary text-white filled rect-btn save-this-btn">
+                                <span>שמירה</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+
+
+        // הוספת ה-HTML החדש לדף
+        document.body.insertAdjacentHTML('beforeend', dialogHTML);
+
+        // הוספת מאזין לאירוע לסגירת הדיאלוג
+        document.querySelector('.close-dialog').addEventListener('click', function() {
+            document.querySelector('.q-dialog').remove();
+        });
+
+        // מאזין לאירוע לחיצה על כפתור "בחירת משתתפים מקבוצה וירטואלית"
+        document.querySelector('.choose-group-btn').addEventListener('click', function() {
+            // הסרת כפתור "הוסף יחידות מאירוע אחר"
+            document.querySelector('.add-units-btn').remove();
+
+            // יצירת כפתור "בחר יחידה וירטואלית"
+            var newButtonHTML = `
+            <div class="q-mb-md" id="bibi-gogo-btn-container">
+                <button class="btn group rect-btn bibi-gogo-btn">
+                    <span class="btn-content">
+                        <span class="button-text">בחר יחידה וירטואלית</span>
+                    </span>
+                </button>
+            </div>`;
+           
+            // הוספת הכפתור למסך
+            var container = document.querySelector('#add-event-button-container');
+            container.insertAdjacentHTML('beforeend', newButtonHTML);
+           
+            // מניעת יצירת כפתור נוסף כל פעם
+            document.querySelector('.choose-group-btn').disabled = true;
+
+            // הוספת מאזין לאירוע לחיצה על כפתור "ביבי גוגו ד"
+            document.querySelector('.bibi-gogo-btn').addEventListener('click', function() {
+                // יצירת הרשימה עם האירועים
+                var eventListHTML = `
+                <div id="event-list" class="q-mb-md" style="display: none; width: 100%; margin-top: 10px;">
+                    <ul style="list-style-type: none; padding-left: 0; margin: 0;">
+                        <li><button class="btn group rect-btn event-item" data-event="אירוע 1">אירוע 1</button></li>
+                        <li><button class="btn group rect-btn event-item" data-event="אירוע 2">אירוע 2</button></li>
+                        <li><button class="btn group rect-btn event-item" data-event="אירוע 3">אירוע 3</button></li>
+                        <li><button class="btn group rect-btn event-item" data-event="אירוע 4">אירוע 4</button></li>
+                        <li><button class="btn group rect-btn event-item" data-event="אירוע 5">אירוע 5</button></li>
+                        <li><button class="btn group rect-btn event-item" data-event="אירוע 6">אירוע 6</button></li>
+                        <li><button class="btn group rect-btn event-item" data-event="אירוע 7">אירוע 7</button></li>
+                        <li><button class="btn group rect-btn event-item" data-event="אירוע 8">אירוע 8</button></li>
+                    </ul>
+                </div>`;
+
+                // הוספת הרשימה למסך
+                document.querySelector('#add-event-button-container').insertAdjacentHTML('beforeend', eventListHTML);
+
+                // הצגת הרשימה
+                var eventList = document.getElementById('event-list');
+                eventList.style.display = (eventList.style.display === 'none' || eventList.style.display === '') ? 'block' : 'none';
+
+                // מאזין לאירועים בלחיצה על כל אחד מהאירועים
+                document.querySelectorAll('.event-item').forEach(function(eventButton) {
+                    eventButton.addEventListener('click', function() {
+                        var selectedEvent = eventButton.innerText;
+
+                        // עדכון כפתור "בחר יחידה וירטואלית" לשם האירוע שנבחר
+                        document.querySelector('.bibi-gogo-btn').innerHTML = `
+                        <span class="btn-content">
+                            <span class="button-text">${selectedEvent}</span>
+                        </span>`;
+
+                        // הסתרת את הרשימה לאחר הבחירה
+                        eventList.style.display = 'none';
+
+                        // יצירת כפתור "שמור"
+                        var saveButtonHTML = `
+                        <div class="q-mb-md">
+                            <button class="btn group rect-btn save-this-btn">
+                                <span class="btn-content">
+                                    <span class="button-text">שמור</span>
+                                </span>
+                            </button>
+                        </div>`;
+
+                        // הוספת כפתור "שמור"
+                        document.querySelector('#add-event-button-container').insertAdjacentHTML('beforeend', saveButtonHTML);
+
+                        // שינוי עיצוב הכפתור "שמור" (כחול)
+                        document.querySelector('.save-this-btn').style.backgroundColor = '#3498db'; // צבע כחול
+                        document.querySelector('.save-this-btn').style.color = 'white'; // צבע טקסט לבן
+                        document.querySelector('.save-this-btn').style.fontSize = '12px'; // גודל קטן
+                   
+                        document.querySelector('.save-this-btn').style.width = '24%'; // רוחב 40%
+                        document.querySelector('.save-this-btn').style.height = '17px'; // גובה 14 פיקסלים
+
+                        document.querySelector('.save-this-btn').style.textAlign = 'center'; // מיקום טקסט במרכז
+
+                        // הסרת כפתור "שמירה"
+                        document.querySelector('.q-mt-sm.bg-primary.text-white.filled.rect-btn').remove();
+                        document.querySelector('#add-event-button-container').addEventListener('click', function(event) {
+            if (event.target && event.target.classList.contains('save-this-btn')) {
+                var selectedEvent = document.querySelector('.bibi-gogo-btn').innerText.trim();
+
+                // אם נבחר אירוע
+                if (selectedEvent.length > 0) {
+                    // סגירת הדיאלוג
+                    document.querySelector('.q-dialog').remove();
+
+                    // יצירת עיגול קטן עם שם האירוע הנבחר
+                    var eventDisplayArea = document.createElement('div');
+                    eventDisplayArea.classList.add('event-display');
+                    eventDisplayArea.innerHTML = `${selectedEvent} <span class="remove-event" style="color: black; cursor: pointer;">❌</span>`; // הוספת האיקס
+
+                    // עיצוב המסגרת הירוקה הקטנה
+                    eventDisplayArea.style.backgroundColor = '#FFFFFF'; // צבע לבן
+
+                    eventDisplayArea.style.padding = '3px'; // מרווח קטן יותר
+                    eventDisplayArea.style.border = '2px solid #D2B48C'; // גבול ירוק כהה עם עובי 2px
+                    eventDisplayArea.style.borderRadius = '20px'; // פינות מעוגלות
+                    eventDisplayArea.style.width = '80px'; // רוחב קבוע
+                    eventDisplayArea.style.marginTop = '20px';
+                    eventDisplayArea.style.fontWeight = 'bold';
+                    eventDisplayArea.style.fontSize = '12px'; // גודל פונט 12px
+                    eventDisplayArea.style.textAlign = 'right'; // מיקום טקסט במרכז
+
+                    // הוספת המסגרת לאזור המתאים במסך הראשי
+                    document.querySelector('.sm_model_group_card .bottom').appendChild(eventDisplayArea);
+
+                    // מאזין לחיצה על האיקס כדי למחוק את האירוע
+                    eventDisplayArea.querySelector('.remove-event').addEventListener('click', function() {
+                        eventDisplayArea.remove(); // הסרת האירוע מהמסך
+                    });
+                } else {
+                    alert('לא נבחר אירוע!');
+                }
+            }
+        });
+                    });
+                });
+            });
+        });
+
+        // מאזין לאירוע לחיצה על כפתור "הוסף יחידות מאירוע אחר"
+        document.querySelector('.add-units-btn').addEventListener('click', function() {
+            // יצירת כפתור חדש "בחר אירוע"
+            var addEventButtonHTML = `
+            <div>
+                <div class="q-mb-md">
+                    <button class="btn group rect-btn add-event-btn">
+                        <span class="btn-content">
+                            <span class="button-text">בחר אירוע</span>
+                            <span class="emoji">⬇️</span>
+                        </span>
+                    </button>
+                </div>
+            </div>`;
+
+            // הוספת כפתור "בחר אירוע" לדיאלוג
+            document.querySelector('#add-event-button-container').innerHTML = addEventButtonHTML;
+
+            // יצירת משתנה שיבדוק אם הרשימה פתוחה או סגורה
+            var eventListOpen = false;
+
+            // מאזין לאירוע לחיצה על כפתור "בחר אירוע"
+            document.querySelector('.add-event-btn').addEventListener('click', function() {
+                // יצירת רשימה עם האירועים (אור, גילת, שמשון, מרינה)
+                var eventListHTML = `
+                <div id="event-list" class="q-mb-md" style="display: none;">
+                    <ul style="list-style-type: none; padding-left: 0;">
+                        <li><button class="btn group rect-btn event-item" data-event="אחד">אחד</button></li>
+                        <li><button class="btn group rect-btn event-item" data-event="שתיים">שתיים</button></li>
+                        <li><button class="btn group rect-btn event-item" data-event="שלוש">שלוש</button></li>
+                        <li><button class="btn group rect-btn event-item" data-event="ארבע">ארבע</button></li>
+                    </ul>
+                </div>`;
+
+                // אם הרשימה עדיין לא הוספה, נוסיף אותה
+                if (!document.getElementById('event-list')) {
+                    document.querySelector('#add-event-button-container').innerHTML += eventListHTML;
+                }
+
+                // חיפוש אחר האלמנט של הרשימה
+                var eventList = document.getElementById('event-list');
+
+                // אם הרשימה פתוחה, נסגור אותה
+                if (eventListOpen) {
+                    eventList.style.display = 'none';
+                } else {
+                    // אחרת, נפתח את הרשימה
+                    eventList.style.display = 'block';
+                    // מחיקת כפתור "הוספת יחידות מאירוע אחר"
+                    document.querySelector('.add-units-btn').remove();
+                }
+
+                // עדכון משתנה למצב הנוכחי של הרשימה
+                eventListOpen = !eventListOpen;
+
+                // מאזין לאירועים בלחיצה על כל אחד מהאירועים (אור, גילת, שמשון, מרינה)
+                document.querySelector('#event-list').addEventListener('click', function(e) {
+                    if (e.target.classList.contains('event-item')) {
+                        var selectedEvent = e.target.innerText;
+
+                        // עדכון כפתור "בחר אירוע" לשם האירוע שנבחר
+                        document.querySelector('.add-event-btn').innerHTML = `
+                        <span class="btn-content">
+                            <span class="button-text">${selectedEvent}</span>
+                        </span>`;
+
+                        // הסתרת את כל כפתורי האירועים (אור, גילת, שמשון, מרינה)
+                        document.getElementById('event-list').style.display = 'none';
+
+                        // יצירת רשימה של 5 יחידות (יחידה 1 עד יחידה 5) ו"תיבת חץ" ליד "רפואה"
+                        var unitListHTML = `<div id="unit-list" class="q-mb-md" style="margin-top: 10px;">`;
+
+                        // להוסיף את "רפואה" כטקסט עם חץ
+                        unitListHTML += `
+                        <div class="unit-item">
+                            <label>
+                                <input type="checkbox" class="unit-checkbox"> רפואה
+                            </label>
+                            <button class="toggle-non-medical">&#8595;</button> <!-- חץ לפתיחה -->
+                            <div class="non-medical-options" style="display:none;"></div>
+                        </div>`;
+
+                        // להוסיף את שאר היחידות כ-Checkboxים עם חץ
+                        for (var i = 1; i <= 5; i++) {
+                            unitListHTML += `
+                            <div class="unit-item">
+                                <button class="toggle-unit">&#8592;</button> <!-- חץ לכיוון שמאלה -->
+                                <label>
+                                    <input type="checkbox" class="unit-checkbox"> יחידה ${i}
+                                </label>
+                            </div>`;
+                        }
+
+                        unitListHTML += `</div>`;
+
+                        // הוספת רשימת היחידות מתחת לכפתור האירוע
+                        document.querySelector('#add-event-button-container').innerHTML += unitListHTML;
+
+                        // מאזין לחיצה על החץ ליד כל יחידה לפתיחת הנושאים
+                        document.querySelectorAll('.toggle-unit').forEach(function(button) {
+                            button.addEventListener('click', function() {
+                                var unitTopics = this.nextElementSibling.querySelector('.unit-topics');
+                                if (unitTopics.style.display === 'none') {
+                                    unitTopics.style.display = 'block';
+                                } else {
+                                    unitTopics.style.display = 'none';
+                                }
+                            });
+                        });
+
+                        // מאזין לחיצה על החץ ליד "רפואה" כדי להראות/להסתיר את כל היחידות והנושאים
+                        document.querySelector('.toggle-non-medical').addEventListener('click', function() {
+                            var unitList = document.getElementById('unit-list');
+                            if (unitList.style.display === 'none') {
+                                unitList.style.display = 'block';
+                            } else {
+                                unitList.style.display = 'none';
+                            }
+                        });
+                    }
+                });
+            });
+        });
+        document.querySelector('.save-this-btn').addEventListener('click', function() {
+    // קבלת שם האירוע שנבחר
+    var selectedEvent = document.querySelector('.bibi-gogo-btn').innerText.trim();
+
+    // אם נבחר אירוע
+    if (selectedEvent.length > 0) {
+        // סגירת הדיאלוג
+        document.querySelector('.q-dialog').remove();
+
+        // יצירת עיגול קטן עם שם האירוע הנבחר
+        var eventDisplayArea = document.createElement('div');
+        eventDisplayArea.classList.add('event-display');
+        eventDisplayArea.innerHTML = `${selectedEvent} <span class="remove-event" style="color: black; cursor: pointer;">❌</span>`; // הוספת האיקס
+
+        // עיצוב המסגרת הירוקה הקטנה
+        eventDisplayArea.style.backgroundColor = '#28A745'; // צבע ירוק
+        eventDisplayArea.style.padding = '3px'; // מרווח קטן יותר
+        eventDisplayArea.style.border = '2px solid #f4f1e1'; // גבול בצבע שמנת עדינה
+
+
+
+        eventDisplayArea.style.borderRadius = '20px'; // פינות מעוגלות
+        eventDisplayArea.style.width = '60px'; // רוחב קבוע
+        eventDisplayArea.style.marginTop = '20px';
+        eventDisplayArea.style.fontWeight = 'bold';
+        eventDisplayArea.style.fontSize = '10px'; // גודל פונט 12px
+        eventDisplayArea.style.textAlign = 'right'; // מיקום טקסט במרכז
+
+        // הוספת המסגרת לאזור המתאים במסך הראשי
+        document.querySelector('.sm_model_group_card .bottom').appendChild(eventDisplayArea);
+
+        // מאזין לחיצה על האיקס כדי למחוק את האירוע
+        eventDisplayArea.querySelector('.remove-event').addEventListener('click', function() {
+            eventDisplayArea.remove(); // הסרת האירוע מהמסך
+        });
+    } else {
+        alert('לא נבחר אירוע!');
+    }
+});
+
+        // מאזין לאירוע לחיצה על כפתור השמירה
+        document.querySelector('.q-mt-sm.bg-primary.text-white.filled.rect-btn').addEventListener('click', function() {
+            // יצירת רשימה של כל היחידות שנבחרו
+            var selectedUnits = [];
+            document.querySelectorAll('.unit-checkbox:checked').forEach(function(checkbox) {
+                selectedUnits.push(checkbox.parentElement.innerText.trim());
+            });
+
+            // אם יש יחידות שנבחרו
+            if (selectedUnits.length > 0) {
+                // שמירת שם היחידה הנבחרת
+                var selectedUnitName = selectedUnits.join(', ');
+
+                // סגירת הדיאלוג
+                document.querySelector('.q-dialog').remove();
+
+                // עבור כל יחידה שנבחרה, ניצור עיגול צהוב חדש
+                selectedUnits.forEach(function(unitName) {
+                    var unitDisplayArea = document.createElement('div');
+                    unitDisplayArea.classList.add('unit-display');
+                    unitDisplayArea.innerHTML = `${unitName} <span class="remove-unit" style="color: black; cursor: pointer;">❌</span>`; // הוספת האיקס
+
+                    // עיצוב המסגרת הצהובה הקטנה
+                    unitDisplayArea.style.backgroundColor = '#FFEB3B'; // צבע צהוב
+                    unitDisplayArea.style.padding = '3px'; // מרווח קטן יותר
+                    unitDisplayArea.style.border = '2px solid #f1c40f'; // גבול צהוב כהה מעט
+
+
+                    unitDisplayArea.style.borderRadius = '20px'; // פינות מעוגלות
+                    unitDisplayArea.style.width = '80px'; // רוחב קבוע
+                    unitDisplayArea.style.marginTop = '50px';
+                    unitDisplayArea.style.fontWeight = 'bold';
+                    unitDisplayArea.style.fontSize = '12px'; // גודל פונט 12px
+                    unitDisplayArea.style.textAlign = 'right'; // מיקום טקסט במרכז
+                
+                    var hoverText = document.createElement('div');
+
+        hoverText.classList.add('hover-text');
+        hoverText.innerText = 'כמות האנשים ביחידה  = 0  '; // הטקסט במעבר עכבר
+        hoverText.style.display = 'none'; // התחל להסתיר את הטקסט
+        hoverText.style.position = 'absolute';
+        hoverText.style.marginTop = '-70px';
+        hoverText.style.backgroundColor = '#D3D3D3'; // צבע רקע אפור בהיר
+        hoverText.style.padding = '10px';
+        hoverText.style.borderRadius = '5px';
+        hoverText.style.fontSize = '14px';
+        hoverText.style.zIndex = '9999';
+        hoverText.style.textAlign = 'center';
+        hoverText.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.2)';
+        
+        // הוספת אלמנט הטקסט למקום המתאים
+        unitDisplayArea.appendChild(hoverText);
+
+        // מאזין לאירוע hover על אלמנט העיגול
+        unitDisplayArea.addEventListener('mouseover', function() {
+            hoverText.style.display = 'block'; // הצגת הטקסט בזמן שהעכבר מרחף
+        });
+
+        unitDisplayArea.addEventListener('mouseout', function() {
+            hoverText.style.display = 'none'; // הסתרת הטקסט לאחר שהעכבר יוצא
+        });
+                    // הוספת המסגרת לאזור המתאים במסך הראשי
+                    document.querySelector('.sm_model_group_card .bottom').appendChild(unitDisplayArea);
+
+                    // מאזין לחיצה על האיקס כדי למחוק את היחידה
+                    unitDisplayArea.querySelector('.remove-unit').addEventListener('click', function() {
+                        unitDisplayArea.remove(); // הסרת היחידה מהמסך
+                    });
+                });
+            } else {
+                alert('לא נבחרו יחידות!');
+            }
+        });
+    }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // מאזין לכל לחיצה על כפתור עם הקלאס 'custom-btn', מלבד הוספת משתתפים
+    document.body.addEventListener('click', function(event) {
+        const button = event.target.closest('.btn.custom-btn');
+        
+        // אם הכפתור הוא כפתור שמכיל את הקלאס 'custom-btn' ולא כפתור של הוספת משתתפים
+        if (button && !button.classList.contains('add') && !button.classList.contains('add1')) {
+
+            // יצירת אלמנט של "טעינה"
+            const loadingText = document.createElement('div');
+            loadingText.textContent = 'טוען...';
+            loadingText.style.position = 'fixed';
+            loadingText.style.top = '50%';
+            loadingText.style.left = '50%';
+            loadingText.style.transform = 'translate(-50%, -50%)';
+            loadingText.style.fontSize = '24px';
+            loadingText.style.color = '#000';
+            loadingText.style.fontWeight = 'bold';
+            loadingText.style.zIndex = '1000'; // לוודא שהכיתוב מעל כל דבר אחר
+            document.body.appendChild(loadingText);
+
+            // לאחר חצי שנייה, נפתח את המודאל ונסיר את ה"טוען..."
+            setTimeout(function() {
+                // הסרת כיתוב "טוען..."
+                document.body.removeChild(loadingText);
+                
+                // יצירת המודאל (החלון הקופץ)
+                const modal = document.createElement('div');
+                modal.classList.add('modal');
+
+                // עדכון גודל המודאל כך שיתפוס 90% מהמסך
+                modal.style.width = '90%'; // רוחב המודאל 90% מהמסך
+                modal.style.height = '90%'; // גובה המודאל 90% מהמסך
+                modal.style.position = 'fixed';
+                modal.style.top = '50%';
+                modal.style.left = '50%';
+                modal.style.transform = 'translate(-50%, -50%)'; // למרכז את המודאל
+                modal.style.backgroundColor = 'white';
+                modal.style.boxShadow = '0px 0px 15px rgba(0, 0, 0, 0.3)';
+                modal.style.padding = '20px';
+                modal.style.overflowY = 'auto';
+
+                // יצירת כפתור סגירה בפינה השמאלית העליונה
+                const closeBtn = document.createElement('button');
+                closeBtn.classList.add('close-btn');
+                closeBtn.textContent = 'X';
+                closeBtn.style.position = 'absolute';
+                closeBtn.style.marginRight = '1050px';
+                closeBtn.style.fontSize = '30px';
+                closeBtn.style.background = 'none';
+                closeBtn.style.border = 'none';
+                closeBtn.style.cursor = 'pointer';
+                closeBtn.addEventListener('click', function() {
+                    modal.style.display = 'none'; // סגירת המודאל
+                });
+
+                // יצירת הטבלה (העתקתי אותה מהדוגמא שלך)
+                const table = document.createElement('table');
+                table.classList.add('table-socio-potential');
+                table.innerHTML =  `
+    <tr>
+        <td></td> <!-- עמודה ריקה ראשונה -->
+        <td>מספר אישי</td>
+        <td>יחידת אירוע</td>
+        <td>שם מלא</td>
+        <td>כמות ימי שהייה ביחידה</td>
+        <td>דרגת כתף</td>
+    </tr>
+    <tr>
+         <td style="padding: 10px; border: 1px solid #ddd;">
+                    <img class="search-icon" src="Assets/media/searchGray.svg" alt="searchIcon" style="width: 20px; height: 20px; padding: 5px;">
+                </td>
+          <td style="padding: 10px; border: 1px solid #ddd;">
+                    <img class="search-icon" src="Assets/media/searchGray.svg" alt="searchIcon" style="width: 20px; height: 20px; padding: 5px;">
+                </td>
+         <td style="padding: 10px; border: 1px solid #ddd;">
+                    <img class="search-icon" src="Assets/media/searchGray.svg" alt="searchIcon" style="width: 20px; height: 20px; padding: 5px;">
+                </td>
+        <td style="padding: 10px; border: 1px solid #ddd;">
+                    <img class="search-icon" src="Assets/media/searchGray.svg" alt="searchIcon" style="width: 20px; height: 20px; padding: 5px;">
+                </td>
+        <td style="padding: 10px; border: 1px solid #ddd;">
+                    <img class="search-icon" src="Assets/media/searchGray.svg" alt="searchIcon" style="width: 20px; height: 20px; padding: 5px;">
+                </td>
+          <td style="padding: 10px; border: 1px solid #ddd;">
+                    <img class="search-icon" src="Assets/media/searchGray.svg" alt="searchIcon" style="width: 20px; height: 20px; padding: 5px;">
+                </td>
+        
+    </tr>
+    <tr>
+        <td>1</td> 
+        <td>1113211</td> <!-- עמודה ריקה שנייה -->
+        <td>מבצעים באוגדה 1</td>
+        <td>ישראל ישראלי</td>
+        <td>104</td>
+        <td>65- רנג </td>
+      
+    </tr>
+    <tr>
+        <td>2</td> 
+        <td>1112233</td> <!-- עמודה ריקה שנייה -->
+        <td>מבצעים באוגדה 2</td>
+        <td>שמשון חממי</td>
+        <td>104</td>
+        <td>18 - רסן</td>
+      
+    </tr>
+     <tr>
+        <td>3</td> 
+        <td>1111598</td> <!-- עמודה ריקה שנייה -->
+        <td>מבצעים באוגדה 1</td>
+        <td>יונתן איצקוביץ</td>
+        <td>360</td>
+        <td>71- רסמ</td>
+      
+    </tr>
+     <tr>
+        <td>4</td> 
+        <td>1111111</td> <!-- עמודה ריקה שנייה -->
+        <td>מבצעים באוגדה 5</td>
+        <td>מאי אגיב</td>
+        <td>104</td>
+        <td>18 - רסן</td>
+      
+    </tr>
+`;
+
+                // הסרת גבול תחתון של הטבלה
+                table.style.borderBottom = 'none';
+                
+                // הורדת הטבלה ב-30 פיקסלים למטה
+                table.style.marginTop = '60px';
+
+                // עיצוב שורות כך שתהיה לכל שורה גובה שווה
+                const rows = table.querySelectorAll('tr');
+                rows.forEach(row => {
+                    row.style.height = 'calc(100% / ' + (rows.length) + ')';
+                });
+
+                // הוספת כפתור הסגירה והטבלה למודאל
+                modal.appendChild(closeBtn);
+                modal.appendChild(table);
+
+                // הוספת המודאל לדף
+                document.body.appendChild(modal);
+
+                // הצגת המודאל
+                modal.style.display = 'block';
+            }, 500); // אחרי חצי שנייה
+        }
+    });
+});
+function showOptions() {
+        document.getElementById("options").style.display = "block";
+    }
+
+    // הישארות במסך
+    function stayOnPage() {
+        document.getElementById("options").style.display = "none";
+    }
+
+    // התחלת סימולציה מחדש (מעבר לדף e.html)
+    function startAgain() {
+        window.location.href = "index.html"; // ודא ש-e.html קיים באותו תיק
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+        // בוחר את כל הקישורים עם המחלקה q-tab
+        const links = document.querySelectorAll('.q-tab');
+        
+        // מאזין לכל קישור
+        links.forEach(link => {
+            link.addEventListener('click', function(event) {
+                event.preventDefault(); // מונע את פעולת הניווט של הקישור
+                
+                // הצגת האלרט
+                alert("שימו לב בלומדה לא ניתן לחזור אחורה- במערכת עצמה אפשר");
+            });
+        });
+    });
+    document.body.addEventListener('click', function(event) {
+    if (event.target && event.target.classList.contains('add1')) {
+        // יצירת ה-HTML החדש לדיאלוג
+        var dialogHTML = `
+        <div class="q-dialog fullscreen no-pointer-events q-dialog--modal">
+            <div class="q-dialog__backdrop fixed-full" aria-hidden="true" style="--q-transition-duration: 300ms;"></div>
+            <div class="q-dialog__inner flex no-pointer-events q-dialog__inner--minimized q-dialog__inner--standard fixed-full flex-center" tabindex="-1" style="--q-transition-duration: 300ms;">
+                <div class="q-card sm_event_group_participents">
+                    <div class="q-card__section q-card__section--vert">
+                        <div class="row justify-end items-center">
+                            <i class="fa-regular fa-close text-xxxl cursor-pointer close-dialog"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="q-mb-md">
+                            <button class="btn group group rect-btn choose-plant-btn">
+                                <span class="btn-content">
+                                    <span class="button-text">בחירת משתתפים מעץ היחידות </span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="q-card__section q-card__section--vert q-pt-none">
+                        <div>
+                            <div class="q-mb-md">
+                                <button class="btn group group rect-btn choose-group-btn">
+                                    <span class="btn-content">
+                                        <span class="button-text">בחירת משתתפים מקבוצה וירטואלית</span>
+                                        <span class="emoji">🌥️</span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="q-mb-md">
+                                <button class="btn group group rect-btn add-units-btn">
+                                    <span class="btn-content">
+                                        <span class="button-text">הוסף יחידות מאירוע אחר</span>
+                                        <span class="emoji">🌥️</span>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- הוספת כפתור "בחר עציץ" -->
+
+                        <!-- הרשימה תוצג רק לאחר לחיצה על "בחר עציץ" -->
+                        <div id="choose-plant-container" style="display: none;">
+                            <div id="plant-list" class="q-mb-md">
+                                <ul style="list-style-type: none; padding-left: 0; margin: 0;">
+                                    <li><button class="btn group rect-btn plant-item" data-plant="עציץ 1">יחידה ללא שם 1</button></li>
+                                    <li><button class="btn group rect-btn plant-item" data-plant="עציץ 2">יחידה ללא שם 2</button></li>
+                                    <li><button class="btn group rect-btn plant-item" data-plant="עציץ 3">יחידה ללא שם 3</button></li>
+                                    <li><button class="btn group rect-btn plant-item" data-plant="עציץ 4">יחידה ללא שם 4</button></li>
+                                    <li><button class="btn group rect-btn plant-item" data-plant="עציץ 5">יחידה ללא שם 5</button></li>
+                                   
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div id="selected-plant" style="display: none; margin-top: 10px;">
+                            <span>בחרת ב- <span id="plant-name"></span></span>
+                        </div>
+
+                        <div id="add-event-button-container">
+                            <!-- כפתור זה יתווסף רק לאחר לחיצה על הוספת יחידות מאירוע אחר -->
+                        </div>
+                        <div>
+                            <button class="btn q-mt-sm bg-primary text-white filled rect-btn save-this-btn">
+                                <span>שמירה</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+
+     // הוספת ה-HTML החדש לדף
+document.body.insertAdjacentHTML('beforeend', dialogHTML);
+
+// הוספת מאזין לאירוע לסגירת הדיאלוג
+document.querySelector('.close-dialog').addEventListener('click', function() {
+    document.querySelector('.q-dialog').remove();
+});
+
+// מאזין לאירוע לחיצה על כפתור "בחר עציץ"
+document.querySelector('.choose-plant-btn').addEventListener('click', function() {
+    var plantContainer = document.getElementById('choose-plant-container');
+    var buttonRect = this.getBoundingClientRect(); // חישוב המיקום של כפתור "בחר עציץ"
+
+    // אם הרשימה פתוחה, נסגור אותה
+    if (plantContainer.style.display === 'block') {
+        plantContainer.style.display = 'none'; // הסתרת הרשימה
+        // מאפשר לחיצה על כפתורים אחרים לאחר סגירת הרשימה
+        document.querySelector('.choose-group-btn').disabled = false;
+        document.querySelector('.add-units-btn').disabled = false;
+    } else {
+        // אחרת, נפתח את הרשימה
+        plantContainer.style.position = 'fixed'; // נשתמש ב-fixed כדי למקם אותה על המסך
+        plantContainer.style.left = '480px'; // מיקום אופקי
+        plantContainer.style.top = '130px'; // הגדרת המיקום הקבוע של הרשימה
+
+        plantContainer.style.width = '25%'; // הגדרת רוחב הרשימה שיתפוס את כל רוחב הדיאלוג
+        plantContainer.style.zIndex = '9999'; // הצגת הרשימה מעל שאר התוכן
+        plantContainer.style.display = 'block'; // הצגת הרשימה
+
+        // הזזת כפתורי "בחר משתתפים" ו-"הוסף יחידות" למטה
+        document.querySelector('.choose-group-btn').style.marginTop = '230px';
+
+        // מניעת לחיצה על כפתורים אחרים בזמן שהתפריט פתוח
+        document.querySelector('.choose-group-btn').disabled = true;
+        document.querySelector('.add-units-btn').disabled = true;
+    }
+});
+
+        // מאזין לאירועים בלחיצה על כל אחד מהעציצים
+        document.querySelectorAll('.plant-item').forEach(function(plantButton) {
+            plantButton.addEventListener('click', function() {
+                var selectedPlant = plantButton.innerText;
+
+                // עדכון הטקסט "בחרת ב- עציץ"
+                document.getElementById('plant-name').innerText = selectedPlant;
+                document.getElementById('selected-plant').style.display = 'block';
+                document.getElementById('choose-plant-container').style.display = 'none';
+
+                // אפשרות ללחוץ מחדש על הכפתורים לאחר בחירת עציץ
+                document.querySelector('.choose-plant-btn').disabled = false;
+                document.querySelector('.choose-group-btn').disabled = false;
+                document.querySelector('.add-units-btn').disabled = false;
+            });
+        });
+
+
+        // הוספת מאזין לחיצה על כפתור "שמירה"
+        document.querySelector('.save-this-btn').addEventListener('click', function() {
+            var plantName = document.getElementById('plant-name').innerText;
+
+            // אם לא נבחר עציץ
+            if (!plantName) {
+               
+                return;
+            }
+
+            // יצירת אלמנט עיגול חום להצגת העציץ
+            var plantDisplay = document.createElement('div');
+            plantDisplay.classList.add('plant-display');
+            plantDisplay.innerHTML = `${plantName} <span class="remove-plant" style="color: black; cursor: pointer;">❌</span>`; 
+
+            // עיצוב עיגול חום קטן
+            plantDisplay.style.backgroundColor = '#D2B48C'; 
+            plantDisplay.style.padding = '5px';
+            plantDisplay.style.border = '2px solid #8B4513'; 
+            plantDisplay.style.borderRadius = '20px'; 
+            plantDisplay.style.width = '120px'; 
+            plantDisplay.style.marginTop = '10px';
+            plantDisplay.style.fontWeight = 'bold';
+            plantDisplay.style.fontSize = '12px'; 
+            plantDisplay.style.textAlign = 'right'; 
+
+            // הוספת hover לצפייה בכמות האנשים
+            var hoverText = document.createElement('div');
+            
+            plantDisplay.appendChild(hoverText);
+
+            // הוספת אלמנט ה-hover
+            plantDisplay.addEventListener('mouseover', function() {
+                hoverText.style.display = 'block';
+            });
+
+            plantDisplay.addEventListener('mouseout', function() {
+                hoverText.style.display = 'none';
+            });
+
+            // הוספת העציץ הנבחר לאזור התצוגה
+            document.querySelector('.sm_model_group_card .bottom').appendChild(plantDisplay);
+
+            // מאזין לחיצה על האיקס כדי למחוק את העציץ
+            plantDisplay.querySelector('.remove-plant').addEventListener('click', function() {
+                plantDisplay.remove(); // הסרת העציץ מהמסך
+            });
+
+            // סגירת הדיאלוג לאחר שמירה
+            document.querySelector('.q-dialog').remove();
+        });
+
+
+  
+
+
+
+        // מאזין לאירוע לחיצה על כפתור "בחירת משתתפים מקבוצה וירטואלית"
+        document.querySelector('.choose-group-btn').addEventListener('click', function() {
+            // הסרת כפתור "הוסף יחידות מאירוע אחר"
+            document.querySelector('.add-units-btn').remove();
+
+            // יצירת כפתור "בחר יחידה וירטואלית"
+            var newButtonHTML = `
+            <div class="q-mb-md" id="bibi-gogo-btn-container">
+                <button class="btn group rect-btn bibi-gogo-btn">
+                    <span class="btn-content">
+                        <span class="button-text">בחר יחידה וירטואלית</span>
+                    </span>
+                </button>
+            </div>`;
+           
+            // הוספת הכפתור למסך
+            var container = document.querySelector('#add-event-button-container');
+            container.insertAdjacentHTML('beforeend', newButtonHTML);
+           
+            // מניעת יצירת כפתור נוסף כל פעם
+            document.querySelector('.choose-group-btn').disabled = true;
+
+            // הוספת מאזין לאירוע לחיצה על כפתור "ביבי גוגו ד"
+            document.querySelector('.bibi-gogo-btn').addEventListener('click', function() {
+                // יצירת הרשימה עם האירועים
+                var eventListHTML = `
+                <div id="event-list" class="q-mb-md" style="display: none; width: 100%; margin-top: 10px;">
+                    <ul style="list-style-type: none; padding-left: 0; margin: 0;">
+                        <li><button class="btn group rect-btn event-item" data-event="אירוע 1">אירוע 1</button></li>
+                        <li><button class="btn group rect-btn event-item" data-event="אירוע 2">אירוע 2</button></li>
+                        <li><button class="btn group rect-btn event-item" data-event="אירוע 3">אירוע 3</button></li>
+                        <li><button class="btn group rect-btn event-item" data-event="אירוע 4">אירוע 4</button></li>
+                        <li><button class="btn group rect-btn event-item" data-event="אירוע 5">אירוע 5</button></li>
+                        <li><button class="btn group rect-btn event-item" data-event="אירוע 6">אירוע 6</button></li>
+                        <li><button class="btn group rect-btn event-item" data-event="אירוע 7">אירוע 7</button></li>
+                        <li><button class="btn group rect-btn event-item" data-event="אירוע 8">אירוע 8</button></li>
+                    </ul>
+                </div>`;
+
+                // הוספת הרשימה למסך
+                document.querySelector('#add-event-button-container').insertAdjacentHTML('beforeend', eventListHTML);
+
+                // הצגת הרשימה
+                var eventList = document.getElementById('event-list');
+                eventList.style.display = (eventList.style.display === 'none' || eventList.style.display === '') ? 'block' : 'none';
+
+                // מאזין לאירועים בלחיצה על כל אחד מהאירועים
+                document.querySelectorAll('.event-item').forEach(function(eventButton) {
+                    eventButton.addEventListener('click', function() {
+                        var selectedEvent = eventButton.innerText;
+
+                        // עדכון כפתור "בחר יחידה וירטואלית" לשם האירוע שנבחר
+                        document.querySelector('.bibi-gogo-btn').innerHTML = `
+                        <span class="btn-content">
+                            <span class="button-text">${selectedEvent}</span>
+                        </span>`;
+
+                        // הסתרת את הרשימה לאחר הבחירה
+                        eventList.style.display = 'none';
+
+                        // יצירת כפתור "שמור"
+                        var saveButtonHTML = `
+                        <div class="q-mb-md">
+                            <button class="btn group rect-btn save-this-btn">
+                                <span class="btn-content">
+                                    <span class="button-text">שמור</span>
+                                </span>
+                            </button>
+                        </div>`;
+
+                        // הוספת כפתור "שמור"
+                        document.querySelector('#add-event-button-container').insertAdjacentHTML('beforeend', saveButtonHTML);
+
+                        // שינוי עיצוב הכפתור "שמור" (כחול)
+                        document.querySelector('.save-this-btn').style.backgroundColor = '#3498db'; // צבע כחול
+                        document.querySelector('.save-this-btn').style.color = 'white'; // צבע טקסט לבן
+                        document.querySelector('.save-this-btn').style.fontSize = '12px'; // גודל קטן
+                   
+                        document.querySelector('.save-this-btn').style.width = '24%'; // רוחב 40%
+                        document.querySelector('.save-this-btn').style.height = '17px'; // גובה 14 פיקסלים
+
+                        document.querySelector('.save-this-btn').style.textAlign = 'center'; // מיקום טקסט במרכז
+
+                        // הסרת כפתור "שמירה"
+                        document.querySelector('.q-mt-sm.bg-primary.text-white.filled.rect-btn').remove();
+                        document.querySelector('#add-event-button-container').addEventListener('click', function(event) {
+            if (event.target && event.target.classList.contains('save-this-btn')) {
+                var selectedEvent = document.querySelector('.bibi-gogo-btn').innerText.trim();
+
+                // אם נבחר אירוע
+                if (selectedEvent.length > 0) {
+                    // סגירת הדיאלוג
+                    document.querySelector('.q-dialog').remove();
+
+                    // יצירת עיגול קטן עם שם האירוע הנבחר
+                    var eventDisplayArea = document.createElement('div');
+                    eventDisplayArea.classList.add('event-display');
+                    eventDisplayArea.innerHTML = `${selectedEvent} <span class="remove-event" style="color: black; cursor: pointer;">❌</span>`; // הוספת האיקס
+
+                    // עיצוב המסגרת הירוקה הקטנה
+                    eventDisplayArea.style.backgroundColor = '#FFFFFF'; // צבע לבן
+
+                    eventDisplayArea.style.padding = '3px'; // מרווח קטן יותר
+                    eventDisplayArea.style.border = '2px solid #D2B48C'; // גבול ירוק כהה עם עובי 2px
+                    eventDisplayArea.style.borderRadius = '20px'; // פינות מעוגלות
+                    eventDisplayArea.style.width = '80px'; // רוחב קבוע
+                    eventDisplayArea.style.marginTop = '10px';
+                    eventDisplayArea.style.fontWeight = 'bold';
+                    eventDisplayArea.style.fontSize = '12px'; // גודל פונט 12px
+                    eventDisplayArea.style.textAlign = 'right'; // מיקום טקסט במרכז
+
+                    // הוספת המסגרת לאזור המתאים במסך הראשי
+                    document.querySelector('.sm_model_group_card .bottom').appendChild(eventDisplayArea);
+
+                    // מאזין לחיצה על האיקס כדי למחוק את האירוע
+                    eventDisplayArea.querySelector('.remove-event').addEventListener('click', function() {
+                        eventDisplayArea.remove(); // הסרת האירוע מהמסך
+                    });
+                } else {
+                    alert('לא נבחר אירוע!');
+                }
+            }
+        });
+                    });
+                });
+            });
+        });
+
+        // מאזין לאירוע לחיצה על כפתור "הוסף יחידות מאירוע אחר"
+        document.querySelector('.add-units-btn').addEventListener('click', function() {
+            // יצירת כפתור חדש "בחר אירוע"
+            var addEventButtonHTML = `
+            <div>
+                <div class="q-mb-md">
+                    <button class="btn group rect-btn add-event-btn">
+                        <span class="btn-content">
+                            <span class="button-text">בחר אירוע</span>
+                            <span class="emoji">⬇️</span>
+                        </span>
+                    </button>
+                </div>
+            </div>`;
+
+            // הוספת כפתור "בחר אירוע" לדיאלוג
+            document.querySelector('#add-event-button-container').innerHTML = addEventButtonHTML;
+
+            // יצירת משתנה שיבדוק אם הרשימה פתוחה או סגורה
+            var eventListOpen = false;
+
+            // מאזין לאירוע לחיצה על כפתור "בחר אירוע"
+            document.querySelector('.add-event-btn').addEventListener('click', function() {
+                // יצירת רשימה עם האירועים (אור, גילת, שמשון, מרינה)
+                var eventListHTML = `
+                <div id="event-list" class="q-mb-md" style="display: none;">
+                    <ul style="list-style-type: none; padding-left: 0;">
+                        <li><button class="btn group rect-btn event-item" data-event="אחד">אחד</button></li>
+                        <li><button class="btn group rect-btn event-item" data-event="שתיים">שתיים</button></li>
+                        <li><button class="btn group rect-btn event-item" data-event="שלוש">שלוש</button></li>
+                        <li><button class="btn group rect-btn event-item" data-event="ארבע">ארבע</button></li>
+                    </ul>
+                </div>`;
+
+                // אם הרשימה עדיין לא הוספה, נוסיף אותה
+                if (!document.getElementById('event-list')) {
+                    document.querySelector('#add-event-button-container').innerHTML += eventListHTML;
+                }
+
+                // חיפוש אחר האלמנט של הרשימה
+                var eventList = document.getElementById('event-list');
+
+                // אם הרשימה פתוחה, נסגור אותה
+                if (eventListOpen) {
+                    eventList.style.display = 'none';
+                } else {
+                    // אחרת, נפתח את הרשימה
+                    eventList.style.display = 'block';
+                    // מחיקת כפתור "הוספת יחידות מאירוע אחר"
+                    document.querySelector('.add-units-btn').remove();
+                }
+
+                // עדכון משתנה למצב הנוכחי של הרשימה
+                eventListOpen = !eventListOpen;
+
+                // מאזין לאירועים בלחיצה על כל אחד מהאירועים (אור, גילת, שמשון, מרינה)
+                document.querySelector('#event-list').addEventListener('click', function(e) {
+                    if (e.target.classList.contains('event-item')) {
+                        var selectedEvent = e.target.innerText;
+
+                        // עדכון כפתור "בחר אירוע" לשם האירוע שנבחר
+                        document.querySelector('.add-event-btn').innerHTML = `
+                        <span class="btn-content">
+                            <span class="button-text">${selectedEvent}</span>
+                        </span>`;
+
+                        // הסתרת את כל כפתורי האירועים (אור, גילת, שמשון, מרינה)
+                        document.getElementById('event-list').style.display = 'none';
+
+                        // יצירת רשימה של 5 יחידות (יחידה 1 עד יחידה 5) ו"תיבת חץ" ליד "רפואה"
+                        var unitListHTML = `<div id="unit-list" class="q-mb-md" style="margin-top: 10px;">`;
+
+                        // להוסיף את "רפואה" כטקסט עם חץ
+                        unitListHTML += `
+                        <div class="unit-item">
+                            <label>
+                                <input type="checkbox" class="unit-checkbox"> רפואה
+                            </label>
+                            <button class="toggle-non-medical">&#8595;</button> <!-- חץ לפתיחה -->
+                            <div class="non-medical-options" style="display:none;"></div>
+                        </div>`;
+
+                        // להוסיף את שאר היחידות כ-Checkboxים עם חץ
+                        for (var i = 1; i <= 5; i++) {
+                            unitListHTML += `
+                            <div class="unit-item">
+                                <button class="toggle-unit">&#8592;</button> <!-- חץ לכיוון שמאלה -->
+                                <label>
+                                    <input type="checkbox" class="unit-checkbox"> יחידה ${i}
+                                </label>
+                            </div>`;
+                        }
+
+                        unitListHTML += `</div>`;
+
+                        // הוספת רשימת היחידות מתחת לכפתור האירוע
+                        document.querySelector('#add-event-button-container').innerHTML += unitListHTML;
+
+                        // מאזין לחיצה על החץ ליד כל יחידה לפתיחת הנושאים
+                        document.querySelectorAll('.toggle-unit').forEach(function(button) {
+                            button.addEventListener('click', function() {
+                                var unitTopics = this.nextElementSibling.querySelector('.unit-topics');
+                                if (unitTopics.style.display === 'none') {
+                                    unitTopics.style.display = 'block';
+                                } else {
+                                    unitTopics.style.display = 'none';
+                                }
+                            });
+                        });
+
+                        // מאזין לחיצה על החץ ליד "רפואה" כדי להראות/להסתיר את כל היחידות והנושאים
+                        document.querySelector('.toggle-non-medical').addEventListener('click', function() {
+                            var unitList = document.getElementById('unit-list');
+                            if (unitList.style.display === 'none') {
+                                unitList.style.display = 'block';
+                            } else {
+                                unitList.style.display = 'none';
+                            }
+                        });
+                    }
+                });
+            });
+        });
+        document.querySelector('.save-this-btn').addEventListener('click', function() {
+    // קבלת שם האירוע שנבחר
+    var selectedEvent = document.querySelector('.bibi-gogo-btn').innerText.trim();
+
+    // אם נבחר אירוע
+    if (selectedEvent.length > 0) {
+        // סגירת הדיאלוג
+        document.querySelector('.q-dialog').remove();
+
+        // יצירת עיגול קטן עם שם האירוע הנבחר
+        var eventDisplayArea = document.createElement('div');
+        eventDisplayArea.classList.add('event-display');
+        eventDisplayArea.innerHTML = `${selectedEvent} <span class="remove-event" style="color: black; cursor: pointer;">❌</span>`; // הוספת האיקס
+
+        // עיצוב המסגרת הירוקה הקטנה
+        eventDisplayArea.style.backgroundColor = '#28A745'; // צבע ירוק
+        eventDisplayArea.style.padding = '3px'; // מרווח קטן יותר
+        eventDisplayArea.style.border = '2px solid #f4f1e1'; // גבול בצבע שמנת עדינה
+
+
+
+        eventDisplayArea.style.borderRadius = '20px'; // פינות מעוגלות
+        eventDisplayArea.style.width = '60px'; // רוחב קבוע
+        eventDisplayArea.style.marginTop = '15px';
+        eventDisplayArea.style.fontWeight = 'bold';
+        eventDisplayArea.style.fontSize = '10px'; // גודל פונט 12px
+        eventDisplayArea.style.textAlign = 'right'; // מיקום טקסט במרכז
+
+        // הוספת המסגרת לאזור המתאים במסך הראשי
+        document.querySelector('.sm_model_group_card .bottom').appendChild(eventDisplayArea);
+
+        // מאזין לחיצה על האיקס כדי למחוק את האירוע
+        eventDisplayArea.querySelector('.remove-event').addEventListener('click', function() {
+            eventDisplayArea.remove(); // הסרת האירוע מהמסך
+        });
+    } else {
+        alert('לא נבחר אירוע!');
+    }
+});
+
+        // מאזין לאירוע לחיצה על כפתור השמירה
+        document.querySelector('.q-mt-sm.bg-primary.text-white.filled.rect-btn').addEventListener('click', function() {
+            // יצירת רשימה של כל היחידות שנבחרו
+            var selectedUnits = [];
+            document.querySelectorAll('.unit-checkbox:checked').forEach(function(checkbox) {
+                selectedUnits.push(checkbox.parentElement.innerText.trim());
+            });
+
+            // אם יש יחידות שנבחרו
+            if (selectedUnits.length > 0) {
+                // שמירת שם היחידה הנבחרת
+                var selectedUnitName = selectedUnits.join(', ');
+
+                // סגירת הדיאלוג
+                document.querySelector('.q-dialog').remove();
+
+                // עבור כל יחידה שנבחרה, ניצור עיגול צהוב חדש
+                selectedUnits.forEach(function(unitName) {
+                    var unitDisplayArea = document.createElement('div');
+                    unitDisplayArea.classList.add('unit-display');
+                    unitDisplayArea.innerHTML = `${unitName} <span class="remove-unit" style="color: black; cursor: pointer;">❌</span>`; // הוספת האיקס
+
+                    // עיצוב המסגרת הצהובה הקטנה
+                    unitDisplayArea.style.backgroundColor = '#FFEB3B'; // צבע צהוב
+                    unitDisplayArea.style.padding = '3px'; // מרווח קטן יותר
+                    unitDisplayArea.style.border = '2px solid #f1c40f'; // גבול צהוב כהה מעט
+
+
+                    unitDisplayArea.style.borderRadius = '20px'; // פינות מעוגלות
+                    unitDisplayArea.style.width = '100px'; // רוחב קבוע
+                    unitDisplayArea.style.marginTop = '15px';
+                    unitDisplayArea.style.fontWeight = 'bold';
+                    unitDisplayArea.style.fontSize = '10px'; // גודל פונט 12px
+                    unitDisplayArea.style.textAlign = 'right'; // מיקום טקסט במרכז
+                
+                    var hoverText = document.createElement('div');
+
+        hoverText.classList.add('hover-text');
+        hoverText.innerText = 'כמות האנשים ביחידה  = 0  '; // הטקסט במעבר עכבר
+        hoverText.style.display = 'none'; // התחל להסתיר את הטקסט
+        hoverText.style.position = 'absolute';
+        hoverText.style.marginTop = '-50px';
+        hoverText.style.backgroundColor = '#D3D3D3'; // צבע רקע אפור בהיר
+        hoverText.style.padding = '5px';
+        hoverText.style.borderRadius = '5px';
+        hoverText.style.fontSize = '10px';
+        hoverText.style.zIndex = '9999';
+        hoverText.style.textAlign = 'center';
+        hoverText.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.2)';
+        
+        // הוספת אלמנט הטקסט למקום המתאים
+        unitDisplayArea.appendChild(hoverText);
+
+        // מאזין לאירוע hover על אלמנט העיגול
+        unitDisplayArea.addEventListener('mouseover', function() {
+            hoverText.style.display = 'block'; // הצגת הטקסט בזמן שהעכבר מרחף
+        });
+
+        unitDisplayArea.addEventListener('mouseout', function() {
+            hoverText.style.display = 'none'; // הסתרת הטקסט לאחר שהעכבר יוצא
+        });
+                    // הוספת המסגרת לאזור המתאים במסך הראשי
+                    document.querySelector('.sm_model_group_card .bottom').appendChild(unitDisplayArea);
+
+                    // מאזין לחיצה על האיקס כדי למחוק את היחידה
+                    unitDisplayArea.querySelector('.remove-unit').addEventListener('click', function() {
+                        unitDisplayArea.remove(); // הסרת היחידה מהמסך
+                    });
+                });
+            } else {
+                   // מאזין לחיצה על האיקס כדי למחוק את היחידה
+                   unitDisplayArea.querySelector('.remove-unit').addEventListener('click', function() {
+                        unitDisplayArea.remove(); // הסרת היחידה מהמסך
+                    });
+            }
+        });
+    }
+});
+    </script>
+</body>
+
+        ;
+    </script>
+</body>
